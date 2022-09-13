@@ -1,0 +1,90 @@
+{
+  "name": "Wizard MD",
+  "description": "whatsapp md bot build with nodejs",
+  "repository": "https://github.com/Ajmal-Achu/Wizard-MD",
+  "logo": "https://telegra.ph/file/e0bc28185977299bf5d2c.jpg",
+  "keywords": ["nodejs", "bot", "whatsapp bot", "whatsapp automation", "multi device"],
+  "stack": "container",
+  "addons": [{
+  "plan": "heroku-postgresql"
+    }],
+    "env": {
+      "HEROKU_APP_NAME": {
+        "description": "Heroku app name, same as above entered",
+        "required": true
+      },
+      "HEROKU_API_KEY": {
+        "description": "Heroku account api key, https://dashboard.heroku.com/account",
+        "required": true
+      },
+		"SESSION_ID": {
+			"description": "Add your session id heren which you got after scanning the QR",
+			"required": false,
+			"value": ""
+		},
+               "ALIVE_MESSAGE": {
+			"description": "Add a message here which you want to see when typing .alive",
+			"required": true,
+			"value": "iam alive"
+		},
+		"OWNER_NAME": {
+			"description": "Add the owner name here and if you want to use the default name then just leave it)",
+			"required": false,
+			"value": "AJMAL x ABHI"
+		},
+		"OWNER_NUMBER": {
+			"description": "Add the owner number here",
+			"required": true,
+			"value": ""
+		},
+		"Caption": {
+			"description": "Add the owner location here and if you want to use the default name then just leave it",
+			"required": false,
+			"value": "Power Is Power!"
+		},
+		"BOT_NAME": {
+			"description": "Change the bot name here",
+			"required": true,
+			"value": "Wizard MD"
+		},
+		"WATERMARK": {
+			"description": "Add your watermark here",
+			"required": true,
+			"value": "Wizard MD by AJMAL x ABHI"
+		},
+		"STICKER_PACK_NAME": {
+			"description": "Add sticker pack name here",
+			"required": true,
+			"value": "Wizard-MD"
+		},
+		"STICKER_AUTHOR_NAME": {
+			"description": "Add sticker pack author name here",
+			"required": true,
+			"value": "AJMAL x ABHI"
+		},
+		"REACT_EMOJI": {
+			"description": "Add any emoji here.",
+			"required": true,
+			"value": ""
+		},
+                "LOGO": {
+			"description": "Add any emoji here.",
+			"required": true,
+			"value": "https://telegra.ph/file/c9fed4e07198068a2ce53.jpg"
+		},
+               "VIDEOURL": {
+			"description": "Add a video url for gif menu and video menu",
+			"required": true,
+                        "value": "https://telegra.ph/file/c9fed4e07198068a2ce53.jpg"
+				
+		}
+	},
+	"buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+		 {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    }
+    ]
+}
