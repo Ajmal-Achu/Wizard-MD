@@ -1157,7 +1157,7 @@ setInterval(() => {
 //But5Loc
 var nextMinutes = Math.random() * 300 + 30;
 setTimeout(function(){
-  Wizard.sendMessage(Wizard.user.id, {text: `*Wizard MD ANNOUNCEMENT:* *SUBSCRIBE TO OUR CHANNEL*\n\n*YOUTUBE:* https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA\n\n*NEW FEATURES COMING SOON SO STAY TUNED*\n\n*FEEL FREE TO BRING IDEAS OF THE FEATURES ON THE TABLE*`,contextInfo: { externalAdReply:{title:botname,body:caption,showAdAttribution: true,mediaType:2,thumbnail: thumbwiz ,mediaUrl:tutorial, sourceUrl: tutorial }}}, {quoted: m})
+  Wizard.sendMessage(Wizard.user.id, {text: `*Wizard MD ANNOUNCEMENT:* *SUBSCRIBE TO OUR CHANNEL*\n\n*YOUTUBE:* https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA\n\n*JOIN SUPPORTING GROUP https://chat.whatsapp.com/EBH8O72EzIiF2KIagVav4X*\n\n*NEW FEATURES COMING SOON SO STAY TUNED*\n\n*FEEL FREE TO BRING IDEAS OF THE FEATURES ON THE TABLE*`,contextInfo: { externalAdReply:{title:botname,body:caption,showAdAttribution: true,mediaType:2,thumbnail: thumbwiz ,mediaUrl:tutorial, sourceUrl: tutorial }}}, {quoted: m})
   //anouncement by drips 
 }, nextMinutes * 300 * 1000);
 const send5Butlmg = async (jid , text = '' , footer = '', img, but = [], options = {}) =>{
