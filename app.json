@@ -1,7 +1,7 @@
 {
   "name": "Wizard MD",
   "description": "whatsapp md bot build with nodejs",
-  "repository": Wizard me ",
+  "repository":",
   "logo": "https://telegra.ph/file/e0bc28185977299bf5d2c.jpg",
   "keywords": ["nodejs", "bot", "whatsapp bot", "whatsapp automation", "multi device"],
   "stack": "container",
