@@ -170,7 +170,7 @@ showAdAttribution: true,
 title: botname,
 body: caption,
 mediaType: "VIDEO",
-mediaUrl: `https://githb.com/Ajmal-Achu/Wizard-MD`,
+mediaUrl: `https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A`,
 description: ownername,
 previewType: "PHOTO",
 thumbnail: thumbwiz,
@@ -7650,12 +7650,12 @@ hydratedFooterText: `${global.botname}`,
 hydratedButtons: [{        
 "urlButton": {
 "displayText": "SUBSCRIBE",
-"url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+"url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
 }
 }, {
 urlButton: {
 displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+url: 'https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A'
 }
 }
 ]
@@ -7701,12 +7701,12 @@ hydratedFooterText: `${global.botname}`,
 hydratedButtons: [{        
 "urlButton": {
 "displayText": "SUBSCRIBE",
-"url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+"url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
 }
 }, {
 urlButton: {
 displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+url: 'https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A'
 }
 }
 ]
@@ -7770,12 +7770,12 @@ case 'photooxymenu': {
   hydratedButtons: [{        
   "urlButton": {
   "displayText": "SUBSCRIBE",
-  "url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+  "url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
   }
   }, {
   urlButton: {
   displayText: 'GITHUB',
-  url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+  url: 'https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A'
   }
   }
   ]
@@ -7857,12 +7857,12 @@ hydratedFooterText: `${global.botname}`,
 hydratedButtons: [{        
 "urlButton": {
 "displayText": "SUBSCRIBE",
-"url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+"url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
 }
 }, {
 urlButton: {
 displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+url: 'https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A'
 }
 }
 ]
@@ -7958,12 +7958,12 @@ hydratedFooterText: `${global.botname}`,
 hydratedButtons: [{        
 "urlButton": {
 "displayText": "SUBSCRIBE",
-"url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+"url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
 }
 }, {
 urlButton: {
 displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+url: 'https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A'
 }
 }
 ]
@@ -8027,12 +8027,12 @@ hydratedFooterText: `${global.botname}`,
 hydratedButtons: [{        
 "urlButton": {
 "displayText": "SUBSCRIBE",
-"url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+"url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
 }
 }, {
 urlButton: {
 displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+url: 'https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A'
 }
 }
 ]
@@ -8111,12 +8111,12 @@ hydratedFooterText: `${global.botname}`,
 hydratedButtons: [{        
 "urlButton": {
 "displayText": "SUBSCRIBE",
-"url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+"url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
 }
 }, {
 urlButton: {
 displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+url: 'https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A'
 }
 }
 ]
@@ -8198,12 +8198,12 @@ case 'animemenu':{
   hydratedButtons: [{        
   "urlButton": {
   "displayText": "SUBSCRIBE",
-  "url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+  "url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
   }
   }, {
   urlButton: {
   displayText: 'GITHUB',
-  url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+  url: 'https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A'
   }
   }
   ]
@@ -8263,12 +8263,12 @@ case 'convertmenu': {
   hydratedButtons: [{        
   "urlButton": {
   "displayText": "SUBSCRIBE",
-  "url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+  "url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
   }
   }, {
   urlButton: {
   displayText: 'GITHUB',
-  url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+  url: 'https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A'
   }
   }
   ]
@@ -8323,12 +8323,12 @@ case 'toolmenu': {
   hydratedButtons: [{        
   "urlButton": {
   "displayText": "SUBSCRIBE",
-  "url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+  "url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
   }
   }, {
   urlButton: {
   displayText: 'GITHUB',
-  url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+  url: 'https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A'
   }
   }
   ]
@@ -8395,12 +8395,12 @@ case 'searchmenu':{
   hydratedButtons: [{        
   "urlButton": {
   "displayText": "SUBSCRIBE",
-  "url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+  "url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
   }
   }, {
   urlButton: {
   displayText: 'GITHUB',
-  url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+  url: 'https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A'
   }
   }
   ]
@@ -8439,12 +8439,12 @@ hydratedFooterText: `${global.botname}`,
 hydratedButtons: [{        
 "urlButton": {
 "displayText": "SUBSCRIBE",
-"url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+"url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
 }
 }, {
 urlButton: {
 displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+url: 'https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A'
 }
 }
 ]
