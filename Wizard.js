@@ -43,9 +43,9 @@ const { addLevelingId, addLevelingLevel ,addLevelingXp, getLevelingId, getLeveli
 const { isLimit, limitAdd, getLimit, giveLimit, addBalance, kurangBalance, getBalance, isGame, gameAdd, givegame, cekGLimit } = require('./Library/limit')
 //xp and leveling database⧈⧈⧈⧈
  
-let thumbwiz = fs.readFileSync('./Library/wizard.jpg')
+let thumbwiz = fs.readFileSync('./Library/SanDy.jpg')
 //message type
-/* let drips = fs.readFileSync('./Library/wizard.jpg')
+/* let drips = fs.readFileSync('./Library/SanDy.jpg')
 */
 
 //database
@@ -78,7 +78,7 @@ let tebaklirik = db.game.lirik = []
 let tebaktebakan = db.game.tebakan = []
 let vote = db.others.vote = []
 
-module.exports = Wizard = async (Wizard, m, chatUpdate, store) => {
+module.exports = SanDy = async (SanDy, m, chatUpdate, store) => {
 let thumb = thumbwiz
 try {
 var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
@@ -88,7 +88,7 @@ const isCmd = body.startsWith(prefix)
 const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
 const args = body.trim().split(/ +/).slice(1)
 const pushname = m.pushName || "No Name"
-const botNumber = await Wizard.decodeJid(Wizard.user.id)
+const botNumber = await SanDy.decodeJid(SanDy.user.id)
 const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 const itsMe = m.sender == botNumber ? true : false
 const text = q = args.join(" ")
@@ -99,7 +99,7 @@ const isMedia = /image|video|sticker|audio/.test(mime)
 const sender = m.isGroup ? (m.key.participant ? m.key.participant : m.participant) : m.key.remoteJid
 const isPetualang = checkPetualangUser(sender)
 //----GROUP METADATA----\\
-const groupMetadata = m.isGroup ? await Wizard.groupMetadata(m.chat).catch(e => {}) : ''
+const groupMetadata = m.isGroup ? await SanDy.groupMetadata(m.chat).catch(e => {}) : ''
 const groupName = m.isGroup ? groupMetadata.subject : ''
 const participants = m.isGroup ? await groupMetadata.participants : ''
 const groupAdmins = m.isGroup ? await participants.filter(v => v.admin !== null).map(v => v.id) : ''
@@ -152,10 +152,10 @@ return dDisplay + hDisplay + mDisplay + sDisplay;
 
 
 const reply = (teks) => {
-    Wizard.sendMessage(m.chat, {text: teks, contextInfo: {"externalAdReply": {title: botname,mediaType: 3, renderLargerThumbnail: false, showAdAttribution: true, detectLinks: true,body: caption, thumbnail: thumbwiz,sourceUrl: ("github.com/Ajmal-Achu")}}})
+    SanDy.sendMessage(m.chat, {text: teks, contextInfo: {"externalAdReply": {title: botname,mediaType: 3, renderLargerThumbnail: false, showAdAttribution: true, detectLinks: true,body: caption, thumbnail: thumbwiz,sourceUrl: ("https://wa.me//642727777777")}}})
 }
 const replay = (teks) => {
-    Wizard.sendMessage(m.chat, {text: teks, contextInfo: {"externalAdReply": {title: botname,mediaType: 3, renderLargerThumbnail: false, showAdAttribution: true, body: caption, thumbnail: thumbwiz,sourceUrl: ("github.com/Ajmal-Achu")}}})
+    SanDy.sendMessage(m.chat, {text: teks, contextInfo: {"externalAdReply": {title: botname,mediaType: 3, renderLargerThumbnail: false, showAdAttribution: true, body: caption, thumbnail: thumbwiz,sourceUrl: ("https://wa.me//642727777777")}}})
 }
 
 const drip =  {
@@ -170,7 +170,7 @@ showAdAttribution: true,
 title: botname,
 body: caption,
 mediaType: "VIDEO",
-mediaUrl: `https://githb.com/Ajmal-Achu/Wizard-MD`,
+mediaUrl: `https://githb.com/Ajmal-Achu/SanDy-MD`,
 description: ownername,
 previewType: "PHOTO",
 thumbnail: thumbwiz,
@@ -304,19 +304,19 @@ autoblock: false,
 } catch (err) {
  console.error(err)
 }
-Wizard.ws.on('CB:action,,battery', json => {
+SanDy.ws.on('CB:action,,battery', json => {
 const batteryLevelStr = json[2][0][1].value
 const batterylevel = parseInt (batteryLevelStr)
   battre = batterylevel
 })  
 
-Wizard.ws.on('CB:action,,charger', json => {
+SanDy.ws.on('CB:action,,charger', json => {
 const chargerLevelStr = json[2][0][1].value
 const charging = parseInt (chargerLevelStr)
   charger = charging
 })  
 //public/self
-if (!Wizard.public) {
+if (!SanDy.public) {
 if (!m.key.fromMe) return
 }
 
@@ -365,18 +365,18 @@ var makan = ['🌭','🌮','🌯','🍙','🍝','🍕','🍘','🍟','🍞','�
 var buahan = ['🍇','🍎','🍏','🍐','🍒','🍊','🍋','🍑','🍓']
 //CHATBOT
 if (global.dripsreadgroup) {
-if (m.isGroup) { Wizard.sendReadReceipt(m.chat, m.sender, [m.key.id]) }
+if (m.isGroup) { SanDy.sendReadReceipt(m.chat, m.sender, [m.key.id]) }
 }
-if (global.dripsreadall) { if (m.message) { Wizard.sendReadReceipt(m.chat, m.sender, [m.key.id]) }
+if (global.dripsreadall) { if (m.message) { SanDy.sendReadReceipt(m.chat, m.sender, [m.key.id]) }
 }
-if (global.dripsrecord) { if (m.chat) { Wizard.sendPresenceUpdate('recording', m.chat) }
+if (global.dripsrecord) { if (m.chat) { SanDy.sendPresenceUpdate('recording', m.chat) }
 }
 
-if (global.dripstyping) { if (m.chat) { Wizard.sendPresenceUpdate('composing', m.chat) }
+if (global.dripstyping) { if (m.chat) { SanDy.sendPresenceUpdate('composing', m.chat) }
 }
-if (global.available) { if (m.chat) { Wizard.sendPresenceUpdate('available', m.chat) }
+if (global.available) { if (m.chat) { SanDy.sendPresenceUpdate('available', m.chat) }
 }
-if (global.unavailable) { if (m.chat) { Wizard.sendPresenceUpdate('unavailable', m.chat) }
+if (global.unavailable) { if (m.chat) { SanDy.sendPresenceUpdate('unavailable', m.chat) }
 }
 //RPG FUNCTION BY DRIPS
 function randomNomor(min, max = null) {
@@ -400,7 +400,7 @@ if (budy.includes("://chat.whatsapp.com/")) {
     color("[AUTO-JOIN]", "red"),
     color("YAHAHAHHAHAH", "white")
   );
-  Wizard.query({
+  SanDy.query({
     json: [
       "action",
       "invite",
@@ -483,7 +483,7 @@ var DADYDR = `
  ʏᴏᴜʀ ᴄʀᴇᴅɪᴛꜱ
  └───「 ${global.botname} 」
  `
-let message = await prepareWAMessageMedia({ image: bufu, jpegThumbnail:bufu }, { upload: Wizard.waUploadToServer })
+let message = await prepareWAMessageMedia({ image: bufu, jpegThumbnail:bufu }, { upload: SanDy.waUploadToServer })
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 templateMessage: {
 hydratedTemplate: {
@@ -509,7 +509,7 @@ quickReplyButton: {
 }
 }
 }), { userJid: m.chat })
-Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
 .catch ((err) => reply(err))
 }
         async function sendButJoin(from, query) {
@@ -536,7 +536,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
  *Sᴛᴀᴛᴜꜱ :* ${elit}
  *Xᴘ:*  ${getLevelingXp(sender)}/${reqXp}
 ❲ *_ʀᴘɢ ɢᴀᴍᴇ_* ❳`
-  let message = await prepareWAMessageMedia({ image: bufut, jpegThumbnail:bufut }, { upload: Wizard.waUploadToServer })
+  let message = await prepareWAMessageMedia({ image: bufut, jpegThumbnail:bufut }, { upload: SanDy.waUploadToServer })
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
   templateMessage: {
   hydratedTemplate: {
@@ -562,7 +562,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
   }
   }
   }), { userJid: m.chat })
-  Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+  SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
   .catch ((err) => reply(err))
   }
           
@@ -585,7 +585,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
                 { quickReplyButton: { displayText: `Owner`, id: `${prefix}owner` } }
                 ]
           var hg = `*Mission to kill Slime*\n\n🎁 *Reward for killing Slime*\n  *Money:* $${b}\n  *Iron:* ${c}\n  *Gold:* ${a}\n  *Diamond:* ${d}\n\n*Thank you for carrying out this mission*`
-          let message = await prepareWAMessageMedia({ image: bufutI, jpegThumbnail:bufutI }, { upload: Wizard.waUploadToServer })
+          let message = await prepareWAMessageMedia({ image: bufutI, jpegThumbnail:bufutI }, { upload: SanDy.waUploadToServer })
           const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
           templateMessage: {
           hydratedTemplate: {
@@ -611,7 +611,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
           }
           }
           }), { userJid: m.chat })
-          Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+          SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
           .catch ((err) => reply(err))
           }
           
@@ -634,7 +634,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
                 { quickReplyButton: { displayText: `Owner`, id: `${prefix}owner` } }
                 ]
             var hg = `*Mission To kill Goblin*\n\n🎁 *Reward for killing Goblin*\n  *Money:* $${b}\n  *Iron:* ${c}\n  *Gold:* ${a}\n  *Diamond:* ${d}\n\n*Thank you for carrying out this misssion*`
-            let message = await prepareWAMessageMedia({ image: bufo, jpegThumbnail:bufo }, { upload: Wizard.waUploadToServer })
+            let message = await prepareWAMessageMedia({ image: bufo, jpegThumbnail:bufo }, { upload: SanDy.waUploadToServer })
             const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
             templateMessage: {
             hydratedTemplate: {
@@ -660,7 +660,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             }
             }), { userJid: m.chat })
-            Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
             .catch ((err) => reply(err))
             }
           
@@ -683,7 +683,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
                 { quickReplyButton: { displayText: `Owner`, id: `${prefix}owner` } }
                 ]
             var hg = `*Mission to kill 𝗗𝗲𝘃𝗶𝗹️*\n\n🎁 *Reward for killing Devil*\n  *Money:* $${b}\n  *Iron:* ${c}\n  *Gold:* ${a}\n  *Diamond:* ${d}\n\n*Thank you for carrying out this mission*`
-            let message = await prepareWAMessageMedia({ image: bufas, jpegThumbnail:bufas }, { upload: Wizard.waUploadToServer })
+            let message = await prepareWAMessageMedia({ image: bufas, jpegThumbnail:bufas }, { upload: SanDy.waUploadToServer })
             const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
             templateMessage: {
             hydratedTemplate: {
@@ -709,7 +709,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             }
             }), { userJid: m.chat })
-            Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
             .catch ((err) => reply(err))
             }
           
@@ -732,7 +732,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
                 { quickReplyButton: { displayText: `Owner`, id: `${prefix}owner` } }
                 ]
             var hg = `*Mission to kill Behemoth*\n\n🎁 *Reward for kiling Behemoth*\n  *Money:* $${b}\n  *Iron:* ${c}\n  *Gold:* ${a}\n  *Diamond:* ${d}\n\n*Thank you for carrying out this mission*`
-            let message = await prepareWAMessageMedia({ image: batai, jpegThumbnail: batai }, { upload: Wizard.waUploadToServer })
+            let message = await prepareWAMessageMedia({ image: batai, jpegThumbnail: batai }, { upload: SanDy.waUploadToServer })
             const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
               templateMessage: {
               hydratedTemplate: {
@@ -759,7 +759,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
               }
               }
               }), { userJid: m.chat })
-              Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+              SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
                   
             .catch ((err) => reply(err))
           }
@@ -783,7 +783,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
                 { quickReplyButton: { displayText: `Owner`, id: `${prefix}owner` } }
                 ]
             var hg = `*Mission to kill Demon*\n🎁 *Demon Kill Reward*\n  *Money:* $${b}\n  *Iron:* ${c}\n  *Gold*: ${a}\n  *Diamond:* ${d}\n\n*Thank You for Carrying Out This Mission*`
-            let message = await prepareWAMessageMedia({ image: bhuu, jpegThumbnail: bhuu }, { upload: Wizard.waUploadToServer })
+            let message = await prepareWAMessageMedia({ image: bhuu, jpegThumbnail: bhuu }, { upload: SanDy.waUploadToServer })
             const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
               templateMessage: {
               hydratedTemplate: {
@@ -810,7 +810,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
               }
               }
               }), { userJid: m.chat })
-              Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+              SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
                   
             .catch ((err) => reply(err))
           }
@@ -830,7 +830,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
                 { quickReplyButton: { displayText: `Owner`, id: `${prefix}owner` } }
                 ]
             var hg = `*Mission to kill DemonKing*\n\n🎁 *DemonKing Kill Reward*\n  *Money* : $${b}\n  *Iron :* ${c}\n  *Gold :* ${a}\n  *Diamond :* ${d}\n\n*Thank You for Carrying Out This Mission*`
-            let message = await prepareWAMessageMedia({ image: bhuud, jpegThumbnail:bhuud }, { upload: Wizard.waUploadToServer })
+            let message = await prepareWAMessageMedia({ image: bhuud, jpegThumbnail:bhuud }, { upload: SanDy.waUploadToServer })
             const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
             templateMessage: {
             hydratedTemplate: {
@@ -856,7 +856,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             }
             }), { userJid: m.chat })
-            Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
             .catch ((err) => reply(err))
             }
           const emote = (satu, dua) => {
@@ -867,7 +867,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
             .then(emoji => {
             const buttons = [{buttonId: "y", buttonText: {displayText:satu}, type: 1}]
             const buttonMessage = {image: {url: emoji.images[dua].url},caption: botname,footerText: 'Loading...',buttons: buttons,headerType: 4}
-            Wizard.sendMessage(from, buttonMessage, {quoted:m})
+            SanDy.sendMessage(from, buttonMessage, {quoted:m})
             })
             } catch (e) {
             reply("Emoji error, please enter another emojinNOTE : Just enter 1 emoji")
@@ -875,7 +875,7 @@ Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 //----ANTILINK AND CHATBOT-----\\
 //chatbot is encrypted sorry
-var _0x33fa3e=_0x465d;function _0x2a31(){var _0x124451=['reply','1109740LfSEyY','includes','9059424ATMYLh','702DCvREW','3129360vqgfpx','sender','@s.whatsapp.net','http://api.brainshop.ai/get?bid=167831&key=BFghpAKanUPXcLWQ&uid=','error','9eHTAtD','chatbot','catch','&msg=','1931044WXDcdy','data','split','18074ZBFvdT','user','GET','27825912kQipLx','62352dAoPvn','settings','http://api.brainshop.ai/get?bid=167831&key=BFghpAKanUPXcLWQ&uid=Wizard.user.id&msg='];_0x2a31=function(){return _0x124451;};return _0x2a31();}function _0x465d(_0x46eeb2,_0x5f0900){var _0x2a3178=_0x2a31();return _0x465d=function(_0x465d22,_0x141be9){_0x465d22=_0x465d22-0x110;var _0x9b342b=_0x2a3178[_0x465d22];return _0x9b342b;},_0x465d(_0x46eeb2,_0x5f0900);}(function(_0x3277b6,_0x4246a7){var _0x1e4f2f=_0x465d,_0x355551=_0x3277b6();while(!![]){try{var _0x22af3f=-parseInt(_0x1e4f2f(0x11c))/0x1+parseInt(_0x1e4f2f(0x115))/0x2+parseInt(_0x1e4f2f(0x111))/0x3*(parseInt(_0x1e4f2f(0x120))/0x4)+parseInt(_0x1e4f2f(0x124))/0x5+-parseInt(_0x1e4f2f(0x123))/0x6*(-parseInt(_0x1e4f2f(0x118))/0x7)+parseInt(_0x1e4f2f(0x122))/0x8+-parseInt(_0x1e4f2f(0x11b))/0x9;if(_0x22af3f===_0x4246a7)break;else _0x355551['push'](_0x355551['shift']());}catch(_0x32822d){_0x355551['push'](_0x355551['shift']());}}}(_0x2a31,0xabe65));if(db[_0x33fa3e(0x11d)][botNumber][_0x33fa3e(0x112)]){if(m[_0x33fa3e(0x125)][_0x33fa3e(0x121)](_0x33fa3e(0x126))){var mhata=''+command;sehcalaz=Wizard[_0x33fa3e(0x119)]['id'][_0x33fa3e(0x117)]('@')[0x0];var duzvi=encodeURI(mhata);const bhabhi={'method':_0x33fa3e(0x11a),'url':_0x33fa3e(0x11e)+command};await axios['get'](_0x33fa3e(0x127)+sehcalaz+_0x33fa3e(0x114)+duzvi)['then'](function(_0x55e8cd){var _0x4963f0=_0x33fa3e,_0x207a24='';_0x207a24=_0x55e8cd[_0x4963f0(0x116)]['cnt'],m[_0x4963f0(0x11f)](_0x207a24);})[_0x33fa3e(0x113)](function(_0x4cac14){var _0x12b308=_0x33fa3e;console[_0x12b308(0x110)](_0x4cac14);});}}
+var _0x33fa3e=_0x465d;function _0x2a31(){var _0x124451=['reply','1109740LfSEyY','includes','9059424ATMYLh','702DCvREW','3129360vqgfpx','sender','@s.whatsapp.net','http://api.brainshop.ai/get?bid=167831&key=BFghpAKanUPXcLWQ&uid=','error','9eHTAtD','chatbot','catch','&msg=','1931044WXDcdy','data','split','18074ZBFvdT','user','GET','27825912kQipLx','62352dAoPvn','settings','http://api.brainshop.ai/get?bid=167831&key=BFghpAKanUPXcLWQ&uid=SanDy.user.id&msg='];_0x2a31=function(){return _0x124451;};return _0x2a31();}function _0x465d(_0x46eeb2,_0x5f0900){var _0x2a3178=_0x2a31();return _0x465d=function(_0x465d22,_0x141be9){_0x465d22=_0x465d22-0x110;var _0x9b342b=_0x2a3178[_0x465d22];return _0x9b342b;},_0x465d(_0x46eeb2,_0x5f0900);}(function(_0x3277b6,_0x4246a7){var _0x1e4f2f=_0x465d,_0x355551=_0x3277b6();while(!![]){try{var _0x22af3f=-parseInt(_0x1e4f2f(0x11c))/0x1+parseInt(_0x1e4f2f(0x115))/0x2+parseInt(_0x1e4f2f(0x111))/0x3*(parseInt(_0x1e4f2f(0x120))/0x4)+parseInt(_0x1e4f2f(0x124))/0x5+-parseInt(_0x1e4f2f(0x123))/0x6*(-parseInt(_0x1e4f2f(0x118))/0x7)+parseInt(_0x1e4f2f(0x122))/0x8+-parseInt(_0x1e4f2f(0x11b))/0x9;if(_0x22af3f===_0x4246a7)break;else _0x355551['push'](_0x355551['shift']());}catch(_0x32822d){_0x355551['push'](_0x355551['shift']());}}}(_0x2a31,0xabe65));if(db[_0x33fa3e(0x11d)][botNumber][_0x33fa3e(0x112)]){if(m[_0x33fa3e(0x125)][_0x33fa3e(0x121)](_0x33fa3e(0x126))){var mhata=''+command;sehcalaz=SanDy[_0x33fa3e(0x119)]['id'][_0x33fa3e(0x117)]('@')[0x0];var duzvi=encodeURI(mhata);const bhabhi={'method':_0x33fa3e(0x11a),'url':_0x33fa3e(0x11e)+command};await axios['get'](_0x33fa3e(0x127)+sehcalaz+_0x33fa3e(0x114)+duzvi)['then'](function(_0x55e8cd){var _0x4963f0=_0x33fa3e,_0x207a24='';_0x207a24=_0x55e8cd[_0x4963f0(0x116)]['cnt'],m[_0x4963f0(0x11f)](_0x207a24);})[_0x33fa3e(0x113)](function(_0x4cac14){var _0x12b308=_0x33fa3e;console[_0x12b308(0x110)](_0x4cac14);});}}
 
 
 if (db.chats[m.chat].antilink) {
@@ -883,7 +883,7 @@ if (budy.includes('https://chat.whatsapp.com/')) {
 if (!m.key.fromMe) {
 reply('[ 𝗔𝗡𝗧𝗜𝗟𝗜𝗡𝗞 ]\n𝗟𝗶𝗻𝗸 𝗻𝗼𝘁 𝗮𝗹𝗹𝗼𝘄𝗲𝗱 𝗵𝗲𝗿𝗲, 𝗢𝗞𝘆?..,\n𝗚𝗼𝗼𝗱 𝗯𝘆𝗲 𝗜𝗺 𝗸𝗶𝗰𝗸𝗶𝗻𝗴 𝘂 👋🏻')
 let sianj = m.sender
-await Wizard.groupParticipantsUpdate(m.chat, [sianj], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+await SanDy.groupParticipantsUpdate(m.chat, [sianj], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 }
 }
 }
@@ -897,7 +897,7 @@ let isgclink = isLinkThisGc.test(m.text)
 if (isgclink) return reply(`𝘖𝘏 𝘠𝘦𝘢𝘩 𝘪𝘵 𝘥𝘪𝘥𝘯𝘵 𝘩𝘢𝘱𝘱𝘦𝘯, 𝘣𝘦𝘤𝘢𝘶𝘴𝘦 𝘺𝘰𝘶 𝘴𝘦𝘯𝘵 𝘵𝘩𝘪𝘴 𝘸𝘢.𝘮𝘦 𝘭𝘪𝘯𝘬𝘺 𝘰𝘬𝘢𝘺😌`)
 if (isAdmins) return reply(`𝘏𝘦𝘭𝘭 𝘯𝘰😱 𝘺𝘰𝘶 𝘢𝘥𝘮𝘪𝘯`)
 if (isCreator) return reply(`𝘖𝘰𝘰𝘰𝘩 𝘴𝘩𝘪𝘵😩 𝘴𝘰𝘳𝘳𝘺 𝘺𝘶 𝘢𝘳𝘦 𝘵𝘩𝘦 𝘰𝘸𝘯𝘦𝘳 𝘭𝘶𝘤𝘬𝘺 𝘺𝘰𝘶`)
-Wizard.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+SanDy.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }
 }
 if (db.chats[m.chat].antiinstagram) {
@@ -908,8 +908,8 @@ if (db.chats[m.chat].antiinstagram) {
  if (m.key.fromMe) return reply(wizv1)
  if (isCreator) return reply(wizv1)
  kice = m.sender
- await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove')
- Wizard.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no ig links here okay, now get out* `, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+ await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove')
+ SanDy.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no ig links here okay, now get out* `, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
  }
 }
 
@@ -921,8 +921,8 @@ if (isAdmins) return reply(`*you are admin lucky you dont send stickers here*`)
 if (isCreator) return reply(`*𝘖𝘰𝘰𝘰𝘩 𝘴𝘩𝘪𝘵😩 𝘴𝘰𝘳𝘳𝘺 𝘺𝘶 𝘢𝘳𝘦 𝘵𝘩𝘦 𝘰𝘸𝘯𝘦𝘳 𝘭𝘶𝘤𝘬𝘺 𝘺𝘰𝘶*`)
 reply('*ANTI STICKER*\n\n*NO STICKERS  ALLOWED HERE OKAY GOODBYE*')
 kice = m.sender
-await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove')
-Wizard.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no stickers here okay, now get out* `, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove')
+SanDy.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no stickers here okay, now get out* `, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 }
 }
 }
@@ -935,8 +935,8 @@ if (isAdmins) return reply(`*you are admin lucky you dont send voice note here*`
 if (isCreator) return reply(`*𝘖𝘰𝘰𝘰𝘩 𝘴𝘩𝘪𝘵😩 𝘴𝘰𝘳𝘳𝘺 𝘺𝘶 𝘢𝘳𝘦 𝘵𝘩𝘦 𝘰𝘸𝘯𝘦𝘳 𝘭𝘶𝘤𝘬𝘺 𝘺𝘰𝘶*`)
 reply('*ANTI VOICE NOTE*\n\n*NO VOICE ALLOWED HERE  OKAY GOODBYE*')
 kice = m.sender
-await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove')
-Wizard.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no voice note here okay, now get out* `, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove')
+SanDy.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no voice note here okay, now get out* `, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 }
 }
 }
@@ -949,8 +949,8 @@ if (isAdmins) return reply(`*you are admin lucky you dont send videos here*`)
 if (isCreator) return reply(`*𝘖𝘰𝘰𝘰𝘩 𝘴𝘩𝘪𝘵😩 𝘴𝘰𝘳𝘳𝘺 𝘺𝘶 𝘢𝘳𝘦 𝘵𝘩𝘦 𝘰𝘸𝘯𝘦𝘳 𝘭𝘶𝘤𝘬𝘺 𝘺𝘰𝘶*`)
 reply('*ANTI VIDEO*\n\n*NO VIDEOS ALLOWED HERE  OKAY GOODBYE*')
 kice = m.sender
-await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove')
-Wizard.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no videos here okay, now get out* `, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove')
+SanDy.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no videos here okay, now get out* `, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 }
 }
 }
@@ -963,8 +963,8 @@ if (isAdmins) return reply(`*you are admin lucky you dont send photos here*`)
 if (isCreator) return reply(`*𝘖𝘰𝘰𝘰𝘩 𝘴𝘩𝘪𝘵😩 𝘴𝘰𝘳𝘳𝘺 𝘺𝘶 𝘢𝘳𝘦 𝘵𝘩𝘦 𝘰𝘸𝘯𝘦𝘳 𝘭𝘶𝘤𝘬𝘺 𝘺𝘰𝘶*`)
 reply('*ANTI PHOTOS*\n\n*NO PHOTOS ALLOWED HERE  OKAY GOODBYE*')
 kice = m.sender
-await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove')
-Wizard.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no photos here okay, now get out* `, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove')
+SanDy.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no photos here okay, now get out* `, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 }
 }
 }
@@ -977,8 +977,8 @@ if (isAdmins) return reply(wizv1)
 if (m.key.fromMe) return reply(wizv1)
 if (isCreator) return reply(wizv1)
 kice = m.sender
-await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove')
- Wizard.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no fb links here okay, now get out*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove')
+ SanDy.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no fb links here okay, now get out*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 } 
  }
 
@@ -990,8 +990,8 @@ await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove')
  if (m.key.fromMe) return reply(wizv1)
  if (isCreator) return reply(wizv1)
  kice = m.sender
- await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove')
- Wizard.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no telegram links here okay, now get out*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+ await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove')
+ SanDy.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no telegram links here okay, now get out*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 } 
  }
 
@@ -1003,8 +1003,8 @@ if (isAdmins) return m.reply(wizv1)
 if (m.key.fromMe) return m.reply(wizv1)
 if (isCreator) return m.reply(wizv1)
 kice = m.sender
-await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove')
-Wizard.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no tiktok links here okay, now get out*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove')
+SanDy.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no tiktok links here okay, now get out*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 }
 }
 
@@ -1016,8 +1016,8 @@ if (isAdmins) return reply(wizv1)
 if (m.key.fromMe) return reply(wizv1)
 if (isCreator) return reply(wizv1)
 kice = m.sender
-await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove')
-Wizard.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no twittwer link here okay, now get out*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove')
+SanDy.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no twittwer link here okay, now get out*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 }
 }
 
@@ -1029,8 +1029,8 @@ if (isAdmins) return reply(wizv1)
 if (m.key.fromMe) return reply(wizv1)
 if (isCreator) return reply(wizv1)
 kice = m.sender
-await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove')
-Wizard.sendMessage(m.chat, {text:`*DETECTED*\n@${kice.split("@")[0]} *I said dont send any links okay*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove')
+SanDy.sendMessage(m.chat, {text:`*DETECTED*\n@${kice.split("@")[0]} *I said dont send any links okay*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 }
 }
 
@@ -1040,7 +1040,7 @@ if (!db.chats[m.chat].antionce) return
 teks = `*DETECTED ONCE*
 
 `
-Wizard.sendTextWithMentions(m.chat, teks, m)
+SanDy.sendTextWithMentions(m.chat, teks, m)
 await sleep(500)
 m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => reply(`*I opened it by force*`))
 }
@@ -1055,8 +1055,8 @@ if (isAdmins) return reply(wizv1)
 if (m.key.fromMe) return reply(wizv1)
 if (isCreator) return reply(wizv1)
 kice = m.sender
-await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove')
-Wizard.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no yt links here okay, now get out*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove')
+SanDy.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no yt links here okay, now get out*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 } 
 }
 
@@ -1064,13 +1064,13 @@ if (db.chats[m.chat].antilink) {
 if (budy.match(`chat.whatsapp.com`)) {
 reply(`* ANTILINK *\n\n*You have been detected sending a group link, sorry you will be kicked!*`)
 if (!isBotAdmins) return reply(`*Bbot must be admin okay*`)
-let gclink = (`https://chat.whatsapp.com/`+await Wizard.groupInviteCode(m.chat))
+let gclink = (`https://chat.whatsapp.com/`+await SanDy.groupInviteCode(m.chat))
 let isLinkThisGc = new RegExp(gclink, 'i')
 let isgclink = isLinkThisGc.test(m.text)
 if (isgclink) return reply(`*sorry I didn't kick you, because you sent the link of this group lucky you*`)
 if (isAdmins) return reply(`*Ehh sorry you admin*`)
 if (isCreator) return reply(`*whoa you are  bot creator i wont kick you okay*`)
-Wizard.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+SanDy.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }
 }
 if (budy.length > 3500) {
@@ -1079,7 +1079,7 @@ if (groupAdmins) return
 reply('Mark as read\n'.repeat(300))
 reply(`*DETECTED*\n\n*You sent a virtex, sorry you will be kicked from the group*`)
 console.log(('[KICK]', 'red'), color('Received a text virus!', 'yellow'))
-Wizard.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+SanDy.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }  
 
 
@@ -1091,8 +1091,8 @@ if (isAdmins) return reply(wizv1)
 if (m.key.fromMe) return reply(wizv1)
 if (isCreator) return reply(wizv1)
 kice = m.sender
-await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove')
-Wizard.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no links okay, now get out*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove')
+SanDy.sendMessage(from, {text:`*DETECTED*\n\n@${kice.split("@")[0]} *I said no links okay, now get out*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 }
 }
 
@@ -1100,8 +1100,8 @@ if (db.settings[botNumber].autoblock) {
 if (m.chat.endsWith("@s.whatsapp.net")) {
 if (isCreator) reply('*you are bot creator okay*')
 block = m.sender
-await Wizard.sendMessage(from, {text:`*AUTO BLOCK*\n\n@${block.split("@")[0]} *today I'm blocking dumps bye you are _blocked_* *if you want to use bot join this group* ${global.group1}\n\n${global.group2}`, m})
-Wizard.updateBlockStatus(m.sender,'block')
+await SanDy.sendMessage(from, {text:`*AUTO BLOCK*\n\n@${block.split("@")[0]} *today I'm blocking dumps bye you are _blocked_* *if you want to use bot join this group* ${global.group1}\n\n${global.group2}`, m})
+SanDy.updateBlockStatus(m.sender,'block')
 }
 }
 
@@ -1112,8 +1112,8 @@ reply(`* ANTIYT *\n\n*SOrry ${botname} will kick you out because what you sent i
 if (isAdmins) return reply(`*Ehh sorry you admin*`)
  if (isCreator) return reply(`*whoa you are  bot creator i wont kick you okay*`)
 kice = m.sender
-await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
-Wizard.sendMessage(m.chat, {text:`* ANTILINK *\n\n@${kice.split("@")[0]} *Has been kicked for sending the youtube link in this group*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+SanDy.sendMessage(m.chat, {text:`* ANTILINK *\n\n@${kice.split("@")[0]} *Has been kicked for sending the youtube link in this group*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 }
 }
 
@@ -1125,8 +1125,8 @@ reply(`* ANTIBULE *\n\n*Sorry ${botname} will kick you out because you are a str
 if (isAdmins) return reply(`*Ehh sorry you admin*`)
 if (isCreator) return reply(`*whoa you are  bot creator i wont kick you okay*`)
 kice = m.sender
-await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
-Wizard.sendMessage(m.chat, {text:`* ANTILINK *\n\n@${kice.split("@")[0]} *You shouldn't be in this group*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+SanDy.sendMessage(m.chat, {text:`* ANTILINK *\n\n@${kice.split("@")[0]} *You shouldn't be in this group*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 }
 }
 if (db.settings[botNumber].grouponly) {
@@ -1157,7 +1157,7 @@ setInterval(() => {
 //But5Loc
 var nextMinutes = Math.random() * 300 + 30;
 setTimeout(function(){
-  Wizard.sendMessage(Wizard.user.id, {text: `*Wizard MD ANNOUNCEMENT:* *SUBSCRIBE TO OUR CHANNEL*\n\n*YOUTUBE:* https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA\n\n*JOIN SUPPORTING GROUP https://chat.whatsapp.com/EBH8O72EzIiF2KIagVav4X*\n\n*NEW FEATURES COMING SOON SO STAY TUNED*\n\n*FEEL FREE TO BRING IDEAS OF THE FEATURES ON THE TABLE*`,contextInfo: { externalAdReply:{title:botname,body:caption,showAdAttribution: true,mediaType:2,thumbnail: thumbwiz ,mediaUrl:tutorial, sourceUrl: tutorial }}}, {quoted: m})
+  SanDy.sendMessage(SanDy.user.id, {text: `*SanDy MD ANNOUNCEMENT:* *SUBSCRIBE TO OUR CHANNEL*\n\n*YOUTUBE:* https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A\n\n*JOIN SUPPORTING GROUP https://chat.whatsapp.com/EBH8O72EzIiF2KIagVav4X*\n\n*NEW FEATURES COMING SOON SO STAY TUNED*\n\n*FEEL FREE TO BRING IDEAS OF THE FEATURES ON THE TABLE*`,contextInfo: { externalAdReply:{title:botname,body:caption,showAdAttribution: true,mediaType:2,thumbnail: thumbwiz ,mediaUrl:tutorial, sourceUrl: tutorial }}}, {quoted: m})
   //anouncement by drips 
 }, nextMinutes * 300 * 1000);
 const send5Butlmg = async (jid , text = '' , footer = '', img, but = [], options = {}) =>{
@@ -1171,7 +1171,7 @@ templateMessage: {
    }
    }
    }), options)
-    return Wizard.relayMessage(jid, template.message, { messageId: template.key.id })
+    return SanDy.relayMessage(jid, template.message, { messageId: template.key.id })
     }
 //reset limit every 12hrs
 let cron = require('node-cron')
@@ -1190,10 +1190,10 @@ if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in globa
 let hash = global.db.sticker[m.msg.fileSha256.toString('base64')]
 let { text, mentionedJid } = hash
 let messages = await generateWAMessage(m.chat, { text: text, mentions: mentionedJid }, {
- userJid: Wizard.user.id,
+ userJid: SanDy.user.id,
  quoted: m.quoted && m.quoted.fakeObj
 })
-messages.key.fromMe = areJidsSameUser(m.sender, Wizard.user.id)
+messages.key.fromMe = areJidsSameUser(m.sender, SanDy.user.id)
 messages.key.id = m.key.id
 messages.pushName = m.pushName
 if (m.isGroup) messages.participant = m.sender
@@ -1202,7 +1202,7 @@ let msg = {
  messages: [proto.WebMessageInfo.fromObject(messages)],
  type: 'append'
 }
-Wizard.ev.emit('messages.upsert', msg)
+SanDy.ev.emit('messages.upsert', msg)
 }
     
 if (('family100'+m.chat in _family100) && isCmd) {
@@ -1223,7 +1223,7 @@ ${Array.from(room.jawaban, (jawaban, index) => {
 return isSurender || room.terjawab[index] ? `(${index + 1}) ${jawaban} ${room.terjawab[index] ? '@' + room.terjawab[index].split('@')[0] : ''}`.trim() : false
     }).filter(v => v).join('\n')}
     ${isSurender ? '' : `Perfect Player`}`.trim()
- Wizard.sendText(m.chat, caption, m, { contextInfo: { mentionedJid: parseMention(caption) }}).then(mes => { return _family100['family100'+m.chat].pesan = mesg }).catch(_ => _)
+ SanDy.sendText(m.chat, caption, m, { contextInfo: { mentionedJid: parseMention(caption) }}).then(mes => { return _family100['family100'+m.chat].pesan = mesg }).catch(_ => _)
  if (isWin || isSurender) delete _family100['family100'+m.chat]
 }
 
@@ -1231,7 +1231,7 @@ if (tebaklagu.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
  kuis = true
  jawaban = tebaklagu[m.sender.split('@')[0]]
  if (budy.toLowerCase() == jawaban) {
-   await Wizard.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'GUESS THE MUSIC' }, type: 1 }], ` Guess The Song\n\nCorrect Answer 🎉\n\nWant to play again? ${global.watermark}`, Wizard.user.name, m)
+   await SanDy.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'GUESS THE MUSIC' }, type: 1 }], ` Guess The Song\n\nCorrect Answer 🎉\n\nWant to play again? ${global.watermark}`, SanDy.user.name, m)
    delete tebaklagu[m.sender.split('@')[0]]
  } else reply('*WRONG ANSWER!*')
 }
@@ -1249,7 +1249,7 @@ if (tebakgambar.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
  kuis = true
  jawaban = tebakgambar[m.sender.split('@')[0]]
  if (budy.toLowerCase() == jawaban) {
-   await Wizard.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Guess The Picture' }, type: 1 }], ` Guess The Picture\n\nCorrect answer 🎉\n\nWant to play again? ${global.watermark}`, Wizard.user.name, m)
+   await SanDy.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Guess The Picture' }, type: 1 }], ` Guess The Picture\n\nCorrect answer 🎉\n\nWant to play again? ${global.watermark}`, SanDy.user.name, m)
    delete tebakgambar[m.sender.split('@')[0]]
  } else reply('*WRONG ANSWER!*')
 }
@@ -1258,7 +1258,7 @@ if (tebakkata.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
  kuis = true
  jawaban = tebakkata[m.sender.split('@')[0]]
  if (budy.toLowerCase() == jawaban) {
-   await Wizard.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'GUESS THE WORD' }, type: 1 }], `Guess The Word\n\nCorrect answer 🎉\n\nWant to play again? ${global.watermark}`, Wizard.user.name, m)
+   await SanDy.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'GUESS THE WORD' }, type: 1 }], `Guess The Word\n\nCorrect answer 🎉\n\nWant to play again? ${global.watermark}`, SanDy.user.name, m)
    delete tebakkata[m.sender.split('@')[0]]
  } else reply('*WRONG ANSWER!*')
 }
@@ -1268,7 +1268,7 @@ if (caklontong.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
  jawaban = caklontong[m.sender.split('@')[0]]
     deskripsi = caklontong_desk[m.sender.split('@')[0]]
  if (budy.toLowerCase() == jawaban) {
-   await Wizard.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'GUESS LONTONG' }, type: 1 }], `Guess Lontong\n\nCorrect answer 🎉\n*${deskripsi}*\n\nWant to play again? ${global.watermark}`, Wizard.user.name, m)
+   await SanDy.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'GUESS LONTONG' }, type: 1 }], `Guess Lontong\n\nCorrect answer 🎉\n*${deskripsi}*\n\nWant to play again? ${global.watermark}`, SanDy.user.name, m)
    delete caklontong[m.sender.split('@')[0]]
 delete caklontong_desk[m.sender.split('@')[0]]
  } else reply('*WRONG ANSWER!*')
@@ -1278,7 +1278,7 @@ if (tebakkalimat.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
  kuis = true
  jawaban = tebakkalimat[m.sender.split('@')[0]]
  if (budy.toLowerCase() == jawaban) {
-   await Wizard.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Guess The Sentence' }, type: 1 }], ` Guess The Sentence \n\nCorrect answer 🎉\n\nWant to play again? ${global.watermark}`, Wizard.user.name, m)
+   await SanDy.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Guess The Sentence' }, type: 1 }], ` Guess The Sentence \n\nCorrect answer 🎉\n\nWant to play again? ${global.watermark}`, SanDy.user.name, m)
    delete tebakkalimat[m.sender.split('@')[0]]
  } else reply('*WRONG ANSWER!*')
 }
@@ -1287,7 +1287,7 @@ if (tebaklirik.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
  kuis = true
  jawaban = tebaklirik[m.sender.split('@')[0]]
  if (budy.toLowerCase() == jawaban) {
-   await Wizard.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Guess The Lyrics' }, type: 1 }], ` Guess The Lyrics \n\nCorrect answer 🎉\n\nWant to play again? ${global.watermark}`, Wizard.user.name, m)
+   await SanDy.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Guess The Lyrics' }, type: 1 }], ` Guess The Lyrics \n\nCorrect answer 🎉\n\nWant to play again? ${global.watermark}`, SanDy.user.name, m)
    delete tebaklirik[m.sender.split('@')[0]]
  } else reply('*WRONG ANSWER!*')
 }
@@ -1296,7 +1296,7 @@ if (tebaktebakan.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
  kuis = true
  jawaban = tebaktebakan[m.sender.split('@')[0]]
  if (budy.toLowerCase() == jawaban) {
-   await Wizard.sendButtonText(m.chat, [{ buttonId: 'tebak tebakan', buttonText: { displayText: 'Riddles' }, type: 1 }], `Riddles \n\nCorrect answer 🎉\n\nWant to play again? ${global.watermark}`, Wizard.user.name, m)
+   await SanDy.sendButtonText(m.chat, [{ buttonId: 'tebak tebakan', buttonText: { displayText: 'Riddles' }, type: 1 }], `Riddles \n\nCorrect answer 🎉\n\nWant to play again? ${global.watermark}`, SanDy.user.name, m)
    delete tebaktebakan[m.sender.split('@')[0]]
  } else reply('*WRONG ANSWER!*')
 }
@@ -1359,8 +1359,8 @@ ${isWin ? `@${winner.split('@')[0]} Win!` : isTie ? `Game over` : `Turn ${['❌'
 Type *give up* to surrender and admit defeat`
     if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
     room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
-    if (room.x !== room.o) await Wizard.sendText(room.x, str, m, { mentions: parseMention(str) } )
-    await Wizard.sendText(room.o, str, m, { mentions: parseMention(str) } )
+    if (room.x !== room.o) await SanDy.sendText(room.x, str, m, { mentions: parseMention(str) } )
+    await SanDy.sendText(room.o, str, m, { mentions: parseMention(str) } )
     if (isTie || isWin) {
     delete this.game[room.id]
     }
@@ -1374,7 +1374,7 @@ Type *give up* to surrender and admit defeat`
     let tie = false
     if (m.sender == roof.p2 && /^(acc(ept)?|accept|sure|oke?|reject|dont|later|yes|can|y)/i.test(m.text) && m.isGroup && roof.status == 'wait') {
     if (/^(reject|dont|later|n|no|can)/i.test(m.text)) {
-    Wizard.sendTextWithMentions(m.chat, `@${roof.p2.split`@`[0]} reject the suit, the suit is canceled`, m)
+    SanDy.sendTextWithMentions(m.chat, `@${roof.p2.split`@`[0]} reject the suit, the suit is canceled`, m)
     delete this.suit[roof.id]
     return !0
     }
@@ -1382,20 +1382,20 @@ Type *give up* to surrender and admit defeat`
     roof.asal = m.chat
     clearTimeout(roof.waktu)
     //delete roof[roof.id].waktu
-    Wizard.sendText(m.chat, `Suit has been sent to chat
+    SanDy.sendText(m.chat, `Suit has been sent to chat
 
 @${roof.p.split`@`[0]} and 
 @${roof.p2.split`@`[0]}
 
 Please choose a suit in the respective chat"
 click https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] })
-    if (!roof.pilih) Wizard.sendText(roof.p, `Please select \n\nRock🗿\nPaper📄\nScissors`, m)
-    if (!roof.pilih2) Wizard.sendText(roof.p2, `Please select \n\nRock🗿\nPaper📄\nScissor️`, m)
+    if (!roof.pilih) SanDy.sendText(roof.p, `Please select \n\nRock🗿\nPaper📄\nScissors`, m)
+    if (!roof.pilih2) SanDy.sendText(roof.p2, `Please select \n\nRock🗿\nPaper📄\nScissor️`, m)
     roof.waktu_milih = setTimeout(() => {
-    if (!roof.pilih && !roof.pilih2) Wizard.sendText(m.chat, `Both players don't want to play,\nSuit canceled`)
+    if (!roof.pilih && !roof.pilih2) SanDy.sendText(m.chat, `Both players don't want to play,\nSuit canceled`)
     else if (!roof.pilih || !roof.pilih2) {
     win = !roof.pilih ? roof.p2 : roof.p
-    Wizard.sendTextWithMentions(m.chat, `@${(roof.pilih ? roof.p2 : roof.p).split`@`[0]} didn't choose suit, game over`, m)
+    SanDy.sendTextWithMentions(m.chat, `@${(roof.pilih ? roof.p2 : roof.p).split`@`[0]} didn't choose suit, game over`, m)
     }
     delete this.suit[roof.id]
     return !0
@@ -1411,13 +1411,13 @@ click https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] 
     roof.pilih = reg.exec(m.text.toLowerCase())[0]
     roof.text = m.text
     reply(`You have chosen ${m.text} ${!roof.pilih2 ? `\n\nWaiting for the opponent to choose` : ''}`)
-    if (!roof.pilih2) Wizard.sendText(roof.p2, '_The opponent has chosen_\nNow it is your turn', 0)
+    if (!roof.pilih2) SanDy.sendText(roof.p2, '_The opponent has chosen_\nNow it is your turn', 0)
     }
     if (jwb2 && reg.test(m.text) && !roof.pilih2 && !m.isGroup) {
     roof.pilih2 = reg.exec(m.text.toLowerCase())[0]
     roof.text2 = m.text
     reply(`You have chosen ${m.text} ${!roof.pilih ? `\n\nWaiting for the opponent to choose` : ''}`)
-    if (!roof.pilih) Wizard.sendText(roof.p, '_The opponent has chosen_\nNow it is your turn', 0)
+    if (!roof.pilih) SanDy.sendText(roof.p, '_The opponent has chosen_\nNow it is your turn', 0)
     }
     let stage = roof.pilih
     let stage2 = roof.pilih2
@@ -1430,7 +1430,7 @@ click https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] 
     else if (k.test(stage) && b.test(stage2)) win = roof.p
     else if (k.test(stage) && g.test(stage2)) win = roof.p2
     else if (stage == stage2) tie = true
-    Wizard.sendText(roof.asal, `_*Suit Results*_${tie ? '\nSERIES' : ''}
+    SanDy.sendText(roof.asal, `_*Suit Results*_${tie ? '\nSERIES' : ''}
 
 @${roof.p.split`@`[0]} (${roof.text}) ${tie ? '' : roof.p == win ? ` Win \n` : ` Lost \n`}
 @${roof.p2.split`@`[0]} (${roof.text2}) ${tie ? '' : roof.p2 == win ? ` Win \n` : ` Lost \n`}
@@ -1532,7 +1532,7 @@ switch(command) {
     ]
     }
     ]
-    Wizard.sendList(m.chat, `Hi Chomie *${pushname}*`, `Please Select Below`, "CLICK", "ʀᴘɢ ɢᴀᴍᴇ ʙʏ ${global.botname} ", sectionnya, { quoted: m})
+    SanDy.sendList(m.chat, `Hi Chomie *${pushname}*`, `Please Select Below`, "CLICK", "ʀᴘɢ ɢᴀᴍᴇ ʙʏ ${global.botname} ", sectionnya, { quoted: m})
     break
     case 'slime':
     case 'killslime':
@@ -1598,19 +1598,19 @@ setTimeout( () => {
 buttons = [
 { buttonId: 'mining', buttonText: { displayText: 'Mining' }, type: 1 }
 ]
-Wizard.sendButtonText(m.chat, buttons, `*Completed Mining🚧nlist results:*\n*Gold* ${emas}🪙\n*Money:* $${pp}💰\n*Iron:* ${besi}⛓️\n*Diamond:* ${dm}💎`, Wizard.user.name, m)
+SanDy.sendButtonText(m.chat, buttons, `*Completed Mining🚧nlist results:*\n*Gold* ${emas}🪙\n*Money:* $${pp}💰\n*Iron:* ${besi}⛓️\n*Diamond:* ${dm}💎`, SanDy.user.name, m)
 }, 9000) // 1000 = 1s,
 setTimeout( () => {
-Wizard.sendMessage(from, { text: '🚧 Finished Kneading . . .🪙👷' }, { quoted: m })
+SanDy.sendMessage(from, { text: '🚧 Finished Kneading . . .🪙👷' }, { quoted: m })
 }, 7000) // 1000 = 1s,
 setTimeout( () => {
-Wizard.sendMessage(from, { text: '🚧 Finding Gold . . .⚒️🏔️️️' }, { quoted: m })
+SanDy.sendMessage(from, { text: '🚧 Finding Gold . . .⚒️🏔️️️' }, { quoted: m })
 }, 4000) // 1000 = 1s,
 setTimeout( () => {
-Wizard.sendMessage(from, { text: '🚧 Start Mining . . .⚒️🏔️️' }, { quoted: m })
+SanDy.sendMessage(from, { text: '🚧 Start Mining . . .⚒️🏔️️' }, { quoted: m })
 }, 1500) // 1000 = 1s,
 setTimeout( () => {
-Wizard.sendMessage(from, { text: mining }, {quoted: m}) 
+SanDy.sendMessage(from, { text: mining }, {quoted: m}) 
 }, 0) // 1000 = 1s,
 break
 case 'inventori':
@@ -1620,7 +1620,7 @@ var reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
 buttons = [
 { buttonId: 'adventure', buttonText: { displayText: 'Adventure' }, type: 1 }
 ]
-Wizard.sendButtonText(m.chat, buttons, `📍 𝗣𝗿𝗼𝗳𝗶𝗹𝗲 𝗣𝗹𝗮𝘆𝗲𝗿\n  Name: ${pushname}\n  Rank : ${role}\n  Status : ${elit}\n  Xp : ${getLevelingXp(sender)}/${reqXp}\n  Level : ${getLevelingLevel(sender)}\n🎒 𝗜𝗻𝘃𝗲𝗻𝘁𝗼𝗿𝗶 :\n  Gold : ${getEmas(sender)}🪙\n  Money : $${(getBalance(sender, balance))}💰\n  Iron : ${getBesi(sender)}⛓️\n  Diamond : ${getDm(sender)}💎\n  Fish : ${getFish(sender)}🎣`, Wizard.user.name, m)
+SanDy.sendButtonText(m.chat, buttons, `📍 𝗣𝗿𝗼𝗳𝗶𝗹𝗲 𝗣𝗹𝗮𝘆𝗲𝗿\n  Name: ${pushname}\n  Rank : ${role}\n  Status : ${elit}\n  Xp : ${getLevelingXp(sender)}/${reqXp}\n  Level : ${getLevelingLevel(sender)}\n🎒 𝗜𝗻𝘃𝗲𝗻𝘁𝗼𝗿𝗶 :\n  Gold : ${getEmas(sender)}🪙\n  Money : $${(getBalance(sender, balance))}💰\n  Iron : ${getBesi(sender)}⛓️\n  Diamond : ${getDm(sender)}💎\n  Fish : ${getFish(sender)}🎣`, SanDy.user.name, m)
 break
 case 'sellikan':
 if (!m.isGroup) return reply(mess.group) 
@@ -1634,7 +1634,7 @@ addBalance(sender, rp, balance)
 buttons = [
 { buttonId: 'inventori', buttonText: { displayText: 'Inventori' }, type: 1 }
 ]
-Wizard.sendButtonText(m.chat, buttons, `🛒 *MARKET*\n  Seller : ${pushname}\n  Buyer : Admin\n  Price/Fish : 5\n  Status : Success\n  Left FishPrice/Fish : ${getFish(sender)}\n  Sales Results : $${rp}`,  Wizard.user.name, m)
+SanDy.sendButtonText(m.chat, buttons, `🛒 *MARKET*\n  Seller : ${pushname}\n  Buyer : Admin\n  Price/Fish : 5\n  Status : Success\n  Left FishPrice/Fish : ${getFish(sender)}\n  Sales Results : $${rp}`,  SanDy.user.name, m)
 break
 case 'sellbesi':
 if (!m.isGroup) return reply(mess.group) 
@@ -1648,7 +1648,7 @@ addBalance(sender, rp, balance)
 buttons = [
 { buttonId: 'inventori', buttonText: { displayText: 'Inventori' }, type: 1 }
 ]
-Wizard.sendButtonText(m.chat, buttons, `🛒 MARKET\n  Seller : ${pushname}\n  Buyer : Admin\n  Harga/Besi : 10\n  Status : Sukses\n  Sisa Besi : ${getBesi(sender)}\n  Sales Results : $${rp}`, Wizard.user.name, m)
+SanDy.sendButtonText(m.chat, buttons, `🛒 MARKET\n  Seller : ${pushname}\n  Buyer : Admin\n  Harga/Besi : 10\n  Status : Sukses\n  Sisa Besi : ${getBesi(sender)}\n  Sales Results : $${rp}`, SanDy.user.name, m)
 break
 case 'sellemas':
 if (!m.isGroup) return reply(mess.group) 
@@ -1662,7 +1662,7 @@ addBalance(sender, rp, balance)
 buttons = [
 { buttonId: 'inventori', buttonText: { displayText: 'Inventori' }, type: 1 }
 ]
-Wizard.sendButtonText(m.chat, buttons, `🛒 MARKET\n  Seller : ${pushname}\n  Buyer : Admin\n  Harga/Emas : 25\n  Status : Sukses\n  Sisa Emas : ${getEmas(sender)}\n  Sales Results : $${rp}`, Wizard.user.name, m)
+SanDy.sendButtonText(m.chat, buttons, `🛒 MARKET\n  Seller : ${pushname}\n  Buyer : Admin\n  Harga/Emas : 25\n  Status : Sukses\n  Sisa Emas : ${getEmas(sender)}\n  Sales Results : $${rp}`, SanDy.user.name, m)
 break 
 case 'selldiamond':
 if (!m.isGroup) return reply(mess.group) 
@@ -1676,7 +1676,7 @@ addBalance(sender, etoo, balance)
 buttons = [
 { buttonId: 'inventori', buttonText: { displayText: 'Inventori' }, type: 1 }
 ]
-Wizard.sendButtonText(m.chat, buttons, `🛒 MARKET\n  Seller : ${pushname}\n  Buyer : Admin\n  Harga/Dm : 75\n  Status : Sukses\n  Sisa Diamond : ${getDm(sender)}\n  Sales Results : $${etoo}`, Wizard.user.name, m)
+SanDy.sendButtonText(m.chat, buttons, `🛒 MARKET\n  Seller : ${pushname}\n  Buyer : Admin\n  Harga/Dm : 75\n  Status : Sukses\n  Sisa Diamond : ${getDm(sender)}\n  Sales Results : $${etoo}`, SanDy.user.name, m)
 break 
 case 'mancing':
 if (!m.isGroup) return reply(mess.group) 
@@ -1693,17 +1693,17 @@ var button = [
 		{ quickReplyButton: { displayText: `Owner`, id: `${prefix}owner` } }
 		]
         var hg = `「 Memancing 」\n\n  *Capture:* ${ikannya}\n  *Total Get:* ${ditangkap} *Fish*\n  MONEY : $${coin}\n  EXP : ${xp}Xp`
-        Wizard.sendMessage(from, { caption: hg, location: { jpegThumbnail: cing }, templateButtons: button, footer: `ʀᴘɢ ɢᴀᴍᴇ ʙʏ ${global.botname}`, mentions: [sender] })
+        SanDy.sendMessage(from, { caption: hg, location: { jpegThumbnail: cing }, templateButtons: button, footer: `ʀᴘɢ ɢᴀᴍᴇ ʙʏ ${global.botname}`, mentions: [sender] })
         .catch ((err) => reply(mess.error))
 }, 6000)
 setTimeout( () => {
-Wizard.sendMessage(from, { text: 'Managed to Get a Fish . . .' }, { quoted: m })
+SanDy.sendMessage(from, { text: 'Managed to Get a Fish . . .' }, { quoted: m })
 }, 5000) // 1000 = 1s,
 setTimeout( () => {
-Wizard.sendMessage(from, { text: '🎣 Attracting Kail. . .' }, { quoted: m })
+SanDy.sendMessage(from, { text: '🎣 Attracting Kail. . .' }, { quoted: m })
 }, 3000) // 1000 = 1s,
 setTimeout( () => {
-Wizard.sendMessage(from, { text: '🎣 Start Fishing . . .' }, { quoted: m })
+SanDy.sendMessage(from, { text: '🎣 Start Fishing . . .' }, { quoted: m })
 }, 1500) // 1000 = 1s,
 addFish(sender, ditangkap)
 addLevelingXp(sender, xp)
@@ -1730,17 +1730,17 @@ var button = [
 		{ quickReplyButton: { displayText: `Owner`, id: `${prefix}owner` } }
 		]
         var hg = `「 DEATH 」\n\n * Place*  ${ad}\n  *MONEY :* $${money}\n  *EXP :* ${adven}Xp`
-        Wizard.sendMessage(from, { caption: hg, location: { jpegThumbnail: hasm }, templateButtons: button, footer: `ʀᴘɢ ɢᴀᴍᴇ ʙʏ ${global.botname}`, mentions: [sender] })
+        SanDy.sendMessage(from, { caption: hg, location: { jpegThumbnail: hasm }, templateButtons: button, footer: `ʀᴘɢ ɢᴀᴍᴇ ʙʏ ${global.botname}`, mentions: [sender] })
         .catch ((err) => reply(mess.error))
 }, 7000)
 setTimeout( () => {
-Wizard.sendMessage(from, { text: `Awass` }, { quoted: m })
+SanDy.sendMessage(from, { text: `Awass` }, { quoted: m })
 }, 5000) // 1000 = 1s,
 setTimeout( () => {
-Wizard.sendMessage(from, { text: `Suddenly There ${sesuatu}` }, { quoted: m })
+SanDy.sendMessage(from, { text: `Suddenly There ${sesuatu}` }, { quoted: m })
 }, 3000) // 1000 = 1s,
 setTimeout( () => {
-Wizard.sendMessage(from, { text: `${pushname} On an Adventure` }, { quoted: m })
+SanDy.sendMessage(from, { text: `${pushname} On an Adventure` }, { quoted: m })
 }, 1500) // 1000 = 1s,
 addLevelingXp(sender, adven)
 addBalance(sender, money, balance)
@@ -1761,7 +1761,7 @@ addBesi(sender, c)
 buttons = [
 { buttonId: `${command}`, buttonText: { displayText: `TRY LUCKY` }, type: 1 }
 ]
-Wizard.sendButtonText(m.chat, buttons, `🎰 *Lucky*\n *Money:* $${b}\n *Gold :* ${a}\n *Iron :* ${c}\n *XP :* ${ez}`, Wizard.user.name, m)
+SanDy.sendButtonText(m.chat, buttons, `🎰 *Lucky*\n *Money:* $${b}\n *Gold :* ${a}\n *Iron :* ${c}\n *XP :* ${ez}`, SanDy.user.name, m)
 }
 break
  /*case 'xp': case 'inventory': case 'profile':{
@@ -1770,7 +1770,7 @@ if (!isDarah){ addInventoriDarah(m.sender, DarahAwal) }
 if (!isInventory){ addInventori(m.sender) }
 if (!isInventoriBuruan){ addInventoriBuruan(m.sender) }
 
-var Wizard = await getBuffer(picak+`User's Inventory`)
+var SanDy = await getBuffer(picak+`User's Inventory`)
 let teksehmazeh = `❰ INFO USER ❱\n\n`
 teksehmazeh += `*❤️YOUR BLOOD* : ${getDarah(m.sender)}\n`
 teksehmazeh += `*◻️️YOUR IRON* : ${getBesi(m.sender)}\n`
@@ -1840,7 +1840,7 @@ displayText: 'MINE️'
  buttons: buttons,
  headerType: 4
 }
-Wizard.sendMessage(m.chat, buttonMessage, { quoted: m })
+SanDy.sendMessage(m.chat, buttonMessage, { quoted: m })
    
    }, 7000)  
   setTimeout( () => {
@@ -2126,8 +2126,8 @@ ${arr.slice(6).join('')}
 Waiting @${room.game.currentTurn.split('@')[0]}
 
 Type *give up* to surrender and admit defeat`
- if (room.x !== room.o) await Wizard.sendText(room.x, str, m, { mentions: parseMention(str) } )
- await Wizard.sendText(room.o, str, m, { mentions: parseMention(str) } )
+ if (room.x !== room.o) await SanDy.sendText(room.x, str, m, { mentions: parseMention(str) } )
+ await SanDy.sendText(room.o, str, m, { mentions: parseMention(str) } )
  } else {
  room = {
  id: 'tictactoe-' + (+new Date),
@@ -2147,7 +2147,7 @@ Type *give up* to surrender and admit defeat`
  try {
  if (this.game) {
  delete this.game
- Wizard.sendText(m.chat, `Successfully delete the TicTacToe session`, m)
+ SanDy.sendText(m.chat, `Successfully delete the TicTacToe session`, m)
  } else if (!this.game) {
  reply(`TicTacToe Session🎮 there is not any`)
  } else throw '?'
@@ -2172,13 +2172,13 @@ Type *give up* to surrender and admit defeat`
 
 Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
  this.suit[id] = {
- chat: await Wizard.sendText(m.chat, caption, m, { mentions: parseMention(caption) }),
+ chat: await SanDy.sendText(m.chat, caption, m, { mentions: parseMention(caption) }),
  id: id,
  p: m.sender,
  p2: m.mentionedJid[0],
  status: 'wait',
  waktu: setTimeout(() => {
- if (this.suit[id]) Wizard.sendText(m.chat, `_Suit time out_`, m)
+ if (this.suit[id]) SanDy.sendText(m.chat, `_Suit time out_`, m)
  delete this.suit[id]
  }, 60000), poin, poin_lose, timeout
  }
@@ -2189,7 +2189,7 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
  case 'sc': case 'script': case 'donate': case 'donasi': case 'donate': case 'sewabot': case 'sewa': case 'buypremium': case 'donate': {
 
   teks = `
-  *${global.botname}*\n\n*TUTORIAL:* github.com/Ajmal-Achu\n*GITHUB:* https://github.com/Ajmal-Achu/Wizard-MD\n\n*WEBSITE:* https://ajmalser.vercel.app\n\n You Can Support Us By Following Us On Social Media😊`
+  *${global.botname}*\n\n*TUTORIAL:* https://wa.me//642727777777\n*WHATSAPP:* +642727777777\n\n*WEBSITE:* https://ajmalser.vercel.app\n\n You Can Support Us By Following Us On Social Media😊`
   let buttons = [
  {buttonId: `menu`, buttonText: {displayText: 'MENU <3'}, type: 1}
   ]
@@ -2206,11 +2206,11 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
   showAdAttribution: true,
   thumbnail: thumbwiz,
   mediaType:1,
-  mediaUrl: 'github.com/Ajmal-Achu',
-  sourceUrl: "github.com/Ajmal-Achu"
+  mediaUrl: 'https://wa.me//642727777777',
+  sourceUrl: "https://wa.me//642727777777"
   }}
   }
-  Wizard.sendMessage(m.chat, buttonMessage, { quoted: m })
+  SanDy.sendMessage(m.chat, buttonMessage, { quoted: m })
   }
  break
  case 'forex': case 'broker': case 'binary': {
@@ -2233,30 +2233,30 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
   showAdAttribution: true,
   thumbnail: thumbwiz,
   mediaType:1,
-  mediaUrl: 'github.com/Ajmal-Achu',
-  sourceUrl: "github.com/Ajmal-Achu"
+  mediaUrl: 'https://wa.me//642727777777',
+  sourceUrl: "https://wa.me//642727777777"
   }}
   }
-  Wizard.sendMessage(m.chat, buttonMessage, { quoted: m })
+  SanDy.sendMessage(m.chat, buttonMessage, { quoted: m })
   }
   break
  case 'chat': {
    if (!isCreator) throw global.owner
    if (!q) throw 'Option : 1. mute\n2. unmute\n3. archive\n4. unarchive\n5. read\n6. unread\n7. delete'
    if (args[0] === 'mute') {
-  Wizard.chatModify({ mute: 'Infinity' }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+  SanDy.chatModify({ mute: 'Infinity' }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
    } else if (args[0] === 'unmute') {
-  Wizard.chatModify({ mute: null }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+  SanDy.chatModify({ mute: null }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
    } else if (args[0] === 'archive') {
-  Wizard.chatModify({  archive: true }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+  SanDy.chatModify({  archive: true }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
    } else if (args[0] === 'unarchive') {
-  Wizard.chatModify({ archive: false }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+  SanDy.chatModify({ archive: false }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
    } else if (args[0] === 'read') {
-  Wizard.chatModify({ markRead: true }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+  SanDy.chatModify({ markRead: true }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
    } else if (args[0] === 'unread') {
-  Wizard.chatModify({ markRead: false }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+  SanDy.chatModify({ markRead: false }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
    } else if (args[0] === 'delete') {
-  Wizard.chatModify({ clear: { message: { id: m.quoted.id, fromMe: true }} }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+  SanDy.chatModify({ clear: { message: { id: m.quoted.id, fromMe: true }} }, m.chat, []).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
    }
  }
  break
@@ -2265,12 +2265,12 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
   reply('*There are still unfinished match*')
   throw false
    }
-   let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/family100.json')
+   let anu = await fetchJson('https://raw.WHATSAPPusercontent.com/BochilTeam/database/master/games/family100.json')
    let random = anu[Math.floor(Math.random() * anu.length)]
    let hasil = `*Answer the following questions :*\n${random.soal}\n\nThere is *${random.jawaban.length}* Answer ${random.jawaban.find(v => v.includes(' ')) ? `(some answers have spaces)` : ''}`.trim()
    _family100['family100'+m.chat] = {
   id: 'family100'+m.chat,
-  pesan: await Wizard.sendText(m.chat, hasil, m),
+  pesan: await SanDy.sendText(m.chat, hasil, m),
   ...random,
   terjawab: Array.from(random.jawaban, () => false),
   hadiah: 6,
@@ -2287,87 +2287,87 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
    if (!text) throw `Example : ${prefix + command} lagu\n\nOption : \n1. music\n2. picture\n3. word\n4. sentence\n5. lyrics\n6.rice cake`
    if (args[0] === "lagu") {
   if (tebaklagu.hasOwnProperty(m.sender.split('@')[0])) throw "*There are still unfinished match *"
-  let anu = await fetchJson('https://fatiharridho.github.io/tebaklagu.json')
+  let anu = await fetchJson('https://fatiharridho.WHATSAPP.io/tebaklagu.json')
   let result = anu[Math.floor(Math.random() * anu.length)]
-  let msg = await Wizard.sendMessage(m.chat, { audio: { url: result.link_song }, mimetype: 'audio/mpeg' }, { quoted: m })
-  Wizard.sendText(m.chat, `The song is a song from?\n\nArtist : ${result.artist}\nTime : 60s`, msg).then(() => {
+  let msg = await SanDy.sendMessage(m.chat, { audio: { url: result.link_song }, mimetype: 'audio/mpeg' }, { quoted: m })
+  SanDy.sendText(m.chat, `The song is a song from?\n\nArtist : ${result.artist}\nTime : 60s`, msg).then(() => {
   tebaklagu[m.sender.split('@')[0]] = result.jawaban.toLowerCase()
   })
   await sleep(60000)
   if (tebaklagu.hasOwnProperty(m.sender.split('@')[0])) {
   console.log("Answer: " + result.jawaban)
-  Wizard.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'TEBAK LAGU' }, type: 1 }], `Time Out\nAnswer:  ${tebaklagu[m.sender.split('@')[0]]}\n\nWant to play? ${global.watermark}`, Wizard.user.name, m)
+  SanDy.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'TEBAK LAGU' }, type: 1 }], `Time Out\nAnswer:  ${tebaklagu[m.sender.split('@')[0]]}\n\nWant to play? ${global.watermark}`, SanDy.user.name, m)
   delete tebaklagu[m.sender.split('@')[0]]
   
   }
    } else if (args[0] === 'gambar') {
   if (tebakgambar.hasOwnProperty(m.sender.split('@')[0])) throw "*There are still unfinished match*"
-  let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebakgambar.json')
+  let anu = await fetchJson('https://raw.WHATSAPPusercontent.com/BochilTeam/database/master/games/tebakgambar.json')
   let result = anu[Math.floor(Math.random() * anu.length)]
-  Wizard.sendImage(m.chat, result.img, `Please answer the questions above\n\nDescription : ${result.deskripsi}\nWaktu : 60s`, m).then(() => {
+  SanDy.sendImage(m.chat, result.img, `Please answer the questions above\n\nDescription : ${result.deskripsi}\nWaktu : 60s`, m).then(() => {
   tebakgambar[m.sender.split('@')[0]] = result.jawaban.toLowerCase()
   })
   await sleep(60000)
   if (tebakgambar.hasOwnProperty(m.sender.split('@')[0])) {
   console.log("Answer: " + result.jawaban)
-  Wizard.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Tebak Gambar' }, type: 1 }], `Time has run out\Answer:  ${tebakgambar[m.sender.split('@')[0]]}\n\nWant to play? ${global.watermark}`, Wizard.user.name, m)
+  SanDy.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Tebak Gambar' }, type: 1 }], `Time has run out\Answer:  ${tebakgambar[m.sender.split('@')[0]]}\n\nWant to play? ${global.watermark}`, SanDy.user.name, m)
   delete tebakgambar[m.sender.split('@')[0]]
   
   }
    } else if (args[0] === 'kata') {
   if (tebakkata.hasOwnProperty(m.sender.split('@')[0])) throw "*There are still unfinished match*"
-  let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebakkata.json')
+  let anu = await fetchJson('https://raw.WHATSAPPusercontent.com/BochilTeam/database/master/games/tebakkata.json')
   let result = anu[Math.floor(Math.random() * anu.length)]
-  Wizard.sendText(m.chat, `Silahkan Jawab Pertanyaan Berikut\n\n${result.soal}\nTime : 60s`, m).then(() => {
+  SanDy.sendText(m.chat, `Silahkan Jawab Pertanyaan Berikut\n\n${result.soal}\nTime : 60s`, m).then(() => {
   tebakkata[m.sender.split('@')[0]] = result.jawaban.toLowerCase()
   })
   await sleep(60000)
   if (tebakkata.hasOwnProperty(m.sender.split('@')[0])) {
   console.log("Answer: " + result.jawaban)
-  Wizard.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Tebak Kata' }, type: 1 }], `Time has run out\nAnswer:  ${tebakkata[m.sender.split('@')[0]]}\n\nWant to play? ${global.watermark}`, Wizard.user.name, m)
+  SanDy.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Tebak Kata' }, type: 1 }], `Time has run out\nAnswer:  ${tebakkata[m.sender.split('@')[0]]}\n\nWant to play? ${global.watermark}`, SanDy.user.name, m)
   delete tebakkata[m.sender.split('@')[0]]
   
   }
    } else if (args[0] === 'kalimat') {
   if (tebakkalimat.hasOwnProperty(m.sender.split('@')[0])) throw "*There are still unfinished match*"
-  let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebakkalimat.json')
+  let anu = await fetchJson('https://raw.WHATSAPPusercontent.com/BochilTeam/database/master/games/tebakkalimat.json')
   let result = anu[Math.floor(Math.random() * anu.length)]
-  Wizard.sendText(m.chat, `Silahkan Jawab Pertanyaan Berikut\n\n${result.soal}\nTime : 60s`, m).then(() => {
+  SanDy.sendText(m.chat, `Silahkan Jawab Pertanyaan Berikut\n\n${result.soal}\nTime : 60s`, m).then(() => {
   tebakkalimat[m.sender.split('@')[0]] = result.jawaban.toLowerCase()
   })
   await sleep(60000)
   if (tebakkalimat.hasOwnProperty(m.sender.split('@')[0])) {
   console.log("Answer: " + result.jawaban)
-  Wizard.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Tebak Kalimat' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakkalimat[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, Wizard.user.name, m)
+  SanDy.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Tebak Kalimat' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakkalimat[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, SanDy.user.name, m)
   delete tebakkalimat[m.sender.split('@')[0]]
   
   }
    } else if (args[0] === 'lirik') {
   if (tebaklirik.hasOwnProperty(m.sender.split('@')[0])) throw "*There are still unfinished match*"
-  let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/tebaklirik.json')
+  let anu = await fetchJson('https://raw.WHATSAPPusercontent.com/BochilTeam/database/master/games/tebaklirik.json')
   let result = anu[Math.floor(Math.random() * anu.length)]
-  Wizard.sendText(m.chat, `These are the lyrics of the song? : *${result.soal}*?\nTime : 60s`, m).then(() => {
+  SanDy.sendText(m.chat, `These are the lyrics of the song? : *${result.soal}*?\nTime : 60s`, m).then(() => {
   tebaklirik[m.sender.split('@')[0]] = result.jawaban.toLowerCase()
   })
   await sleep(60000)
   if (tebaklirik.hasOwnProperty(m.sender.split('@')[0])) {
   console.log("Answer: " + result.jawaban)
-  Wizard.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Tebak Lirik' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebaklirik[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, Wizard.user.name, m)
+  SanDy.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Tebak Lirik' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebaklirik[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, SanDy.user.name, m)
   delete tebaklirik[m.sender.split('@')[0]]
   
   }
    } else if (args[0] === 'lontong') {
   if (caklontong.hasOwnProperty(m.sender.split('@')[0])) throw "*There are still unfinished match*"
-  let anu = await fetchJson('https://raw.githubusercontent.com/BochilTeam/database/master/games/caklontong.json')
+  let anu = await fetchJson('https://raw.WHATSAPPusercontent.com/BochilTeam/database/master/games/caklontong.json')
   let result = anu[Math.floor(Math.random() * anu.length)]
-  Wizard.sendText(m.chat, `*Answer the following questions :*\n${result.soal}*\nTime : 60s`, m).then(() => {
+  SanDy.sendText(m.chat, `*Answer the following questions :*\n${result.soal}*\nTime : 60s`, m).then(() => {
   caklontong[m.sender.split('@')[0]] = result.jawaban.toLowerCase()
     caklontong_desk[m.sender.split('@')[0]] = result.deskripsi
   })
   await sleep(60000)
   if (caklontong.hasOwnProperty(m.sender.split('@')[0])) {
   console.log("Answer: " + result.jawaban)
-  Wizard.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Tebak Lontong' }, type: 1 }], `Waktu Habis\nJawaban:  ${caklontong[m.sender.split('@')[0]]}\nDeskripsi : ${caklontong_desk[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, Wizard.user.name, m)
+  SanDy.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Tebak Lontong' }, type: 1 }], `Waktu Habis\nJawaban:  ${caklontong[m.sender.split('@')[0]]}\nDeskripsi : ${caklontong_desk[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, SanDy.user.name, m)
   delete caklontong[m.sender.split('@')[0]]
     delete caklontong_desk[m.sender.split('@')[0]]
 
@@ -2393,7 +2393,7 @@ case 'mf' : {
         if (/audio|video/.test(mime)) { 
 		let media = await q.download()
    if (!text) throw 'Jid?' 
-Wizard.sendMessage(text, {audio: media, mimetype: 'audio/mpeg', ptt: true, contextInfo: {externalAdReply : {title : `𝚫𝐉𝚳𝚫𝐋 𝐒𝚵𝚪 ⫹⫺`, renderLargerThumbnail:false, showAdAttribution: true, body: `9:07●━━━━━━── 10:49⇆`, mediaUrl: `www.instagram.com`, mediaType: 2, thumbnail: fs.readFileSync('./Library/ajmal.jpg') }}}) 
+SanDy.sendMessage(text, {audio: media, mimetype: 'audio/mpeg', ptt: true, contextInfo: {externalAdReply : {title : `𝚫𝐉𝚳𝚫𝐋 𝐒𝚵𝚪 ⫹⫺`, renderLargerThumbnail:false, showAdAttribution: true, body: `9:07●━━━━━━── 10:49⇆`, mediaUrl: `www.instagram.com`, mediaType: 2, thumbnail: fs.readFileSync('./Library/ajmal.jpg') }}}) 
     	} else throw 'Reply audio/video!'
        }
        break
@@ -2406,7 +2406,7 @@ Wizard.sendMessage(text, {audio: media, mimetype: 'audio/mpeg', ptt: true, conte
    let { genMath, modes } = require('./Library/src/math')
    if (!text) throw `Mode: ${Object.keys(modes).join(' | ')}\nExample: ${prefix}math medium`
    let result = await genMath(text.toLowerCase())
-   Wizard.sendText(m.chat, `*What is the result of: ${result.soal.toLowerCase()}*?\n\nTime: ${(result.waktu / 1000).toFixed(2)} seconds`, m).then(() => {
+   SanDy.sendText(m.chat, `*What is the result of: ${result.soal.toLowerCase()}*?\n\nTime: ${(result.waktu / 1000).toFixed(2)} seconds`, m).then(() => {
   kuismath[m.sender.split('@')[0]] = result.jawaban
    })
    await sleep(result.waktu)
@@ -2429,7 +2429,7 @@ Wizard.sendMessage(text, {audio: media, mimetype: 'audio/mpeg', ptt: true, conte
  let buttons = [
 { buttonId: '❤️', buttonText: { displayText: 'LOVE♥️' }, type: 1 }
   ]
-  await Wizard.sendButtonText(m.chat, buttons, jawab, Wizard.user.name, m, {mentions: ments})
+  await SanDy.sendButtonText(m.chat, buttons, jawab, SanDy.user.name, m, {mentions: ments})
  }
  break
  case 'couple': {
@@ -2443,7 +2443,7 @@ Ciee Whats Going On💖👀`
  let buttons = [
 { buttonId: '❤️', buttonText: { displayText: 'DATING♥️' }, type: 1 }
   ]
-  await Wizard.sendButtonText(m.chat, buttons, jawab, Wizard.user.name, m, {mentions: menst})
+  await SanDy.sendButtonText(m.chat, buttons, jawab, SanDy.user.name, m, {mentions: menst})
  }
  break
  case 'join': {
@@ -2452,12 +2452,12 @@ Ciee Whats Going On💖👀`
    if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) throw '*LINK INVALID*'
    replay(mess.wait)
    let result = args[0].split('https://chat.whatsapp.com/')[1]
-   await Wizard.groupAcceptInvite(result).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+   await SanDy.groupAcceptInvite(result).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
  }
  break
  case 'leave': {
    if (!isCreator) throw global.owner
-   await Wizard.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+   await SanDy.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
  }
  break
 case 'kick': {
@@ -2465,7 +2465,7 @@ if (!m.isGroup) throw mess.group
    if (!isBotAdmins) throw mess.botAdmin
    if (!isAdmins) throw mess.admin
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-await Wizard.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+await SanDy.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 }
 break
 case 'add': {
@@ -2473,7 +2473,7 @@ if (!m.isGroup) throw mess.group
    if (!isBotAdmins) throw mess.botAdmin
    if (!isAdmins) throw mess.admin
 let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-await Wizard.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+await SanDy.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 }
 break
 case 'promote': {
@@ -2481,7 +2481,7 @@ if (!m.isGroup) throw mess.group
    if (!isBotAdmins) throw mess.botAdmin
    if (!isAdmins) throw mess.admin
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-await Wizard.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+await SanDy.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 }
 break
 case 'demote': {
@@ -2489,19 +2489,19 @@ if (!m.isGroup) throw mess.group
    if (!isBotAdmins) throw mess.botAdmin
    if (!isAdmins) throw mess.admin
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-await Wizard.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+await SanDy.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 }
 break
 case 'block': {
 if (!isCreator) throw global.owner
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-await Wizard.updateBlockStatus(users, 'block').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+await SanDy.updateBlockStatus(users, 'block').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 }
 break
 case 'unblock': {
 if (!isCreator) throw global.owner
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-await Wizard.updateBlockStatus(users, 'unblock').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+await SanDy.updateBlockStatus(users, 'unblock').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 }
 break
     case 'setname': case 'setsubject': {
@@ -2509,7 +2509,7 @@ break
    if (!isBotAdmins) throw mess.botAdmin
    if (!isAdmins) throw mess.admin
    if (!text) throw 'Text ?'
-   await Wizard.groupUpdateSubject(m.chat, text).then((res) => reply(mess.success)).catch((err) => reply(jsonformat(err)))
+   await SanDy.groupUpdateSubject(m.chat, text).then((res) => reply(mess.success)).catch((err) => reply(jsonformat(err)))
  }
  break
   case 'setdesc': case 'setdesk': {
@@ -2517,7 +2517,7 @@ break
    if (!isBotAdmins) throw mess.botAdmin
    if (!isAdmins) throw mess.admin
    if (!text) throw 'Text ?'
-   await Wizard.groupUpdateDescription(m.chat, text).then((res) => reply(mess.success)).catch((err) => reply(jsonformat(err)))
+   await SanDy.groupUpdateDescription(m.chat, text).then((res) => reply(mess.success)).catch((err) => reply(jsonformat(err)))
  }
  break
   case 'setppbot': case 'setbotpp': {
@@ -2525,8 +2525,8 @@ break
    if (!quoted) throw `Send/Reply Image With Caption ${prefix + command}`
    if (!/image/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
    if (/webp/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
-   let media = await Wizard.downloadAndSaveMediaMessage(quoted)
-   await Wizard.updateProfilePicture(botNumber, { url: media }).catch((err) => fs.unlinkSync(media))
+   let media = await SanDy.downloadAndSaveMediaMessage(quoted)
+   await SanDy.updateProfilePicture(botNumber, { url: media }).catch((err) => fs.unlinkSync(media))
    reply(mess.success)
    }
    break
@@ -2536,8 +2536,8 @@ case 'setppgroup': case 'setgrouppp': case 'setgcpp': case 'setppgrup': case 'se
    if (!quoted) throw `Send/Reply Image With Caption ${prefix + command}`
    if (!/image/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
    if (/webp/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
-   let media = await Wizard.downloadAndSaveMediaMessage(quoted)
-   await Wizard.updateProfilePicture(m.chat, { url: media }).catch((err) => fs.unlinkSync(media))
+   let media = await SanDy.downloadAndSaveMediaMessage(quoted)
+   await SanDy.updateProfilePicture(m.chat, { url: media }).catch((err) => fs.unlinkSync(media))
    reply(mess.success)
    }
    break
@@ -2553,19 +2553,19 @@ case '🐦🐦' : {
         if (/audio|video/.test(mime)) { 
 		let media = await q.download()
    if (!text) throw 'Jid?' 
-Wizard.sendMessage(text, {audio: media, contextInfo: {externalAdReply : {title : `𝐋𝐨𝐑𝐃-𝐌𝐃`, renderLargerThumbnail:false, showAdAttribution: true, body: `🦋❤️🦋`, mediaUrl: `www.instagram.com`, mediaType: 2, thumbnail: fs.readFileSync('./mikey.jpg') }}}) 
+SanDy.sendMessage(text, {audio: media, contextInfo: {externalAdReply : {title : `𝐋𝐨𝐑𝐃-𝐌𝐃`, renderLargerThumbnail:false, showAdAttribution: true, body: `🦋❤️🦋`, mediaUrl: `www.instagram.com`, mediaType: 2, thumbnail: fs.readFileSync('./mikey.jpg') }}}) 
     	} else throw 'Reply audio/video!'
        }
        break
 case 'grupinfo': case 'groupinfo':
 try{
- var pic = await Wizard.getProfilePicture(m.chat)
+ var pic = await SanDy.getProfilePicture(m.chat)
   } catch {
  var pic = 'https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png'
   }
 let ingfo = `*𝗚𝗥𝗢𝗨𝗣 𝗜𝗡𝗙𝗢*\n\n*𝗡𝗔𝗠𝗘 :* ${groupName}\n*𝗜𝗗 𝗚𝗥𝗢𝗨𝗣:* ${m.chat}\n*𝗠𝗔𝗗𝗘 :* ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}\n*𝗚𝗥𝗢𝗨𝗣 𝗢𝗪𝗡𝗘𝗥:* @${groupMetadata.owner.split('@')[0]}\n*𝗔𝗗𝗠𝗜𝗡𝗦 :* ${groupAdmins.length}\n*𝗠𝗘𝗠𝗕𝗘𝗥𝗦 :* ${participants.length}\n*𝗗𝗘𝗦𝗖 :* \n${groupMetadata.desc}`
 ds = await getBuffer(pic)
-Wizard.sendMessage(m.chat, { image: ds,caption: ingfo, mentions: [groupMetadata.owner] }, { quoted: m})
+SanDy.sendMessage(m.chat, { image: ds,caption: ingfo, mentions: [groupMetadata.owner] }, { quoted: m})
 break
  case 'tagall': case 'tag': {
    if (!m.isGroup) throw mess.group
@@ -2581,13 +2581,13 @@ let teks = `
  for (let mem of participants) {
    teks += `🎪 @${mem.id.split('@')[0]}\n`
    }
-   Wizard.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
+   SanDy.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
    }
    break
    case 'hidetag': {
  if (!m.isGroup) throw mess.group
  if (!isAdmins) throw mess.admin
- Wizard.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
+ SanDy.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
  }
  break
     case 'style': case 'styletext': {
@@ -2635,11 +2635,11 @@ let buttonsVote = [
 
  let buttonMessageVote = {
    text: teks_vote,
-   footer: Wizard.user.name,
+   footer: SanDy.user.name,
    buttons: buttonsVote,
    headerType: 1
  }
- Wizard.sendMessage(m.chat, buttonMessageVote)
+ SanDy.sendMessage(m.chat, buttonMessageVote)
     }
  break
   case 'upvote': {
@@ -2676,12 +2676,12 @@ let buttonsVote = [
 
  let buttonMessageUpvote = {
    text: teks_vote,
-   footer: Wizard.user.name,
+   footer: SanDy.user.name,
    buttons: buttonsUpvote,
    headerType: 1,
    mentions: menvote
 }
- Wizard.sendMessage(m.chat, buttonMessageUpvote)
+ SanDy.sendMessage(m.chat, buttonMessageUpvote)
     }
 break
    case 'devote': {
@@ -2718,12 +2718,12 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 
  let buttonMessageDevote = {
    text: teks_vote,
-   footer: Wizard.user.name,
+   footer: SanDy.user.name,
    buttons: buttonsDevote,
    headerType: 1,
    mentions: menvote
  }
- Wizard.sendMessage(m.chat, buttonMessageDevote)
+ SanDy.sendMessage(m.chat, buttonMessageDevote)
 }
  break
     
@@ -2751,9 +2751,9 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 *${prefix}hapusvote* - to delete votes
 
 
-©${Wizard.user.id}
+©${SanDy.user.id}
 `
-Wizard.sendTextWithMentions(m.chat, teks_vote, m)
+SanDy.sendTextWithMentions(m.chat, teks_vote, m)
 break
 case 'deletevote': case'delvote': case 'hapusvote': {
  if (!m.isGroup) throw mess.group
@@ -2767,15 +2767,15 @@ case 'deletevote': case'delvote': case 'hapusvote': {
    if (!isBotAdmins) throw mess.botAdmin
    if (!isAdmins) throw mess.admin
    if (args[0] === 'close'){
-  await Wizard.groupSettingUpdate(m.chat, 'announcement').then((res) => reply(`Successful closing the group`)).catch((err) => reply(jsonformat(err)))
+  await SanDy.groupSettingUpdate(m.chat, 'announcement').then((res) => reply(`Successful closing the group`)).catch((err) => reply(jsonformat(err)))
    } else if (args[0] === 'open'){
-  await Wizard.groupSettingUpdate(m.chat, 'not_announcement').then((res) => reply(`Successful Opening The Group`)).catch((err) => reply(jsonformat(err)))
+  await SanDy.groupSettingUpdate(m.chat, 'not_announcement').then((res) => reply(`Successful Opening The Group`)).catch((err) => reply(jsonformat(err)))
    } else {
    let buttons = [
 { buttonId: 'group open', buttonText: { displayText: 'OPEN' }, type: 1 },
 { buttonId: 'group close', buttonText: { displayText: 'CLOSE' }, type: 1 }
   ]
-  await Wizard.sendButtonText(m.chat, buttons, `Group Mode`, Wizard.user.name, m)
+  await SanDy.sendButtonText(m.chat, buttons, `Group Mode`, SanDy.user.name, m)
 
 }
  }
@@ -2785,15 +2785,15 @@ case 'deletevote': case'delvote': case 'hapusvote': {
    if (!isBotAdmins) throw mess.botAdmin
    if (!isAdmins) throw mess.admin
 if (args[0] === 'open'){
-   await Wizard.groupSettingUpdate(m.chat, 'unlocked').then((res) => reply(`Successfully opened edit group Info`)).catch((err) => reply(jsonformat(err)))
+   await SanDy.groupSettingUpdate(m.chat, 'unlocked').then((res) => reply(`Successfully opened edit group Info`)).catch((err) => reply(jsonformat(err)))
 } else if (args[0] === 'close'){
-   await Wizard.groupSettingUpdate(m.chat, 'locked').then((res) => reply(`Successfully Close Edit Group Info`)).catch((err) => reply(jsonformat(err)))
+   await SanDy.groupSettingUpdate(m.chat, 'locked').then((res) => reply(`Successfully Close Edit Group Info`)).catch((err) => reply(jsonformat(err)))
 } else {
 let buttons = [
 { buttonId: 'editinfo open', buttonText: { displayText: 'OPEN' }, type: 1 },
 { buttonId: 'editinfo close', buttonText: { displayText: 'CLOSE' }, type: 1 }
   ]
-  await Wizard.sendButtonText(m.chat, buttons, `*GROUP SESSION*`, Wizard.user.name, m)
+  await SanDy.sendButtonText(m.chat, buttons, `*GROUP SESSION*`, SanDy.user.name, m)
 
  }
  }
@@ -2815,7 +2815,7 @@ let buttons = [
 { buttonId: 'chatbot on', buttonText: { displayText: 'ON' }, type: 1 },
 { buttonId: 'chatbot off', buttonText: { displayText: 'OFF' }, type: 1 }
  ]
- await Wizard.sendButtonText(m.chat, buttons, `*CHATBOT SESSION*`, Wizard.user.name, m)
+ await SanDy.sendButtonText(m.chat, buttons, `*CHATBOT SESSION*`, SanDy.user.name, m)
 }
 */
  break
@@ -2834,7 +2834,7 @@ reply(`*It was nice to chat with you goodbye _chatbot off_*`)
 { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
 { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
   ]
-  await Wizard.sendButtonText(m.chat, drips, `* _CHATBOT_ *`, Wizard.user.name, m)
+  await SanDy.sendButtonText(m.chat, drips, `* _CHATBOT_ *`, SanDy.user.name, m)
 }
   } 
 break 
@@ -2854,7 +2854,7 @@ case 'welcome': {
   { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
   { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
     ]
-    await Wizard.sendButtonText(m.chat, drips, `* _WELCOME_ *`, Wizard.user.name, m)
+    await SanDy.sendButtonText(m.chat, drips, `* _WELCOME_ *`, SanDy.user.name, m)
   }
     }   
   break 
@@ -2873,7 +2873,7 @@ case 'welcome': {
     { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
     { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
       ]
-      await Wizard.sendButtonText(m.chat, drips, `* _GROUP ONLY_ *`, Wizard.user.name, m)
+      await SanDy.sendButtonText(m.chat, drips, `* _GROUP ONLY_ *`, SanDy.user.name, m)
     }
       } 
   break
@@ -2892,7 +2892,7 @@ case 'welcome': {
     { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
     { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
       ]
-      await Wizard.sendButtonText(m.chat, drips, `* _AUTOBLOCK_ *`, Wizard.user.name, m)
+      await SanDy.sendButtonText(m.chat, drips, `* _AUTOBLOCK_ *`, SanDy.user.name, m)
     }
       } 
   break
@@ -2929,7 +2929,7 @@ case 'antiwame': {
                                     id: '${command} off'
                                 }
                             }]
- Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+ SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
    }
 }
 break
@@ -2939,11 +2939,11 @@ break
    if (args[0] === "on") {
    if (db.chats[m.chat].mute) return reply(`Already activated`)
    db.chats[m.chat].mute = true
-   reply(`${Wizard.user.name} has been muted in this group !`)
+   reply(`${SanDy.user.name} has been muted in this group !`)
    } else if (args[0] === "off") {
    if (!db.chats[m.chat].mute) return reply(`Already deactivated`)
    db.chats[m.chat].mute = false
-   reply(`${Wizard.user.name} has been unmuted in this group!`)
+   reply(`${SanDy.user.name} has been unmuted in this group!`)
    } else {
      let cmd = [{
                                 urlButton: {
@@ -2961,7 +2961,7 @@ break
                                     id: '${command} off'
                                 }
                             }]
-  Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+  SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
    }
 }
 break
@@ -2982,7 +2982,7 @@ let drips = [
 { buttonId: 'antilink on', buttonText: { displayText: 'ON' }, type: 1 },
 { buttonId: 'antilink off', buttonText: { displayText: 'OFF' }, type: 1 }
 ]
-await Wizard.sendButtonText(m.chat, drips, `*ANTILINK MODE*`, Wizard.user.name, m)
+await SanDy.sendButtonText(m.chat, drips, `*ANTILINK MODE*`, SanDy.user.name, m)
 }
 }
 break
@@ -3003,7 +3003,7 @@ let drips = [
 { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
 { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
 ]
-await Wizard.sendButtonText(m.chat, drips, `*ANTILINK MODE*`, Wizard.user.name, m)
+await SanDy.sendButtonText(m.chat, drips, `*ANTILINK MODE*`, SanDy.user.name, m)
 }
 }
 break
@@ -3024,7 +3024,7 @@ reply(`*Antilink disabled*`)
 { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
 { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
  ]
- await Wizard.sendButtonText(m.chat, drips, `*ANTILINK MODE*`, Wizard.user.name, m)
+ await SanDy.sendButtonText(m.chat, drips, `*ANTILINK MODE*`, SanDy.user.name, m)
 }
 }
 break
@@ -3045,7 +3045,7 @@ case 'antilinkfacebook': case 'antifb': {
     { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
     { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
 ]
-await Wizard.sendButtonText(m.chat, drips, `*ANTILINK MODE*`, Wizard.user.name, m)
+await SanDy.sendButtonText(m.chat, drips, `*ANTILINK MODE*`, SanDy.user.name, m)
  }
   }
 break
@@ -3066,7 +3066,7 @@ let drips = [
   { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
   { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
    ]
-   await Wizard.sendButtonText(m.chat, drips, `*ANTILINK MODE*`, Wizard.user.name, m)
+   await SanDy.sendButtonText(m.chat, drips, `*ANTILINK MODE*`, SanDy.user.name, m)
  }
 }
 break
@@ -3087,7 +3087,7 @@ case 'antivn': case 'antiaudio': case 'antivoicenote': case 'antivoice': {
      { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
      { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
  ]
- await Wizard.sendButtonText(m.chat, drips, `*ANT VN MODE*`, Wizard.user.name, m)
+ await SanDy.sendButtonText(m.chat, drips, `*ANT VN MODE*`, SanDy.user.name, m)
   }
    }
  break
@@ -3108,7 +3108,7 @@ let drips = [
 { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
 { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
 ]
-await Wizard.sendButtonText(m.chat, drips, `*ANTISTICKER MODE*`, Wizard.user.name, m)
+await SanDy.sendButtonText(m.chat, drips, `*ANTISTICKER MODE*`, SanDy.user.name, m)
 }
 }
 break
@@ -3129,7 +3129,7 @@ let drips = [
 { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
 { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
 ]
-await Wizard.sendButtonText(m.chat, drips, `*ANTIPHOTO MODE*`, Wizard.user.name, m)
+await SanDy.sendButtonText(m.chat, drips, `*ANTIPHOTO MODE*`, SanDy.user.name, m)
 }
 }
 break
@@ -3150,7 +3150,7 @@ case 'antivideo': case 'antivid': {
      { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
      { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
  ]
- await Wizard.sendButtonText(m.chat, drips, `*ANTIVIDEO MODE*`, Wizard.user.name, m)
+ await SanDy.sendButtonText(m.chat, drips, `*ANTIVIDEO MODE*`, SanDy.user.name, m)
   }
    }
  break
@@ -3170,7 +3170,7 @@ let drips = [
 { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
 { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
 ]
-await Wizard.sendButtonText(m.chat, drips, `*ANTILINK VIEW*`, `${global.botname}`, m)
+await SanDy.sendButtonText(m.chat, drips, `*ANTILINK VIEW*`, `${global.botname}`, m)
 }
 break
 case 'antitiktok': case 'aantitik': {
@@ -3190,7 +3190,7 @@ let drips = [
 { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
 { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
 ]
-await Wizard.sendButtonText(m.chat, drips, `*ANTILINK MODE*`, Wizard.user.name, m)
+await SanDy.sendButtonText(m.chat, drips, `*ANTILINK MODE*`, SanDy.user.name, m)
 }
 }
 break
@@ -3211,7 +3211,7 @@ if (args[0] === "on") {
     { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
     { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
 ]
-await Wizard.sendButtonText(m.chat, drips, `*ANTILINK MODE*`, Wizard.user.name, m)
+await SanDy.sendButtonText(m.chat, drips, `*ANTILINK MODE*`, SanDy.user.name, m)
  }
  }
 break
@@ -3232,7 +3232,7 @@ reply(`*Antilink disabled*`)
 { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
 { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
  ]
- await Wizard.sendButtonText(m.chat, dripsi, `*ANTILINK MODE*`, Wizard.user.name, m)
+ await SanDy.sendButtonText(m.chat, dripsi, `*ANTILINK MODE*`, SanDy.user.name, m)
 }
  }
 break
@@ -3244,13 +3244,13 @@ if (args[0] === "on") {
 if (antiToxic) return reply('*Already activated*')
 dripsanti.push(from)
 reply('*Success turning on anti rude in this group*')
-var group = await Wizard.groupMetadata(from)
+var group = await SanDy.groupMetadata(from)
 var members = group['participants']
 var mems = []
 members.map(async adm => {
 mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
-Wizard.sendMessage(from, {text: `*ANTILINK RUDE*\n\n*no hate speech anymore, watch space im going to kick dumps*`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+SanDy.sendMessage(from, {text: `*ANTILINK RUDE*\n\n*no hate speech anymore, watch space im going to kick dumps*`, contextInfo: { mentionedJid : mems }}, {quoted:m})
 } else if (args[0] === "off") {
 if (!antiToxic) return reply('*Already deactivated*')
 let off = dripsanti.indexOf(from)
@@ -3261,15 +3261,15 @@ reply('*Success in turning off antirude in this group happy now*')
  { buttonId: `${command} on`, buttonText: { displayText: 'ON' }, type: 1 },
  { buttonId: `${command} off`, buttonText: { displayText: 'OFF' }, type: 1 }
  ]
- await Wizard.sendButtonText(m.chat, buttons, `*ANTI BADWORDS*\n\n.`, `${global.botname}`, m)
+ await SanDy.sendButtonText(m.chat, buttons, `*ANTI BADWORDS*\n\n.`, `${global.botname}`, m)
  }
  }
  
 break
  case 'linkgroup': case 'grouplink': case 'gclink': case 'linkgc':{ 
    if (!m.isGroup) throw mess.group
-   let response = await Wizard.groupInviteCode(m.chat)
-   Wizard.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nLink of: ${groupMetadata.subject} Group`,m ,{ detectLink: true })
+   let response = await SanDy.groupInviteCode(m.chat)
+   SanDy.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nLink of: ${groupMetadata.subject} Group`,m ,{ detectLink: true })
 }
    break
 
@@ -3279,9 +3279,9 @@ break
    if (!isAdmins) throw mess.admin
    if (!text) throw 'Enter the enable/disable value, For Example ${prefix}ephemeral enable'
    if (args[0] === 'enable') {
-  await Wizard.sendMessage(m.chat, { disappearingMessagesInChat: WA_DEFAULT_EPHEMERAL }).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+  await SanDy.sendMessage(m.chat, { disappearingMessagesInChat: WA_DEFAULT_EPHEMERAL }).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
    } else if (args[0] === 'disable') {
-  await Wizard.sendMessage(m.chat, { disappearingMessagesInChat: false }).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+  await SanDy.sendMessage(m.chat, { disappearingMessagesInChat: false }).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
    }
  }
  break
@@ -3304,16 +3304,16 @@ break
  break
  case 'git': case 'gitclone':
 reply(mess.wait)
- let regex1 = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
- if(!args[0]) throw 'link github  EXAMPLE: https://github.com/zim-bot/zim-bot-md'
+ let regex1 = /(?:https|git)(?::\/\/|@)WHATSAPP\.com[\/:]([^\/:]+)\/(.+)/i
+ if(!args[0]) throw 'link WHATSAPP  EXAMPLE: https://WHATSAPP.com/zim-bot/zim-bot-md'
 if (!regex1.test(args[0])) throw 'link!'
    let [, user, repo] = args[0].match(regex1) || []
     repo = repo.replace(/.git$/, '')
-    let url = `https://api.github.com/repos/${user}/${repo}/zipball`
+    let url = `https://api.WHATSAPP.com/repos/${user}/${repo}/zipball`
     let filename = (await fetch(url, {method: 'HEAD'})).headers.get('content-disposition').match(/attachment; filename=(.*)/)[1]
     // 'attachment; filenameq=ZidniGanz.zip'
     reply(`*Please wait, sending repository..*`)
-    Wizard.sendMessage(m.chat, { document: { url: url }, fileName: filename+'.zip', mimetype: 'application/zip' , quoted: m,contextInfo: { externalAdReply:{
+    SanDy.sendMessage(m.chat, { document: { url: url }, fileName: filename+'.zip', mimetype: 'application/zip' , quoted: m,contextInfo: { externalAdReply:{
       title:botname,
       body:caption,
       showAdAttribution: true,
@@ -3326,14 +3326,14 @@ if (!regex1.test(args[0])) throw 'link!'
  
  break
  case 'tagme': {
-   Wizard.sendMessage(m.chat, {text:`@${m.sender.split("@")[0]}`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+   SanDy.sendMessage(m.chat, {text:`@${m.sender.split("@")[0]}`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
    }
  break
  case 'truth':
 				const trut =['Have you loved anyone? How long?','If you can or if you want, outside school/college Who will you make friends? (May be different / high school)','What is your biggest fear?','Have you liked a people and felt that person likes you too?','Who is your ex-girlfriend?','What makes you happy when you are sad?','Ever loved someone? what does it feels like?','Have you ever been in an affair?','The most feared thing','Who is the most influential person to your life?','What is the proud thing you did this year?',' Who can make you smile?','Who is the person you truly love? What is the reason? ','Mention the incident that makes you hurt that you still remember','What are the achievements that have been crushed on this year?','What is your worst habit when at school?']
 				const ttrth = trut[Math.floor(Math.random() * trut.length)]
 				truteh = await getBuffer(`https://i.ibb.co/305yt26/bf84f20635dedd5dde31e7e5b6983ae9.jpg`)
-			Wizard.sendMessage(m.chat, {image: truteh, caption: '*Truth*\n\n'+ ttrth, quoted: m,contextInfo: { externalAdReply:{
+			SanDy.sendMessage(m.chat, {image: truteh, caption: '*Truth*\n\n'+ ttrth, quoted: m,contextInfo: { externalAdReply:{
         title:botname,
         body:caption,
         showAdAttribution: true,
@@ -3343,10 +3343,10 @@ if (!regex1.test(args[0])) throw 'link!'
         sourceUrl: tutorial }}}, {quoted: m})
 break
 case 'ghsearch': 
-       case 'githubsearch': 
-       case 'searchgithub':
+       case 'WHATSAPPsearch': 
+       case 'searchWHATSAPP':
              if (!q) return reply('*What are you looking for?*')
-             let pomi = await fetch('https://api.github.com/search/repositories?q='+q)
+             let pomi = await fetch('https://api.WHATSAPP.com/search/repositories?q='+q)
             let dhumi = await pomi.json()
              if (pomi.status !== 200) throw dhumi
              str = dhumi.items.map((repo, index) => {
@@ -3367,13 +3367,13 @@ break
    if (!m.quoted) throw false
    let { chat, fromMe, id, isBaileys } = m.quoted
    if (!isBaileys) throw '*The message was not sent by a bot💥*'
-   Wizard.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
+   SanDy.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
  }
  break
  case 'bcgc': case 'bcgroup': {
    if (!isCreator) throw global.owner
    if (!text) throw `Where is the text?\n\nExample : ${prefix + command} hello guys, am back`
-   let getGroups = await Wizard.groupFetchAllParticipating()
+   let getGroups = await SanDy.groupFetchAllParticipating()
    let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
    let anu = groups.map(v => v.id)
    reply(`Send Broadcast To ${anu.length} Group Chat, Finish Time ${anu.length * 1.5} second`)
@@ -3382,12 +3382,12 @@ break
   let btn = [{
  urlButton: {
   displayText: 'SCRIPT',
-  url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+  url: '+642727777777'
  }
   }]
  fatihgans = thumbwiz
  let txt = `「 ${global.botname} BROADCAST 」\n\n${text}`
- Wizard.send5ButImg(i, txt, Wizard.user.name, fatihgans, btn)
+ SanDy.send5ButImg(i, txt, SanDy.user.name, fatihgans, btn)
   }
    reply(`Successful Sending Broadcast To ${anu.length} Group(s)`)
  }
@@ -3401,8 +3401,8 @@ for (let yoi of anu) {
     await sleep(1500)
     let btn = [{
  urlButton: {
-  displayText: 'GITHUB',
-  url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+  displayText: 'WHATSAPP',
+  url: '+642727777777'
  }
   }, {
  quickReplyButton: {
@@ -3412,7 +3412,7 @@ for (let yoi of anu) {
   }]
  fatihgans = thumbwiz
  let txt = `「 ${global.botname} BROADCAST 」\n\n${text}`
- Wizard.send5ButImg(yoi, txt, `Broadcast By ${global.pengguna}`, fatihgans, btn)
+ SanDy.send5ButImg(yoi, txt, `Broadcast By ${global.pengguna}`, fatihgans, btn)
 }
 reply('*Broadcast Success*')
  }
@@ -3429,12 +3429,12 @@ reply('*Broadcast Success*')
   teks += `🎪 @${i.userJid.split('@')[0]}\n`
   teks += `🎪 *𝗧𝗜𝗠𝗘 :* ${moment(waktu * 1000).format('DD/MM/YY HH:mm:ss')} 🎪 *𝗦𝗧𝗔𝗧𝗨𝗦 :* ${read ? 'Read' : 'Unread'}\n\n`
    }
-   Wizard.sendTextWithMentions(m.chat, teks, m)
+   SanDy.sendTextWithMentions(m.chat, teks, m)
  }
  break
  case 'q': case 'quoted': {
 if (!m.quoted) return reply('Reply Message!!')
-let wokwol = await Wizard.serializeM(await m.getQuotedObj())
+let wokwol = await SanDy.serializeM(await m.getQuotedObj())
 if (!wokwol.quoted) return reply('*The message you replied to does not contain a reply💫*')
 await wokwol.quoted.copyNForward(m.chat, true)
  }
@@ -3446,7 +3446,7 @@ await wokwol.quoted.copyNForward(m.chat, true)
       let nama = store.messages[i].array[0].pushName
       teks += `⬡ *NAME :* ${nama}\n⬡ *USER :* @${i.split('@')[0]}\n⬡ *CHAT :* https://wa.me/${i.split('@')[0]}\n\n━━━━━━━━━━━━━━━━━━━━━━━━\n\n`
   }
-  Wizard.sendTextWithMentions(m.chat, teks, m)
+  SanDy.sendTextWithMentions(m.chat, teks, m)
 }
 break
 break
@@ -3454,16 +3454,16 @@ break
     let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
     let teks = `🎪𝗚𝗥𝗢𝗨𝗣 𝗖𝗛𝗔𝗧 𝗟𝗜𝗦𝗧\n\n𝗧𝗢𝗧𝗔𝗟 𝗚𝗥𝗢𝗨𝗣 : ${anu.length} Group\n\n`
     for (let i of anu) {
-let metadata = await Wizard.groupMetadata(i)
+let metadata = await SanDy.groupMetadata(i)
 teks += `🎪𝗡𝗔𝗠𝗘 : ${metadata.subject}\n🎪𝗢𝗪𝗡𝗘𝗥 : @${metadata.owner.split('@')[0]}\n🎪𝗜𝗗 : ${metadata.id}\n🎪 𝗠𝗔𝗗𝗘 : ${moment(metadata.creation * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}\n🎪 𝗠𝗘𝗠𝗕𝗘𝗥 : ${metadata.participants.length}\n\n────────────────────────\n\n`
     }
-    Wizard.sendTextWithMentions(m.chat, teks, m)
+    SanDy.sendTextWithMentions(m.chat, teks, m)
 }
 break
 case 'listonline': case 'onlinelist': case 'liston': {
   let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
   let online = [...Object.keys(store.presences[id]), botNumber]
-  Wizard.sendText(m.chat, '*LIST ONLINE*:\n\n' + online.map(v => '> @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
+  SanDy.sendText(m.chat, '*LIST ONLINE*:\n\n' + online.map(v => '> @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
 }
 break
  case 'sticker': case 's': case 'stickergif': case 'sgif': {
@@ -3471,12 +3471,12 @@ break
  replay(mess.wait)
   if (/image/.test(mime)) {
    let media = await quoted.download()
-   let encmedia = await Wizard.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+   let encmedia = await SanDy.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
    await fs.unlinkSync(encmedia)
  } else if (/video/.test(mime)) {
    if ((quoted.msg || quoted).seconds > 11) return reply('Maximum 10 seconds!')
    let media = await quoted.download()
-   let encmedia = await Wizard.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+   let encmedia = await SanDy.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
    await fs.unlinkSync(encmedia)
  } else {
    throw `Send Image/Video With Caption ${prefix + command}\nVideo Duration 1-9 Seconds`
@@ -3504,7 +3504,7 @@ if (!text) throw `Example : ${prefix + command} 😅+🤔`
 let [emoji1, emoji2] = text.split`+`
 let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
 for (let res of anu.results) {
-    let encmedia = await Wizard.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
+    let encmedia = await SanDy.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
     await fs.unlinkSync(encmedia)
 }
     }
@@ -3513,13 +3513,13 @@ for (let res of anu.results) {
    if (!quoted) throw '*Reply Image*'
    if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
    replay(mess.wait)
-   let media = await Wizard.downloadAndSaveMediaMessage(quoted)
+   let media = await SanDy.downloadAndSaveMediaMessage(quoted)
    let ran = await getRandom('.png')
    exec(`ffmpeg -i ${media} ${ran}`, (err) => {
   fs.unlinkSync(media)
   if (err) throw err
   let buffer = fs.readFileSync(ran)
-  Wizard.sendMessage(m.chat, { image: buffer }, { quoted: m })
+  SanDy.sendMessage(m.chat, { image: buffer }, { quoted: m })
   fs.unlinkSync(ran)
    })
  }
@@ -3529,16 +3529,16 @@ case 'tomp4':  case 'video': case 'tovideo': {
    if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
    replay(mess.wait)
 let { webp2mp4File } = require('./Launcher/lib/uploader')
-   let media = await Wizard.downloadAndSaveMediaMessage(quoted)
+   let media = await SanDy.downloadAndSaveMediaMessage(quoted)
    let webpToMp4 = await webp2mp4File(media)
-   await Wizard.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: '*Convert webp to video*' } }, { quoted: m })
+   await SanDy.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: '*Convert webp to video*' } }, { quoted: m })
    await fs.unlinkSync(media)
  }
  break
  case 'tts':
   const gtts = require('./Library/Required/gtts')(args[0])
-  if (args.length < 1) return Wizard.sendMessage(from, `ᴇxᴀᴍᴘʟᴇ: ${prefix}ᴇɴ ʜᴇʟʟᴏ`, text, {quoted: m})
-  if (args.length < 2) return Wizard.sendMessage(from, `ᴇxᴀᴍᴘʟᴇ: ${prefix}ᴇɴ ʜᴇʟʟᴏ`, text, {quoted: m})
+  if (args.length < 1) return SanDy.sendMessage(from, `ᴇxᴀᴍᴘʟᴇ: ${prefix}ᴇɴ ʜᴇʟʟᴏ`, text, {quoted: m})
+  if (args.length < 2) return SanDy.sendMessage(from, `ᴇxᴀᴍᴘʟᴇ: ${prefix}ᴇɴ ʜᴇʟʟᴏ`, text, {quoted: m})
  var dtt = body.slice(20)
   reply(mess.wait)
   var ranm = getRandom('.mp3')
@@ -3550,7 +3550,7 @@ let { webp2mp4File } = require('./Launcher/lib/uploader')
           buffer = fs.readFileSync(rano)
           if (err) return reply('error')
           Ruri.sendMessage(from,  audio, {quoted: freply, ptt:true})
-          Wizard.sendMessage(m.chat, { audio: buffer, mimetype: 'audio/mp4', ptt: true, quoted: mudratunha})
+          SanDy.sendMessage(m.chat, { audio: buffer, mimetype: 'audio/mp4', ptt: true, quoted: mudratunha})
           fs.unlinkSync(rano)
           })
           })
@@ -3562,7 +3562,7 @@ let { webp2mp4File } = require('./Launcher/lib/uploader')
  let media = await quoted.download()
  let { toAudio } = require('./Launcher/lib/converter')
  let audio = await toAudio(media, 'mp4')
- Wizard.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg'}, { quoted : m })
+ SanDy.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg'}, { quoted : m })
  }
  break
  case 'tovn':  case 'vn': case 'toptt': {
@@ -3572,7 +3572,7 @@ let { webp2mp4File } = require('./Launcher/lib/uploader')
  let media = await quoted.download()
  let { toPTT } = require('./Launcher/lib/converter')
  let audio = await toPTT(media, 'mp4')
- Wizard.sendMessage(m.chat, {audio: audio, mimetype:'audio/mpeg', ptt:true }, {quoted:m})
+ SanDy.sendMessage(m.chat, {audio: audio, mimetype:'audio/mpeg', ptt:true }, {quoted:m})
  }
  break
   case 'gif': case 'togif': {
@@ -3580,16 +3580,16 @@ let { webp2mp4File } = require('./Launcher/lib/uploader')
    if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
    replay(mess.wait)
 let { webp2mp4File } = require('./Launcher/lib/uploader')
-   let media = await Wizard.downloadAndSaveMediaMessage(quoted)
+   let media = await SanDy.downloadAndSaveMediaMessage(quoted)
    let webpToMp4 = await webp2mp4File(media)
-   await Wizard.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' }, gifPlayback: true }, { quoted: m })
+   await SanDy.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' }, gifPlayback: true }, { quoted: m })
    await fs.unlinkSync(media)
  }
  break
  case 'url':case 'tourl': {
    replay(mess.wait)
 let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./Launcher/lib/uploader')
-   let media = await Wizard.downloadAndSaveMediaMessage(quoted)
+   let media = await SanDy.downloadAndSaveMediaMessage(quoted)
    if (/image/.test(mime)) {
   let anu = await TelegraPh(media)
   reply(util.format(anu))
@@ -3608,7 +3608,7 @@ let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./Launcher/lib/uploade
     let apirnobg = ['q61faXzzR5zNU6cvcrwtUkRU','S258diZhcuFJooAtHTaPEn4T','5LjfCVAp4vVNYiTjq9mXJWHF','aT7ibfUsGSwFyjaPZ9eoJc61','BY63t7Vx2tS68YZFY6AJ4HHF','5Gdq1sSWSeyZzPMHqz7ENfi8','86h6d6u4AXrst4BVMD9dzdGZ','xp8pSDavAgfE5XScqXo9UKHF','dWbCoCb3TacCP93imNEcPxcL']
     let apinobg = apirnobg[Math.floor(Math.random() * apirnobg.length)]
     hmm = await './Library/src/remobg-'+getRandom('')
-    localFile = await Wizard.downloadAndSaveMediaMessage(quoted, hmm)
+    localFile = await SanDy.downloadAndSaveMediaMessage(quoted, hmm)
     outputFile = await './Library/src/hremo-'+getRandom('.png')
     replay(mess.wait)
     remobg.removeBackgroundFromImageFile({
@@ -3619,7 +3619,7 @@ let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./Launcher/lib/uploade
  scale: "100%",
  outputFile 
     }).then(async result => {
-    Wizard.sendMessage(m.chat, {image: fs.readFileSync(outputFile), caption: mess.success}, { quoted : m })
+    SanDy.sendMessage(m.chat, {image: fs.readFileSync(outputFile), caption: mess.success}, { quoted : m })
     await fs.unlinkSync(localFile)
     await fs.unlinkSync(outputFile)
     })
@@ -3634,7 +3634,7 @@ let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./Launcher/lib/uploade
    for (let i of search.all) {
   teks += `🎪No: ${no++}\n💮𝗧𝗬𝗣𝗘 : ${i.type}\n🔳𝗩𝗜𝗗𝗘𝗢 𝗜𝗗: ${i.videoId}\n🔴𝗧𝗜𝗧𝗟𝗘 : ${i.title}\n🎪𝗩𝗜𝗘𝗪𝗦 : ${i.views}\n🎬𝗗𝗨𝗥𝗔𝗧𝗜𝗢𝗡 : ${i.timestamp}\n📡𝗨𝗣𝗟𝗢𝗔𝗗 𝗔𝗧 : ${i.ago}\n🎰𝗔𝗨𝗧𝗛𝗢𝗥 : ${i.author.name}\n📌𝗨𝗥𝗟 : ${i.url}\n\n─────────────────\n\n`
    }
-   Wizard.sendMessage(m.chat, { image: { url: search.all[0].thumbnail },  caption: teks }, { quoted: m })
+   SanDy.sendMessage(m.chat, { image: { url: search.all[0].thumbnail },  caption: teks }, { quoted: m })
  }
  break
 case 'google': {
@@ -3656,7 +3656,7 @@ case 'google': {
     try {
         let ss = await (await fetch(('nrtm', '/api/ssweb', { delay: 1000, url, full }))).arrayBuffer()
         if (/<!DOCTYPE html>/i.test(ss.toBuffer().toString())) throw ''
-        await Wizard.sendFile(m.chat, ss, 'screenshot.png', url + '\n\n' + msg, m)
+        await SanDy.sendFile(m.chat, ss, 'screenshot.png', url + '\n\n' + msg, m)
     } catch (e) {
         reply(msg)
     }
@@ -3677,11 +3677,11 @@ let buttons = [
   caption: `❰ 𝗚𝗢𝗢𝗚𝗟𝗘 𝗜𝗠𝗔𝗚𝗘 ❱
 *𝗤𝗨𝗘𝗥𝗬* : ${text}
 *𝗠𝗘𝗗𝗜𝗔 𝗨𝗥𝗟* : ${images}`,
-  footer: Wizard.user.name,
+  footer: SanDy.user.name,
   buttons: buttons,
   headerType: 4
    }
-   Wizard.sendMessage(m.chat, buttonMessage, { quoted: m })
+   SanDy.sendMessage(m.chat, buttonMessage, { quoted: m })
 })
 }
 break
@@ -3739,8 +3739,8 @@ cap = `
 
 *⬤▶━━━━━━━━━2:30*\n\n\n\n*⬤TITLE:* ${data.title}\n*⬤QUALITY:* ${data.medias[0].quality}\n*⬤SIZE:* ${data.medias[0].formattedSize}\n*⬤DURATION* ${data.duration}\n*⬤ID:* ${data.medias[0].cached}\n*⬤LINK:* ${data.url}\n\n*${global.watermark}*`
 buf = await getBuffer(data.thumbnail)
-Wizard.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${cap}` }, { quoted: m })
-Wizard.sendMessage(m.chat, { video: { url: data.medias[0].url }, jpegThumbnail:buf, caption: `*⬤TITLE:* ${data.title}\n*⬤QUALITY:* ${data.medias[0].quality}\n*⬤SIZE:* ${data.medias[0].formattedSize}` }, { quoted: m })  
+SanDy.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${cap}` }, { quoted: m })
+SanDy.sendMessage(m.chat, { video: { url: data.medias[0].url }, jpegThumbnail:buf, caption: `*⬤TITLE:* ${data.title}\n*⬤QUALITY:* ${data.medias[0].quality}\n*⬤SIZE:* ${data.medias[0].formattedSize}` }, { quoted: m })  
             }).catch((err) => {
                 reply(`*Failed to download and send media*`)
             })
@@ -3785,10 +3785,10 @@ replay(mess.wait)
  break
     case 'couplepp': case 'ppcouple': {
    replay(mess.wait)
-   let anu = await fetchJson('https://raw.githubusercontent.com/iamriz7/kopel_/main/kopel.json')
+   let anu = await fetchJson('https://raw.WHATSAPPusercontent.com/iamriz7/kopel_/main/kopel.json')
    let random = anu[Math.floor(Math.random() * anu.length)]
-   Wizard.sendMessage(m.chat, { image: { url: random.male }, caption: `Couple Male` }, { quoted: m })
-   Wizard.sendMessage(m.chat, { image: { url: random.female }, caption: `*Couple Female*` }, { quoted: m })
+   SanDy.sendMessage(m.chat, { image: { url: random.male }, caption: `Couple Male` }, { quoted: m })
+   SanDy.sendMessage(m.chat, { image: { url: random.female }, caption: `*Couple Female*` }, { quoted: m })
  }
  break
 
@@ -3828,7 +3828,7 @@ case 'handhold':
 reply(mess.wait)
 axios.get(`https://api.waifu.pics/sfw/${command}`)
 .then(({data}) => {
-Wizard.sendImageAsSticker(m.chat, data.url, m, { packname: global.packname, author: global.author })
+SanDy.sendImageAsSticker(m.chat, data.url, m, { packname: global.packname, author: global.author })
 })
 break  
 case 'animeslap':
@@ -3844,7 +3844,7 @@ footer: `${global.botname}`,
 buttons: garo,
 headerType: 4
 }
-await Wizard.sendMessage(m.chat, tunhamasawi,{ quoted:m }).catch(err => {
+await SanDy.sendMessage(m.chat, tunhamasawi,{ quoted:m }).catch(err => {
 return('Error!')
 })
 
@@ -3862,7 +3862,7 @@ footer: `${global.botname}`,
 buttons: tunhabee,
 headerType: 4
 }
-await Wizard.sendMessage(m.chat, masawitunha,{ quoted:m }).catch(err => {
+await SanDy.sendMessage(m.chat, masawitunha,{ quoted:m }).catch(err => {
 return('Error!')
 })
 break
@@ -3879,7 +3879,7 @@ footer: `${global.botname}`,
 buttons: tunhaprince,
 headerType: 4
 }
-await Wizard.sendMessage(m.chat, tanaka,{ quoted:m }).catch(err => {
+await SanDy.sendMessage(m.chat, tanaka,{ quoted:m }).catch(err => {
 return('Error!')
 })
 break
@@ -3896,7 +3896,7 @@ footer: `${global.botname}`,
 buttons: madeline,
 headerType: 4
 }
-await Wizard.sendMessage(m.chat, magwetta,{ quoted:m }).catch(err => {
+await SanDy.sendMessage(m.chat, magwetta,{ quoted:m }).catch(err => {
 return('Error!')
 })
 break
@@ -3913,7 +3913,7 @@ footer: `${global.botname}`,
 buttons: blessedtuna2,
 headerType: 4
 }
-await Wizard.sendMessage(m.chat, sekedema,{ quoted:m }).catch(err => {
+await SanDy.sendMessage(m.chat, sekedema,{ quoted:m }).catch(err => {
 return('Error!')
 })
 break
@@ -3930,7 +3930,7 @@ footer: `${global.botname}`,
 buttons: wati,
 headerType: 4
 }
-await Wizard.sendMessage(m.chat, sekeMutema,{ quoted:m }).catch(err => {
+await SanDy.sendMessage(m.chat, sekeMutema,{ quoted:m }).catch(err => {
 return('Error!')
 })
 break
@@ -3947,7 +3947,7 @@ footer: `${global.botname}`,
 buttons: wati,
 headerType: 4
 }
-await Wizard.sendMessage(m.chat, edzai,{ quoted:m }).catch(err => {
+await SanDy.sendMessage(m.chat, edzai,{ quoted:m }).catch(err => {
 return('Error!')
 })
 break
@@ -3964,7 +3964,7 @@ footer: `${global.botname}`,
 buttons: wati,
 headerType: 4
 }
-await Wizard.sendMessage(m.chat,haha, { quoted:m }).catch(err => {
+await SanDy.sendMessage(m.chat,haha, { quoted:m }).catch(err => {
 return('Error!')
 })  
 break
@@ -3981,7 +3981,7 @@ footer: `${global.botname}`,
 buttons: wati,
 headerType: 4
 }
-await Wizard.sendMessage(m.chat,kuku, { quoted:m }).catch(err => {
+await SanDy.sendMessage(m.chat,kuku, { quoted:m }).catch(err => {
 return('Error!')
 })  
 break
@@ -4008,7 +4008,7 @@ case 'update':
    buttons: buttonsUpdate,
    headerType: 1
  }
- Wizard.sendMessage(m.chat, buttonMessageUpdate)
+ SanDy.sendMessage(m.chat, buttonMessageUpdate)
    
 break
 case 'updatenow':
@@ -4016,17 +4016,17 @@ case 'updatenow':
     const heroku = new Heroku({ token: process.env.HEROKU_API_KEY })
   await git.fetch();
       var commits = await git.log(['main' + '..origin/' + 'main'])
-  if (commits.total === 0) { Wizard.sendMessage(m.chat, { text:"_Latest version has been already installed_"})  } else {
+  if (commits.total === 0) { SanDy.sendMessage(m.chat, { text:"_Latest version has been already installed_"})  } else {
 
-        await Wizard.sendMessage(m.chat, {text: "_Started Updating_"})
+        await SanDy.sendMessage(m.chat, {text: "_Started Updating_"})
        if (true) {
             try {
                 var app = await heroku.get('/apps/' + Config.HEROKU_APP_NAME)
             } catch (e) {
-		await Wizard.sendMessage(m.chat, { text : `${e}` }) 
-                await Wizard.sendMessage(m.chat, { text:"*Heroku app name/api key wrong*"})
+		await SanDy.sendMessage(m.chat, { text : `${e}` }) 
+                await SanDy.sendMessage(m.chat, { text:"*Heroku app name/api key wrong*"})
                 await new Promise(r => setTimeout(r, 1000));
-                return await Wizard.sendMessage(m.chat, { text:"*Heroku app name/api key wrong*"})
+                return await SanDy.sendMessage(m.chat, { text:"*Heroku app name/api key wrong*"})
             }
 
         
@@ -4046,12 +4046,12 @@ case 'updatenow':
                     }
             await git.push('heroku', 'main');
 
-                await Wizard.sendMessage(m.chat, {text:"_Updated Successfully ✅_"})
+                await SanDy.sendMessage(m.chat, {text:"_Updated Successfully ✅_"})
 
         } else {
             git.pull((async (err, update) => {
                 if(update && update.summary.changes) {
-                    await Wizard.sendMessage(m.chat, {text:"_Finished build! Restarting.._"})
+                    await SanDy.sendMessage(m.chat, {text:"_Finished build! Restarting.._"})
                     exec('npm install').stderr.pipe(process.stderr);
                 } else if (err) {
                     await console.log('*❌ Güncelleme başarısız oldu!*\n*Hata:* ```' + err + '```')
@@ -4074,7 +4074,7 @@ footer: `${global.botname}`,
 buttons: pulo,
 headerType: 2
 }  
-await Wizard.sendMessage(m.chat, tidza, { quoted:m }).catch(err => {
+await SanDy.sendMessage(m.chat, tidza, { quoted:m }).catch(err => {
 return('Error!')
 })
 break
@@ -4099,7 +4099,7 @@ footer: `${global.botname}`,
 buttons: francisca,
 headerType: 4
 }
-await Wizard.sendMessage(m.chat, tunhastallone, {quoted: m}) 
+await SanDy.sendMessage(m.chat, tunhastallone, {quoted: m}) 
 //-----END HERE-----\\
 
 
@@ -4123,7 +4123,7 @@ const captions = `
 *◉Tɪᴛʟᴇ :* ${drips2.videos[0].title}
 *◉Sɪᴢᴇ :* ${data.medias[7].formattedSize}
 *◉Dᴇꜱᴄʀɪᴘᴛɪᴏɴ :* ${drips2.videos[0].description}`
-message = await prepareWAMessageMedia({ image : { url: drips2.videos[0].thumbnail } }, { upload:   Wizard.waUploadToServer })
+message = await prepareWAMessageMedia({ image : { url: drips2.videos[0].thumbnail } }, { upload:   SanDy.waUploadToServer })
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 templateMessage: {
 hydratedTemplate: {
@@ -4137,8 +4137,8 @@ url: `${drips2.videos[0].url}`
 }
 }, {
 urlButton: {
-displayText: `GITHUB`, 
-url: `https://github.com/Ajmal-Achu/Wizard-MD`
+displayText: `WHATSAPP`, 
+url: `+642727777777`
 }
 }, {
 quickReplyButton: {
@@ -4159,7 +4159,7 @@ id: `${prefix}ytsearch ${drips2.videos[0].title}`
 }
 }
 }), { userJid: m.chat })
-Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
 })
 } catch (err) {
 reply('*An error occurred maybe the query was not found*')
@@ -4178,7 +4178,7 @@ let caption = `*◉Tɪᴛʟᴇ :* ${anu.title}
 *◉Uʀʟ :* ${anu.url}
 *◉Dᴇꜱᴄʀɪᴘᴛɪᴏɴ :* ${anu.description}
 `
-message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { upload:   Wizard.waUploadToServer })
+message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { upload:   SanDy.waUploadToServer })
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 templateMessage: {
 hydratedTemplate: {
@@ -4205,7 +4205,7 @@ id: `${prefix}audio ${anu.url}`
 }
 
 }), { userJid: m.chat })
-Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
 }
 
 break
@@ -4218,8 +4218,8 @@ let media = await yta(text, quality)
 if (media.filesize >= 100000) return m.reply('*File Over Limit* '+util.format(media))
 let caption = `*◉TITLE :* ${media.title}\n*◉FILESIZE :* ${media.filesizeF}\n*◉URL :* ${isUrl(text)}\n*◉EXT :* MP3\n*◉RESOLUTION :* ${args[1] || '128kbps'}\n\n*${global.watermark}*`
 buf = await getBuffer(media.thumb)
-Wizard.sendMessage(m.chat, { image: { url: media.thumb }, jpegThumbnail:buf, caption: `${caption}` }, { quoted: m }).catch((err) => m.reply('*Sorry, the link you provided is not valid*'))   
-Wizard.sendMessage(m.chat, {document:{url:media.dl_link}, mimetype:"audio/mpeg", fileName: `${media.title}.mp3`,  quoted: m, contextInfo: { externalAdReply:{
+SanDy.sendMessage(m.chat, { image: { url: media.thumb }, jpegThumbnail:buf, caption: `${caption}` }, { quoted: m }).catch((err) => m.reply('*Sorry, the link you provided is not valid*'))   
+SanDy.sendMessage(m.chat, {document:{url:media.dl_link}, mimetype:"audio/mpeg", fileName: `${media.title}.mp3`,  quoted: m, contextInfo: { externalAdReply:{
 title:botname,
 body:caption,
 showAdAttribution: true,
@@ -4238,8 +4238,8 @@ let media = await yta(text, quality)
 if (media.filesize >= 100000) return m.reply('*File Over Limit* '+util.format(media))
 let caption = `TITLE :* ${media.title}\n*FILESIZE :* ${media.filesizeF}\n*URL :* ${isUrl(text)}\n*EXT :* MP3\n*RESOLUTION :* ${args[1] || '128kbps'}\n\n*${global.watermark}*`
 buf = await getBuffer(media.thumb)
-Wizard.sendMessage(m.chat, { image: { url: media.thumb }, jpegThumbnail:buf, caption: `${caption}` }, { quoted: m }).catch((err) => m.reply('*Sorry, the link you provided is not valid*'))   
-Wizard.sendMessage(m.chat, {audio:{url:media.dl_link}, mimetype:"audio/mpeg", fileName: `${media.title}.mp3`,  quoted: m, contextInfo: { externalAdReply:{
+SanDy.sendMessage(m.chat, { image: { url: media.thumb }, jpegThumbnail:buf, caption: `${caption}` }, { quoted: m }).catch((err) => m.reply('*Sorry, the link you provided is not valid*'))   
+SanDy.sendMessage(m.chat, {audio:{url:media.dl_link}, mimetype:"audio/mpeg", fileName: `${media.title}.mp3`,  quoted: m, contextInfo: { externalAdReply:{
 title:botname,
 body: watermark,
 showAdAttribution: true,
@@ -4263,8 +4263,8 @@ var capti = `
 0.02━◉━━━━━━━━━━━━3.26
       🔂   ⏪   ⏸️     ⏩  🎵\n\n*◉Title* : ${media.title}\n*◉FILESIZE* : ${media.filesizeF}\n*◉URL* : ${isUrl(text)}\n*◉EXT* : MP3\n*◉RESOLUTION* : ${args[1] || '360p'}\n\n*${global.watermark}*`
 var buf = await getBuffer(media.thumb)
-Wizard.sendMessage(m.chat, { image: { url: media.thumb }, jpegThumbnail:buf, caption: `${capti}` }, { quoted: m })
-Wizard.sendMessage(m.chat, { video: { url: media.dl_link }, jpegThumbnail:buf, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `*Downloading From ${text}*` ,  quoted: m,contextInfo: { externalAdReply:{
+SanDy.sendMessage(m.chat, { image: { url: media.thumb }, jpegThumbnail:buf, caption: `${capti}` }, { quoted: m })
+SanDy.sendMessage(m.chat, { video: { url: media.dl_link }, jpegThumbnail:buf, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `*Downloading From ${text}*` ,  quoted: m,contextInfo: { externalAdReply:{
 title:botname,
 body: watermark,
 showAdAttribution: true,
@@ -4286,8 +4286,8 @@ cap = `
 0.02━◉━━━━━━━━━━━━3.26
       🔂   ⏪   ⏸️     ⏩  🎵\n\n\n\n*◉TITLE:* ${data.title}\n*◉QUALITY:* ${data.medias[0].quality}\n*◉SIZE:* ${data.medias[0].formattedSize}\n*◉DURATION* ${data.duration}\n*◉ID:* ${data.medias[0].cached}\n*◉LINK:* ${data.url}\n\n*${global.watermark}*`
 buf = await getBuffer(data.thumbnail)
-Wizard.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${cap}` }, { quoted: m })
-Wizard.sendMessage(m.chat, { video: { url: data.medias[0].url }, jpegThumbnail:buf, caption: `*◉TITLE:* ${data.title}\n*◉QUALITY:* ${data.medias[0].quality}\n*◉SIZE:* ${data.medias[0].formattedSize}` }, { quoted: m })  
+SanDy.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${cap}` }, { quoted: m })
+SanDy.sendMessage(m.chat, { video: { url: data.medias[0].url }, jpegThumbnail:buf, caption: `*◉TITLE:* ${data.title}\n*◉QUALITY:* ${data.medias[0].quality}\n*◉SIZE:* ${data.medias[0].formattedSize}` }, { quoted: m })  
 }).catch((err) => {
 reply(`*Failed to download and send media*`)
 })
@@ -4303,8 +4303,8 @@ if (!urls) throw `*Maybe the message you replied does not contain the ytsearch r
 let quality = args[1] ? args[1] : '128kbps'
 let media = await yta(urls[text - 1], quality)
 if (media.filesize >= 100000) return m.reply('*File Over Limit* '+util.format(media))
-Wizard.sendImage(m.chat, media.thumb, `*◉TITLE* : ${media.title}\n*◉FILE SIZE :* ${media.filesizeF}\n*◉URL :* ${urls[text - 1]}\n*◉EXT :* MP3\n*◉RESOLUTION :* ${args[1] || '128kbps'}`, m)
-Wizard.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
+SanDy.sendImage(m.chat, media.thumb, `*◉TITLE* : ${media.title}\n*◉FILE SIZE :* ${media.filesizeF}\n*◉URL :* ${urls[text - 1]}\n*◉EXT :* MP3\n*◉RESOLUTION :* ${args[1] || '128kbps'}`, m)
+SanDy.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
 }
 break
 case 'getvideo': { 
@@ -4317,7 +4317,7 @@ if (!urls) throw `*Maybe the message you replied does not contain the ytsearch r
 let quality = args[1] ? args[1] : '360p'
 let media = await ytv(urls[text - 1], quality)
 if (media.filesize >= 100000) return m.reply('*File Over Limit* '+util.format(media))
-Wizard.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `*◉TITLE :* ${media.title}\n*◉FILESIZE :* ${media.filesizeF}\n*◉URL :* ${urls[text - 1]}\n*◉EXT:* MP3\n*◉RESOLUTION :* ${args[1] || '360p'}` }, { quoted: m })
+SanDy.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `*◉TITLE :* ${media.title}\n*◉FILESIZE :* ${media.filesizeF}\n*◉URL :* ${urls[text - 1]}\n*◉EXT:* MP3\n*◉RESOLUTION :* ${args[1] || '360p'}` }, { quoted: m })
 }
 case 'mediafire': {  
 reply(mess.wait)         
@@ -4337,7 +4337,7 @@ const result4 = `
  _scraping metadata...._ 
 *${botname}*`
 reply(`${result4}`)
-Wizard.sendMessage(m.chat, { document : { url : baby1[0].link}, fileName : baby1[0].nama, mimetype: baby1[0].mime ,  quoted : mudratunha, contextInfo: { externalAdReply:{
+SanDy.sendMessage(m.chat, { document : { url : baby1[0].link}, fileName : baby1[0].nama, mimetype: baby1[0].mime ,  quoted : mudratunha, contextInfo: { externalAdReply:{
   title:botname,
   body:caption,
   showAdAttribution: true,
@@ -4371,7 +4371,7 @@ let listmenu = [`ytmp4 ${search.all[0].url}`,`ytmp3 ${search.all[1].url}`,`ytmp4
 }
 sections.push(list)   
 }
-const sendm =  Wizard.sendMessage(
+const sendm =  SanDy.sendMessage(
 m.chat, 
 {
 text: "\n\n*_DONE SCRAPING DATA_*",
@@ -4401,7 +4401,7 @@ case 'ytsaudio': case 'ytsmusic': case 'ytsearchmusic': {
                         }
                         sections.push(list)   
                         }
-                        const sendm =  Wizard.sendMessage(
+                        const sendm =  SanDy.sendMessage(
                         m.chat, 
                         {
                         text: ` ${text}`,
@@ -4431,7 +4431,7 @@ case 'ytsaudio': case 'ytsmusic': case 'ytsearchmusic': {
                         }
                         sections.push(list)   
                         }
-                        const sendm =  Wizard.sendMessage(
+                        const sendm =  SanDy.sendMessage(
                         m.chat, 
                         {
                         text: ` ${text}`,
@@ -4462,7 +4462,7 @@ case 'ytsaudio': case 'ytsmusic': case 'ytsearchmusic': {
                         }
                         sections.push(list)   
                         }
-                        const sendm =  Wizard.sendMessage(
+                        const sendm =  SanDy.sendMessage(
                         m.chat, 
                         {
                         text: ` ${text}`,
@@ -4498,9 +4498,9 @@ case 'fbdl': case 'fb': case 'facebook': case 'fbvideo': {
 
      buf = await getBuffer(data.thumbnail)    
 
-     Wizard.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${txt}` }, {quoted: mudratunha})
+     SanDy.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${txt}` }, {quoted: mudratunha})
      for (let i of data.result) {  
-    Wizard.sendMessage(m.chat, { video: { url: i.url }, jpegThumbnail:buf, mimetype: 'video/mp4', caption: `*◉ Quality :* ${i.quality}` ,  quoted: m,contextInfo: { externalAdReply:{
+    SanDy.sendMessage(m.chat, { video: { url: i.url }, jpegThumbnail:buf, mimetype: 'video/mp4', caption: `*◉ Quality :* ${i.quality}` ,  quoted: m,contextInfo: { externalAdReply:{
       title:botname,
       body:caption,
       showAdAttribution: true,
@@ -4560,7 +4560,7 @@ rows: [
 
  }
 
-const sendm =  Wizard.sendMessage(
+const sendm =  SanDy.sendMessage(
 
   m.chat, 
 
@@ -4609,7 +4609,7 @@ case 'get': {
 
 let link = await getBuffer(i.url)
 
-      Wizard.sendMessage(m.chat, { video: link, caption: `*quality ${i.subname}*` }, { quoted: m })                  
+      SanDy.sendMessage(m.chat, { video: link, caption: `*quality ${i.subname}*` }, { quoted: m })                  
 
      }
 
@@ -4636,7 +4636,7 @@ case 'tiktok4': { //DOWNLOADER
        buttons: buttons,
        headerType: 5
    }
-   Wizard.sendMessage(m.chat, buttonMessage, { quoted: m })                
+   SanDy.sendMessage(m.chat, buttonMessage, { quoted: m })                
    }).catch((err) => {
        reply(`*Failed to download media and send videos*`)
    })
@@ -4660,8 +4660,8 @@ case 'tiktokmp4': case 'tiktokwm': {
      let caption = `
      *TIKTOK DL*\n\n*AUTHOR* : DRIPS\n*NICKNAME* : ${video.author.nickname}\n*CAPTION* : ${video.description}\n*QUALITY* : nowatermark\n*COMMENTS* : ${memek}\n*CREATE* ${hadir} Ago\n*LIKES* : ${hadi}\n*DISLIKE* : ${hadie}\n*SOURCE* : ${text}\n\n\n*${global.watermark}*`
      buf = await getBuffer(video.author.avatar)                
-     Wizard.sendMessage(m.chat, { image: { url: video.author.avatar }, jpegThumbnail:buf, caption: `${caption}` }, { quoted: m })
-     Wizard.sendMessage(m.chat, { video: { url: video.video.no_watermark }, jpegThumbnail:buf, mimetype: 'video/mp4', caption: `*Downloading From ${text}*` }, { quoted: m })               
+     SanDy.sendMessage(m.chat, { image: { url: video.author.avatar }, jpegThumbnail:buf, caption: `${caption}` }, { quoted: m })
+     SanDy.sendMessage(m.chat, { video: { url: video.video.no_watermark }, jpegThumbnail:buf, mimetype: 'video/mp4', caption: `*Downloading From ${text}*` }, { quoted: m })               
    }).catch((err) => {
        reply(`*Failed to download media and send videos*`)
    })
@@ -4680,7 +4680,7 @@ var hadir = randomNomor(300)
 var memek = randomNomor(1000)                      
 let caption = `Tik Tok Downloader\n\n*⬤NAME* : ${video.author.nickname}\n*⬤CAPTION* : ${video.description}\n*⬤COMMENTS* : ${memek}\n*⬤CREATE* ${hadir} Ago\n*⬤LIKES* : ${hadi}\n*⬤DISLIKES* : ${hadie}\n*⬤ SOURCE* : ${text}`
 buf = await getBuffer(video.author.avatar)                
-let message = await prepareWAMessageMedia({ image: buf, jpegThumbnail: buf }, { upload: Wizard.waUploadToServer })
+let message = await prepareWAMessageMedia({ image: buf, jpegThumbnail: buf }, { upload: SanDy.waUploadToServer })
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 templateMessage: {
 hydratedTemplate: {
@@ -4706,7 +4706,7 @@ id: `tiktokmp3 ${text}`
 }
 }
 }), { userJid: m.chat, quoted: m })
-Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })                
+SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })                
 }).catch((err) => {
 reply(`*Failed to download media and send videos*`)
 })
@@ -4719,7 +4719,7 @@ if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) throw '*The link you pro
 let got = require('./Launcher/lib/tiktok.js')
    
 got.tiktokDown(`${text}`).then(async (data) => {
-Wizard.sendMessage(m.chat, { audio: { url: data.result.nowatermark }, mimetype: 'audio/mp4'}, { quoted: m })
+SanDy.sendMessage(m.chat, { audio: { url: data.result.nowatermark }, mimetype: 'audio/mp4'}, { quoted: m })
 }).catch((err) => {
 reply(`*Failed to download media and send audio*`)
 })
@@ -4735,14 +4735,14 @@ let urlnya = text
 hx.igdl(urlnya)
 .then(async(result) => {	  
  var halo = 0		
-Wizard.sendMessage(m.chat, { image: { url: result.user.profilePicUrl }, jpegThumbnail: await getBuffer(result.user.profilePicUrl), caption: `*----「 INSTAGRAM DOWNLOADER 」----*\n\n*⬤ Username :* ${result.user.username}\n*⬤ Fullname :* ${result.user.fullName}\n*⬤ Followers :* ${result.user.followers}\n*⬤ Following :* ${result.user.following}\n*⬤ ID :* ${result.user.id}\n*⬤ Filetype :* ${result.medias[0].fileType}\n*⬤ Type :* ${result.medias[0].type}\n*⬤ Jumlah Media :* ${result.medias.length}\n*⬤ Url :* ${text}\n\n*${global.watermark}*` }, { quoted: m })	                                  	                      	            
+SanDy.sendMessage(m.chat, { image: { url: result.user.profilePicUrl }, jpegThumbnail: await getBuffer(result.user.profilePicUrl), caption: `*----「 INSTAGRAM DOWNLOADER 」----*\n\n*⬤ Username :* ${result.user.username}\n*⬤ Fullname :* ${result.user.fullName}\n*⬤ Followers :* ${result.user.followers}\n*⬤ Following :* ${result.user.following}\n*⬤ ID :* ${result.user.id}\n*⬤ Filetype :* ${result.medias[0].fileType}\n*⬤ Type :* ${result.medias[0].type}\n*⬤ Jumlah Media :* ${result.medias.length}\n*⬤ Url :* ${text}\n\n*${global.watermark}*` }, { quoted: m })	                                  	                      	            
 for(let i of result.medias) {		
 if(i.url.includes('mp4')){		           			    				
 let link = await getBuffer(i.url)
-Wizard.sendMessage(m.chat, { video: link, jpegThumbnail: await getBuffer(i.preview), caption: `*Instagram ${i.type}*` }, { quoted: m })
+SanDy.sendMessage(m.chat, { video: link, jpegThumbnail: await getBuffer(i.preview), caption: `*Instagram ${i.type}*` }, { quoted: m })
 } else {
 let link = await getBuffer(i.url)
-Wizard.sendMessage(m.chat, { image: link, jpegThumbnail: await getBuffer(i.preview), caption: `*Instagram ${i.type}*` }, { quoted: m })          
+SanDy.sendMessage(m.chat, { image: link, jpegThumbnail: await getBuffer(i.preview), caption: `*Instagram ${i.type}*` }, { quoted: m })          
 }
  }
 }).catch((err) => reply(`*Wrong command, type .igreel to download it*`))
@@ -4756,7 +4756,7 @@ if (!isUrl(args[0]) && !args[0].includes('instagram.com')) throw '*The link you 
    
 instagramdlv3(`${text}`).then(async (data) => {
 for (let f of data) {                                      
-Wizard.sendMedia(m.chat, f.url, '', `Download Url Instagram From ${text}`, m)
+SanDy.sendMedia(m.chat, f.url, '', `Download Url Instagram From ${text}`, m)
 }
 }).catch((err) => {
 reply(`*Failed to download media and send videos*`)
@@ -4770,7 +4770,7 @@ if (!isUrl(args[0]) && !args[0].includes('instagram.com')) throw '*The link you 
    
 instagramdlv3(`${text}`).then(async (data) => {            
 var buf = await getBuffer(data[0].thumbnail)        
-Wizard.sendMessage(m.chat, { video: { url: data[0].url }, jpegThumbnail:buf, caption: `${botname}`}, { quoted: m })
+SanDy.sendMessage(m.chat, { video: { url: data[0].url }, jpegThumbnail:buf, caption: `${botname}`}, { quoted: m })
 }).catch((err) => {
 reply(`*Failed to download media and send videos*`)
 })
@@ -4790,9 +4790,9 @@ txt += `*⬤DURATION :* ${data.medias.length}\n`
 txt += `*⬤URL :* ${data.url}\n\n`
 txt += `*${global.watermark}*`
 buf = await getBuffer(data.thumbnail)    
-Wizard.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${txt}` }, { quoted: m })
+SanDy.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${txt}` }, { quoted: m })
 for (let i of data.medias) {
-Wizard.sendMessage(m.chat, { video: { url: i.url }, jpegThumbnail:buf, caption: `*Downloading From ${text}*`}, { quoted: m })
+SanDy.sendMessage(m.chat, { video: { url: i.url }, jpegThumbnail:buf, caption: `*Downloading From ${text}*`}, { quoted: m })
 }
 }).catch((err) => {
 reply(`*Failed to download media and send videos*`)
@@ -4804,7 +4804,7 @@ case 'twittermp3': case 'twitteraudio': {
   if (!isUrl(args[0]) && !args[0].includes('twitter.com')) throw '*The link you provided is not valid*'
      
   xa.Twitter(`${text}`).then(async (data) => {
-  Wizard.sendMessage(m.chat, { audio: { url: data.medias[1].url }, mimetype: 'audio/mp4'}, { quoted: m })
+  SanDy.sendMessage(m.chat, { audio: { url: data.medias[1].url }, mimetype: 'audio/mp4'}, { quoted: m })
   }).catch((err) => {
   reply(`*Failed to download media and send audio*`)
 })
@@ -4834,11 +4834,11 @@ txt += `*${global.watermark}*`
 
 buf = await getBuffer(data.thumbnail)    
 
-Wizard.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${txt}` }, { quoted: m })         
+SanDy.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${txt}` }, { quoted: m })         
 
 for (let i of data.result) {     
 
-Wizard.sendMessage(m.chat, { video: { url: i.url }, jpegThumbnail:buf, caption: `*⬤ Quality :* ${i.quality}`}, { quoted: m })
+SanDy.sendMessage(m.chat, { video: { url: i.url }, jpegThumbnail:buf, caption: `*⬤ Quality :* ${i.quality}`}, { quoted: m })
 
 }          
 
@@ -4858,7 +4858,7 @@ if (!isUrl(args[0]) && !args[0].includes('facebook.com')) throw '*The link you p
      
 let noh = require('@bochilteam/scraper')                
 noh.savefrom(`${text}`).then(async (anu) => {  
-Wizard.sendMessage(m.chat, { audio: { url: anu.url[0].url }, mimetype: 'audio/mp4' }, { quoted: m })      
+SanDy.sendMessage(m.chat, { audio: { url: anu.url[0].url }, mimetype: 'audio/mp4' }, { quoted: m })      
 }).catch((err) => {
 reply(`*Failed to link to audio*`)
 })
@@ -4873,14 +4873,14 @@ anu = await fetchJson(`https://api.akuari.my.id/downloader/youtube?link=${text}`
 if (anu.filesize_video >= 100000) return m.reply('*File Over Limit* '+util.format(anu))
 tummb = await getBuffer(anu.thumb)
 audio = await getBuffer(anu.audio)        
-Wizard.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `${anu.title}`}, { quoted : m }).catch((err) => m.reply('*Sorry, the feature is in error*'))
-Wizard.sendMessage(m.chat, { video: { url: anu.video }, jpegThumbnail:tummb, caption: `${util.format(anu)}`}, { quoted: m }).catch((err) => m.reply('*Sorry, the feature is in error*'))
+SanDy.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `${anu.title}`}, { quoted : m }).catch((err) => m.reply('*Sorry, the feature is in error*'))
+SanDy.sendMessage(m.chat, { video: { url: anu.video }, jpegThumbnail:tummb, caption: `${util.format(anu)}`}, { quoted: m }).catch((err) => m.reply('*Sorry, the feature is in error*'))
  }
  break
  
  case 'cuttly': {
   //if 
-if (!text) throw `Example : ${prefix + command} https://github.com`
+if (!text) throw `Example : ${prefix + command} https://WHATSAPP.com`
 anu = await fetchJson(`https://xteam.xyz/shorturl/cuttly?url=${text}&nama=alyabot&APIKEY=${setting.riy}`)
 m.reply(`${anu.result}`)
 }
@@ -4908,9 +4908,9 @@ case 'speedtest': {
     teks1 = `\n\nNUMBER : @${m.sender.split("@")[0]}\n*REPORT :* ${args.join(" ")}`
     teks2 = `\n\nSucces send to owner`
     for (let i of owner) {
-    Wizard.sendMessage(i + "@s.whatsapp.net", {text: teks + teks1, mentions:[m.sender]}, {quoted:m})
+    SanDy.sendMessage(i + "@s.whatsapp.net", {text: teks + teks1, mentions:[m.sender]}, {quoted:m})
     }
-    Wizard.sendMessage(m.chat, {text: teks + teks2 + teks1, mentions:[m.sender]}, {quoted:m})
+    SanDy.sendMessage(m.chat, {text: teks + teks2 + teks1, mentions:[m.sender]}, {quoted:m})
     }
     break
     case 'request': case 'suggest': {
@@ -4919,9 +4919,9 @@ case 'speedtest': {
     teks1 = `\n\n*NUMBER :* @${m.sender.split("@")[0]}\n*REQUEST :* ${args.join(" ")}`
     teks2 = `\n\nSucces send to owner`
     for (let i of owner) {
-    Wizard.sendMessage(i + "@s.whatsapp.net", {text: teks + teks1, mentions:[m.sender]}, {quoted:m})
+    SanDy.sendMessage(i + "@s.whatsapp.net", {text: teks + teks1, mentions:[m.sender]}, {quoted:m})
     }
-    Wizard.sendMessage(m.chat, {text: teks + teks2 + teks1, mentions:[m.sender]}, {quoted:m})
+    SanDy.sendMessage(m.chat, {text: teks + teks2 + teks1, mentions:[m.sender]}, {quoted:m})
     }
     break
     case 'amino': {
@@ -4966,7 +4966,7 @@ sections.push(list)
 
 }
 
-const sendm =  Wizard.sendMessage(
+const sendm =  SanDy.sendMessage(
 
 m.chat, 
 
@@ -4991,13 +4991,13 @@ case 'animee': {
 
 res = await fetchJson(`https://api.jikan.moe/v4/anime/${q}`)
 let txt = `𝗔𝗻𝗶𝗺𝗲 𝗜𝗻𝗳𝗼\n\n*TITLE:* *${res.data.title}*\n*ENGLISH:* *${res.data.title_english}*\n*JAPANESE:* *${res.data.title_japanese}*\n*TYPE ANIME:* *${res.data.type}*\n*ADAPTER:* *${res.data.source}*\n*TOTAL EPISODE:* *${res.data.episodes}*\n*STATUS:* *${res.data.status}*\n*ONGOING:* *${res.data.airing ? 'Ya' : 'DRIS'}*\n*AIRED:* *${res.data.aired.string}*\n*DURATION:* *${res.data.duration}*\n*RATING:* *${res.data.rating}*\n*SCORE:* *${res.data.score}*\n*RANK:* *${res.data.rank}*\n*STUDIO:* *${res.data.studios[0].name}* `
-Wizard.sendMessage(m.chat, { image : { url : res.data.images.jpg.image_url}, caption : txt}, {quoted :m }).catch((err) => m.reply('sorry error'))
+SanDy.sendMessage(m.chat, { image : { url : res.data.images.jpg.image_url}, caption : txt}, {quoted :m }).catch((err) => m.reply('sorry error'))
 }
 break
 case 'bcgc': case 'bcgroup': {
 if (!isCreator) throw mess.owner
 if (!text) throw `*Type some text*\n\nExample : ${prefix + command} ${global.watermark}`
-let getGroups = await Wizard.groupFetchAllParticipating()
+let getGroups = await SanDy.groupFetchAllParticipating()
 let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
 let anu = groups.map(v => v.id)
 reply(`*Send Broadcast To* ${anu.length} *Group Chat, Time ${anu.length * 1.5} second*`)
@@ -5005,12 +5005,12 @@ for (let i of anu) {
 await sleep(1500)
 let btn = [{
 urlButton: {
-displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+displayText: 'WHATSAPP',
+url: '+642727777777'
 }
 }]
 let txt = `「 *${global.botname} BROADCAST* 」\n\n${text}`
-Wizard.send5ButImg(i, txt, botname, global.bc, btn)
+SanDy.send5ButImg(i, txt, botname, global.bc, btn)
 }
 reply(` *Send Broadcast To* ${anu.length} *Group*`)
 }
@@ -5024,12 +5024,12 @@ for (let yoi of anu) {
 await sleep(1500)
 let btn = [{
 urlButton: {
-displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+displayText: 'WHATSAPP',
+url: '+642727777777'
 }
 }]
 let txt = `「 *${global.botname} BROADCAST* 」\n\n${text}`
-Wizard.send5ButImg(yoi, txt, botname, global.bc, btn)
+SanDy.send5ButImg(yoi, txt, botname, global.bc, btn)
 }
 reply('*Success Broadcast*')
 }
@@ -5043,7 +5043,7 @@ reply(`*Send Broadcast To* ${anu.length} Chat\nTime ${anu.length * 1.5} minutes`
 for (let yoi of anu) {
 await sleep(1500)
 var button = [{ buttonId: `${prefix}ho`, buttonText: { displayText: `${melo2}` }, type: 1 }]              
-Wizard.sendMessage(yoi, { caption: `${melo}`, location: { jpegThumbnail: await getBuffer(picak+'Brodcast') }, buttons: button, footer: `${botname}`, mentions: [m.sender] })
+SanDy.sendMessage(yoi, { caption: `${melo}`, location: { jpegThumbnail: await getBuffer(picak+'Brodcast') }, buttons: button, footer: `${botname}`, mentions: [m.sender] })
 }		
 }
 break
@@ -5057,8 +5057,8 @@ for (let i of anu) {
 await sleep(1500)
 let butoon = [{
 urlButton: {
-displayText: `GITHUB`,
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+displayText: `WHATSAPP`,
+url: '+642727777777'
 }
 },
 {
@@ -5067,18 +5067,18 @@ displayText: 'MENU',
 id: 'menu'
 }
 }]
-let media = await Wizard.downloadAndSaveMediaMessage(quoted)
+let media = await SanDy.downloadAndSaveMediaMessage(quoted)
 let buffer = fs.readFileSync(media)
 if (/webp/.test(mime)) {
-Wizard.sendMessage(i, { sticker: { url: media } }, { quoted: ftroli })
+SanDy.sendMessage(i, { sticker: { url: media } }, { quoted: ftroli })
 } else if (/image/.test(mime)) {
 let junn = `*_BROADCAST IMAGE_*${text ? '\n\n' + text : ''}`
-Wizard.send5ButImg(i, junn, `${global.botname}`, buffer, butoon)
+SanDy.send5ButImg(i, junn, `${global.botname}`, buffer, butoon)
 } else if (/video/.test(mime)) {
 let junn = `*_BROADCAST VIDIO_*${text ? '\n\n' + text : ''}`
-Wizard.sendMessage(i, {video: buffer, caption: `${junn}`}, { quoted: ftroli })
+SanDy.sendMessage(i, {video: buffer, caption: `${junn}`}, { quoted: ftroli })
 } else if (/audio/.test(mime)) {
-Wizard.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg'}, { quoted : ftroli })
+SanDy.sendMessage(i, {audio: buffer, mimetype: 'audio/mpeg'}, { quoted : ftroli })
 } else {
 reply(`*Send/Reply Video/Audio/Image You Want to Broadcast With Caption* ${prefix + command}`)
 }
@@ -5091,12 +5091,12 @@ case 'bctext': {
 if (!isCreator) throw mess.owner
 if (!text) throw `*Type some text*\n\nExample : ${prefix + command} zim-ot`
 //let ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {orderMessage: {itemCount: 666666666,status: 200, thumbnail: await getBuffer(picak+'Brodcast'), surface: 200, message: `© ${botname}`, orderTitle: 'memek', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
-let ftroli = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `6283136505591-1614953337@g.us` } : {}) }, message: { 'contactMessage': { 'displayName': `© ${botname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${Wizard.user.name},;;;\nFN:${botname},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': await getBuffer(picak+'Brodcast'), thumbnail: await getBuffer(picak+'Brodcast'),sendEphemeral: true}}}
+let ftroli = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `6283136505591-1614953337@g.us` } : {}) }, message: { 'contactMessage': { 'displayName': `© ${botname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${SanDy.user.name},;;;\nFN:${botname},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': await getBuffer(picak+'Brodcast'), thumbnail: await getBuffer(picak+'Brodcast'),sendEphemeral: true}}}
 let anu = await store.chats.all().map(v => v.id)
 reply(`*Send Broadcast To* ${anu.length} Chat\n*Time ${anu.length * 1.5} seconds*`)
 for (let yoi of anu) {
 await sleep(1500)
-Wizard.sendMessage(yoi, {text:`${text}`}, {quoted:blessedtuna})
+SanDy.sendMessage(yoi, {text:`${text}`}, {quoted:blessedtuna})
 }
 reply('*Success Broadcast*')
 }
@@ -5110,7 +5110,7 @@ let anu = await store.chats.all().map(v => v.id)
 reply(`*Send Broadcast To* ${anu.length} Chat\n*Time ${anu.length * 1.5} minute*`)
 for (let yoi of anu) {
 await sleep(1500)		    
-Wizard.sendMessage(yoi, { video: await getBuffer(buf), jpegThumbnail: await getBuffer(picak+'Brodcast'), caption: `${text}` }, { quoted: ftroli}).catch ((err) => m.reply('*Sorry, failed to send the video*'))
+SanDy.sendMessage(yoi, { video: await getBuffer(buf), jpegThumbnail: await getBuffer(picak+'Brodcast'), caption: `${text}` }, { quoted: ftroli}).catch ((err) => m.reply('*Sorry, failed to send the video*'))
 }
 reply('*Sucecess Broadcast*')
 }
@@ -5123,16 +5123,16 @@ case 'swm': case 'stickerwm': case 'wm': {
   const atnm = swn.split("|")[1];
   if (!/webp/.test(mime)) throw `*reply sticker with caption* *${prefix + command}*`
   if (m.quoted.isAnimated === true) {
-  Wizard.downloadAndSaveMediaMessage(quoted, "gifee")
-  Wizard.sendMessage(m.chat, {sticker:fs.readFileSync("gifee.webp")},{quoted:m})
+  SanDy.downloadAndSaveMediaMessage(quoted, "gifee")
+  SanDy.sendMessage(m.chat, {sticker:fs.readFileSync("gifee.webp")},{quoted:m})
   } else if (/image/.test(mime)) {
   let media = await quoted.download()
-  let encmedia = await Wizard.sendImageAsSticker(m.chat, media, m, { packname: pcknm, author: atnm })
+  let encmedia = await SanDy.sendImageAsSticker(m.chat, media, m, { packname: pcknm, author: atnm })
   await fs.unlinkSync(encmedia)
   } else if (/video/.test(mime)) {
   if ((quoted.msg || quoted).seconds > 11) return m.reply('Maksimal 10 detik!')
   let media = await quoted.download()
-  let encmedia = await Wizard.sendVideoAsSticker(m.chat, media, m, { packname: pcknm, author: atnm })
+  let encmedia = await SanDy.sendVideoAsSticker(m.chat, media, m, { packname: pcknm, author: atnm })
   await fs.unlinkSync(encmedia)
   } else {
   reply(`*Send Image/Video With Caption* ${prefix + command}\n*Duration Video 1-9 seconds*`)
@@ -5150,7 +5150,7 @@ let dwnld = await quoted.download()
 let { floNime } = require('./Launcher/lib/uploader')
 let fatGans = await floNime(dwnld)
 let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas)}/${encodeURIComponent(bawah)}.png?background=${fatGans.result.url}`
-let FaTiH = await Wizard.sendImageAsSticker(m.chat, smeme, m, { packname: global.packname, author: global.auhor })
+let FaTiH = await SanDy.sendImageAsSticker(m.chat, smeme, m, { packname: global.packname, author: global.auhor })
 await fs.unlinkSync(FaTiH)
 }
 break
@@ -5170,7 +5170,7 @@ case 'searchanime': {
 reply(mess.wait)
 if (!text) throw `Example : ${prefix + command} nama anime`
 anu = await getBuffer(`https://api.akuari.my.id/search/konachan?query=${text}`)
-Wizard.sendMessage(m.chat, { image: anu, caption: `${command}` }, { quoted: m}).catch((err) => m.reply('*Sorry Xteam server is down*'))
+SanDy.sendMessage(m.chat, { image: anu, caption: `${command}` }, { quoted: m}).catch((err) => m.reply('*Sorry Xteam server is down*'))
 }
 break
 
@@ -5220,10 +5220,10 @@ case 'viewfinder':
 case 'warmsunset': {
 if (!/image/.test(mime)) throw `*Send/Reply Image With Caption* ${prefix + command}`
 let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./Launcher/lib/uploader')
-let media = await Wizard.downloadAndSaveMediaMessage(quoted)   
+let media = await SanDy.downloadAndSaveMediaMessage(quoted)   
 let anu = await TelegraPh(media)
 let buf = await getBuffer(`https://violetics.pw/api/photofilter/${command}?apikey=beta&image=${anu}`)
-Wizard.sendMessage(m.chat, { image: buf, jpegThumbnail:buf, caption: `PhotoFilter ${command}` ,  quoted: m, contextInfo: { externalAdReply:{
+SanDy.sendMessage(m.chat, { image: buf, jpegThumbnail:buf, caption: `PhotoFilter ${command}` ,  quoted: m, contextInfo: { externalAdReply:{
   title:botname,
   body:caption,
   showAdAttribution: true,
@@ -5356,7 +5356,7 @@ if (/glue/.test(command)) link = 'https://textpro.me/create-3d-glue-text-effect-
 if (/1917/.test(command)) link = 'https://textpro.me/1917-style-text-effect-online-980.html'
 if (/leaves/.test(command)) link = 'https://textpro.me/natural-leaves-text-effect-931.html'
 let anu = await maker.textpro(link, q)
-Wizard.sendMessage(m.chat, { image: { url: anu }, caption: `Made by ${global.botname}` ,  quoted: m, contextInfo: { externalAdReply:{
+SanDy.sendMessage(m.chat, { image: { url: anu }, caption: `Made by ${global.botname}` ,  quoted: m, contextInfo: { externalAdReply:{
   title:botname,
   body:caption,
   showAdAttribution: true,
@@ -5399,7 +5399,7 @@ case 'wolfmetal':
 case 'underwaterocean': {
 if (!text) throw `Example : ${prefix + command} text`
 anu = await getBuffer(`https://violetics.pw/api/photooxy/${command}?apikey=beta&text=${text}`)
-Wizard.sendMessage(m.chat, { image: anu, caption: `*PHOTO OXY ${command}*` , quoted: m, contextInfo: { externalAdReply:{
+SanDy.sendMessage(m.chat, { image: anu, caption: `*PHOTO OXY ${command}*` , quoted: m, contextInfo: { externalAdReply:{
   title:botname,
   body:caption,
   showAdAttribution: true,
@@ -5428,7 +5428,7 @@ case 'status-mood2':
 case 'summerysand': {
 if (!text) throw `Example : ${prefix + command} nama anime`
 anu = await getBuffer(`https://violetics.pw/api/ephoto360/${command}?apikey=beta&text=${text}`)
-Wizard.sendMessage(m.chat, { image: anu, caption: `*EPHOTO ${command}*` ,  quoted: m, contextInfo: { externalAdReply:{
+SanDy.sendMessage(m.chat, { image: anu, caption: `*EPHOTO ${command}*` ,  quoted: m, contextInfo: { externalAdReply:{
   title:botname,
   body:caption,
   showAdAttribution: true,
@@ -5442,11 +5442,11 @@ break
 case 'once': case 'toonce': { //by DRIPS
 if (!quoted) throw 'Reply Image'
 if (/image/.test(mime)) {
-anu = await Wizard.downloadAndSaveMediaMessage(quoted)
-Wizard.sendMessage(from, {image: {url: anu},viewOnce : true},{quoted: m })
+anu = await SanDy.downloadAndSaveMediaMessage(quoted)
+SanDy.sendMessage(from, {image: {url: anu},viewOnce : true},{quoted: m })
 } else if (/video/.test(mime)) {
-anu = await Wizard.downloadAndSaveMediaMessage(quoted)
-Wizard.sendMessage(m.chat, {video: {url: anu},viewOnce : true},{quoted: m })
+anu = await SanDy.downloadAndSaveMediaMessage(quoted)
+SanDy.sendMessage(m.chat, {video: {url: anu},viewOnce : true},{quoted: m })
 }
 }
 break
@@ -5465,7 +5465,7 @@ footer: global.botname,
 buttons: buttons,
 headerType: 4
 }
-Wizard.sendMessage(m.chat, buttonMessage, { quoted: m })
+SanDy.sendMessage(m.chat, buttonMessage, { quoted: m })
 }
 break
 break
@@ -5759,7 +5759,7 @@ case 'igsearch':
      }
      sections.push(list)   
      }
-  const sendm =  Wizard.sendMessage(
+  const sendm =  SanDy.sendMessage(
       m.chat, 
       {
        text: `${ucapannya2} ${pushname} *Search Results From ${text} Click the button below to choose*`,
@@ -5782,8 +5782,8 @@ case 'igsearch':
                          if (anu[0].size.split('MB')[0] >= 150) return reply('*File Over Limit* '+util.format(anu))
                          for (let i of anu) {    
                          linkye = `*APK DOWNLOAD*\n\n*TITLE:* ${i.title}\n*UPDATE:* ${i.up}\n*VERSION:* ${i.vers}\n*FILESIZE:* ${i.size}\n*URL:* \n*DESCRIPTION:* ${i.desc}\n\n*${global.watermark}*`         
-                              Wizard.sendMessage(m.chat, { image: await getBuffer(i.thumb), jpegThumbnail: await getBuffer(i.thumb), caption: `${linkye}` }, { quoted: m })
-                              Wizard.sendMessage(m.chat, {document: await getBuffer(i.link), mimetype: `application/vnd.android.package-archive`, fileName: `${i.title}`}, {quoted:m})  
+                              SanDy.sendMessage(m.chat, { image: await getBuffer(i.thumb), jpegThumbnail: await getBuffer(i.thumb), caption: `${linkye}` }, { quoted: m })
+                              SanDy.sendMessage(m.chat, {document: await getBuffer(i.link), mimetype: `application/vnd.android.package-archive`, fileName: `${i.title}`}, {quoted:m})  
                               }  
                               }).catch((err) => {
                                   reply(`*Failed When Downloading Media and Sending Files*`)
@@ -5795,20 +5795,20 @@ case 'igsearch':
   if (!text) throw '*Enter a Link Query! Example: https://i.imgur.com/rANDwCP.jpeg*'
   var dripa = `https://hardianto.xyz/api/rip?image=${text}&apikey=hardianto` 
   dri = await getBuffer(dripa)
-  Wizard.sendMessage(m.chat, { image: dri,caption:'${global.botname}' }, { quoted: m})
+  SanDy.sendMessage(m.chat, { image: dri,caption:'${global.botname}' }, { quoted: m})
 
 break// https://hardianto.xyz/api/beta/hacker2?apikey=hardianto&pp=https://i.ibb.co/1s8T3sY/48f7ce63c7aa.jpg
   case 'hackermaker':
   if (!text) throw '*Enter a Link Query! Example: https://i.imgur.com/rANDwCP.jpeg*'
   var dripa = `https://hardianto.xyz/api/beta/hacker2?apikey=hardianto&pp=${text}` 
   dri = await getBuffer(dripa)
-  Wizard.sendMessage(m.chat, { image: dri,caption:'${global.botname}' }, { quoted: m})
+  SanDy.sendMessage(m.chat, { image: dri,caption:'${global.botname}' }, { quoted: m})
 break //https://hardianto.xyz/api/maker/carbon?code=const%20anto%20=%20require(%27pahala%27)&color=cyan&apikey=hardianto
  case 'codecolor':
     if (!text) throw '*Enter a text*'
     var dripa = `https://hardianto.xyz/api/maker/carbon?code=${text}&color=cyan&apikey=hardianto` 
     dri = await getBuffer(dripa)
-    Wizard.sendMessage(m.chat, { image: dri,caption:'${global.botname}' }, { quoted: m})
+    SanDy.sendMessage(m.chat, { image: dri,caption:'${global.botname}' }, { quoted: m})
   break 
 case 'ipdomain':
     reply(mess.wait)
@@ -5891,7 +5891,7 @@ case 'cry':case 'kill':case 'hug':case 'pat':case 'lick':case 'kiss':case 'bite'
 reply(mess.wait)
 axios.get(`https://api.waifu.pics/sfw/${command}`)
 .then(({data}) => {
-Wizard.sendImageAsSticker(m.chat, data.url, m, { packname: global.packname, author: global.author })
+SanDy.sendImageAsSticker(m.chat, data.url, m, { packname: global.packname, author: global.author })
 })
 break
 case 'whois':
@@ -5910,7 +5910,7 @@ break
 // Upload status
 case 'upsw': case 'uploadstatus': {
 if (!isCreator) return reply(global.owner)
- Wizard.sendMessage("status@broadcast", { text: q })
+ SanDy.sendMessage("status@broadcast", { text: q })
  reply("*Uploaded Status*")
  }
  break
@@ -5952,10 +5952,10 @@ ${json.articles}
 break
 case 'ytcoment':
   if (!text) throw 'No Text'
-Wizard.sendMessage(m.chat, ('https://some-random-api.ml', '/canvas/youtube-comment', {
-avatar: await Wizard.profilePictureUrl(m.sender, 'image').catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png'),
+SanDy.sendMessage(m.chat, ('https://some-random-api.ml', '/canvas/youtube-comment', {
+avatar: await SanDy.profilePictureUrl(m.sender, 'image').catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png'),
 comment: text,
-username: Wizard.getName(m.sender)
+username: SanDy.getName(m.sender)
 }), 'error.png', '*Nih Kak*', m)
 break
 case 'ssweb-hp': {
@@ -5971,7 +5971,7 @@ let buttons = [
                   buttons: buttons,
                   headerType: 4
               }
-              Wizard.sendMessage(m.chat, buttonMessage, { quoted: m })
+              SanDy.sendMessage(m.chat, buttonMessage, { quoted: m })
               }
 break
 case 'ssweb-pc': {
@@ -5987,15 +5987,15 @@ let buttons = [
                   buttons: buttons,
                   headerType: 4
               }
-              Wizard.sendMessage(m.chat, buttonMessage, { quoted: m })
+              SanDy.sendMessage(m.chat, buttonMessage, { quoted: m })
               }             
 break
  // Send image or video from url
  case 'sendimage':
- Wizard.sendMessage(m.chat, { image: { url: q }, fileLength: "5000000000"}, { m })
+ SanDy.sendMessage(m.chat, { image: { url: q }, fileLength: "5000000000"}, { m })
  break
  case 'sendvideo':
- Wizard.sendMessage(m.chat, { video: { url: q }, fileLength: "5000000000" }, { m })
+ SanDy.sendMessage(m.chat, { video: { url: q }, fileLength: "5000000000" }, { m })
 
 break
 case 'shortlink': {
@@ -6044,7 +6044,7 @@ m.reply(mess.wait)
 let media = await quoted.download()
 let { toAudio } = require('./Launcher/lib/converter')
 let audio = await toAudio(media, 'mp4')
-Wizard.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `Convert By ${Wizard.user.name}.mp3`}, { quoted : m })
+SanDy.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `Convert By ${SanDy.user.name}.mp3`}, { quoted : m })
 }
 break
 
@@ -6071,11 +6071,11 @@ let buttons = [
    let buttonMessage = {
   image: { url: result.image[0] },
   caption: `🔮𝗧𝗜𝗧𝗟𝗘 : ${result.title}\n🔮𝗖𝗔𝗧𝗘𝗚𝗢𝗥𝗬 : ${result.type}\n🔮𝗗𝗘𝗧𝗔𝗜𝗟 : ${result.source}\n🔮𝗠𝗘𝗗𝗜𝗔 𝗨𝗥𝗟 : ${result.image[2] || result.image[1] || result.image[0]}`,
-  footer: Wizard.user.name,
+  footer: SanDy.user.name,
   buttons: buttons,
   headerType: 4
    }
-   Wizard.sendMessage(m.chat, buttonMessage, { quoted: m })
+   SanDy.sendMessage(m.chat, buttonMessage, { quoted: m })
  }
  break
  case 'wikimedia': {
@@ -6089,11 +6089,11 @@ let { wikimedia } = require('./Launcher/lib/scraper')
    let buttonMessage = {
   image: { url: result.image },
   caption: `🔮 𝗧𝗜𝗧𝗟𝗘 : ${result.title}\n🔮 𝗦𝗢𝗨𝗥𝗖𝗘 : ${result.source}\n🔮 𝗠𝗘𝗗𝗜𝗔 𝗨𝗥𝗟 : ${result.image}`,
-  footer: Wizard.user.name,
+  footer: SanDy.user.name,
   buttons: buttons,
   headerType: 4
    }
-   Wizard.sendMessage(m.chat, buttonMessage, { quoted: m })
+   SanDy.sendMessage(m.chat, buttonMessage, { quoted: m })
  }
  
   
@@ -6111,7 +6111,7 @@ let { quotesAnime } = require('./Launcher/lib/scraper')
   buttons: buttons,
   headerType: 2
    }
-   Wizard.sendMessage(m.chat, buttonMessage, { quoted: m })
+   SanDy.sendMessage(m.chat, buttonMessage, { quoted: m })
  }
  break
  /*case 'zodiakjfjdkkd': case 'zodiackckdkdk': {
@@ -6146,14 +6146,14 @@ let { quotesAnime } = require('./Launcher/lib/scraper')
    
    let anu = await primbon.zodiak(zodiac)
    if (anu.status == false) return reply(anu.message)
-   Wizard.sendText(m.chat, `🔮𝗭𝗢𝗗𝗜𝗔𝗖 : ${anu.message.zodiak}\n🔮𝗡𝗨𝗠𝗕𝗘𝗥 : ${anu.message.nomor_keberuntungan}\n🔮𝗔𝗥𝗢𝗠𝗔 : ${anu.message.aroma_keberuntungan}\n🔮𝗣𝗟𝗔𝗡𝗘𝗧 : ${anu.message.planet_yang_mengitari}\n🔮𝗙𝗟𝗢𝗪𝗘𝗥 : ${anu.message.bunga_keberuntungan}\n🔮𝗖𝗢𝗟𝗢𝗥 : ${anu.message.warna_keberuntungan}\n🔮𝗥𝗢𝗖𝗞 : ${anu.message.batu_keberuntungan}\n🔮𝗘𝗟𝗘𝗠𝗘𝗡𝗧 : ${anu.message.elemen_keberuntungan}\n🔮𝗭𝗢𝗗𝗜𝗔𝗖 𝗖𝗢𝗨𝗣𝗟𝗘 : ${anu.message.pasangan_zodiak}\n🔮𝗡𝗢𝗧𝗘𝗦 : ${anu.message.catatan}`, m)
+   SanDy.sendText(m.chat, `🔮𝗭𝗢𝗗𝗜𝗔𝗖 : ${anu.message.zodiak}\n🔮𝗡𝗨𝗠𝗕𝗘𝗥 : ${anu.message.nomor_keberuntungan}\n🔮𝗔𝗥𝗢𝗠𝗔 : ${anu.message.aroma_keberuntungan}\n🔮𝗣𝗟𝗔𝗡𝗘𝗧 : ${anu.message.planet_yang_mengitari}\n🔮𝗙𝗟𝗢𝗪𝗘𝗥 : ${anu.message.bunga_keberuntungan}\n🔮𝗖𝗢𝗟𝗢𝗥 : ${anu.message.warna_keberuntungan}\n🔮𝗥𝗢𝗖𝗞 : ${anu.message.batu_keberuntungan}\n🔮𝗘𝗟𝗘𝗠𝗘𝗡𝗧 : ${anu.message.elemen_keberuntungan}\n🔮𝗭𝗢𝗗𝗜𝗔𝗖 𝗖𝗢𝗨𝗣𝗟𝗘 : ${anu.message.pasangan_zodiak}\n🔮𝗡𝗢𝗧𝗘𝗦 : ${anu.message.catatan}`, m)
  }*/
  break
  case 'shiondkskskso': {
    if (!text) throw `Example : ${prefix + command} tikus\n\nNote : For Detail https://primbon.com/shio.htm`
    let anu = await primbon.shio(text)
    if (anu.status == false) return reply(anu.message)
-   Wizard.sendText(m.chat, `🔮𝗥𝗘𝗦𝗨𝗟𝗧𝗦 : ${anu.message}`, m)
+   SanDy.sendText(m.chat, `🔮𝗥𝗘𝗦𝗨𝗟𝗧𝗦 : ${anu.message}`, m)
  }
  break
 case 'ringtone': {
@@ -6161,29 +6161,29 @@ if (!text) throw `Example : ${prefix + command} black rover`
 let { ringtone } = require('./Launcher/lib/scraper')
 let anu = await ringtone(text)
 let result = anu[Math.floor(Math.random() * anu.length)]
-Wizard.sendMessage(m.chat, { audio: { url: result.audio }, fileName: result.title+'.mp3', mimetype: 'audio/mpeg' }, { quoted: m })
+SanDy.sendMessage(m.chat, { audio: { url: result.audio }, fileName: result.title+'.mp3', mimetype: 'audio/mpeg' }, { quoted: m })
     }
     break
 case 'iqra': {
 oh = `Example : ${prefix + command} 3\n\Available IQRA : 1,2,3,4,5,6`
 if (!text) throw oh
 yy = await getBuffer(`https://islamic-api-indonesia.herokuapp.com/api/data/pdf/iqra${text}`)
-Wizard.sendMessage(m.chat, {document: yy, mimetype: 'application/pdf', fileName: `iqra${text}.pdf`}, {quoted:m}).catch ((err) => reply(oh))
+SanDy.sendMessage(m.chat, {document: yy, mimetype: 'application/pdf', fileName: `iqra${text}.pdf`}, {quoted:m}).catch ((err) => reply(oh))
 }
 break
 case 'juzamma': {
 if (args[0] === 'pdf') {
 replay(mess.wait)
-Wizard.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.pdf'}, mimetype: 'application/pdf', fileName: 'juz-amma-arab-latin-indonesia.pdf'}, {quoted:m})
+SanDy.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.pdf'}, mimetype: 'application/pdf', fileName: 'juz-amma-arab-latin-indonesia.pdf'}, {quoted:m})
 } else if (args[0] === 'docx') {
 replay(mess.wait)
-Wizard.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.docx'}, mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', fileName: 'juz-amma-arab-latin-indonesia.docx'}, {quoted:m})
+SanDy.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.docx'}, mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', fileName: 'juz-amma-arab-latin-indonesia.docx'}, {quoted:m})
 } else if (args[0] === 'pptx') {
 replay(mess.wait)
-Wizard.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.pptx'}, mimetype: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', fileName: 'juz-amma-arab-latin-indonesia.pptx'}, {quoted:m})
+SanDy.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.pptx'}, mimetype: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', fileName: 'juz-amma-arab-latin-indonesia.pptx'}, {quoted:m})
 } else if (args[0] === 'xlsx') {
 replay(mess.wait)
-Wizard.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.xlsx'}, mimetype: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', fileName: 'juz-amma-arab-latin-indonesia.xlsx'}, {quoted:m})
+SanDy.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.xlsx'}, mimetype: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', fileName: 'juz-amma-arab-latin-indonesia.xlsx'}, {quoted:m})
 } else {
 reply(`What format do you want? ? Example : ${prefix + command} pdf
 
@@ -6237,7 +6237,7 @@ let txt = `*Arab* : ${res.result.data.text.arab}
 
 ( Q.S ${res.result.data.surah.name.transliteration.id} : ${res.result.data.number.inSurah} )`
 reply(txt)
-Wizard.sendMessage(m.chat, {audio: { url: res.result.data.audio.primary }, mimetype: 'audio/mpeg'}, { quoted : m })
+SanDy.sendMessage(m.chat, {audio: { url: res.result.data.audio.primary }, mimetype: 'audio/mpeg'}, { quoted : m })
 }
 break
 case 'tafsirsurah': {
@@ -6275,13 +6275,13 @@ break*/
    if (/squirrel/.test(command)) set = '-filter:a "atempo=0.5,asetrate=65100"'
    if (/audio/.test(mime)) {
    replay(mess.wait)
-   let media = await Wizard.downloadAndSaveMediaMessage(quoted)
+   let media = await SanDy.downloadAndSaveMediaMessage(quoted)
    let ran = getRandom('.mp3')
    exec(`ffmpeg -i ${media} ${set} ${ran}`, (err, stderr, stdout) => {
    fs.unlinkSync(media)
    if (err) return reply(err)
    let buff = fs.readFileSync(ran)
-   Wizard.sendMessage(m.chat, { audio: buff, mimetype: 'audio/mpeg' }, { quoted : m })
+   SanDy.sendMessage(m.chat, { audio: buff, mimetype: 'audio/mpeg' }, { quoted : m })
    fs.unlinkSync(ran)
    })
    } else reply(`Reply to the audio you want to change with caption *${prefix + command}*`)
@@ -6319,7 +6319,7 @@ break*/
 Info: *bold* hash is locked
 ${Object.entries(global.db.sticker).map(([key, value], index) => `${index + 1}. ${value.locked ? `*${key}*` : key} : ${value.text}`).join('\n')}
 `.trim()
-   Wizard.sendText(m.chat, teks, m, { mentions: Object.values(global.db.sticker).map(x => x.mentionedJid).reduce((a,b) => [...a, ...b], []) })
+   SanDy.sendText(m.chat, teks, m, { mentions: Object.values(global.db.sticker).map(x => x.mentionedJid).reduce((a,b) => [...a, ...b], []) })
  }
  break
  case 'lockcmd': {
@@ -6349,7 +6349,7 @@ View list of message with ${prefix}listmsg`)
    if (!text) throw `Example : ${prefix + command} msg name\n\nView message list with ${prefix}listmsg`
    let msgs = global.db.database
    if (!(text.toLowerCase() in msgs)) throw `'${text}' not registered in message list`
-   Wizard.copyNForward(m.chat, msgs[text.toLowerCase()], true)
+   SanDy.copyNForward(m.chat, msgs[text.toLowerCase()], true)
  }
  break
  case 'listmsg': {
@@ -6378,7 +6378,7 @@ this.anonymous = this.anonymous ? this.anonymous : {}
 let buttons = [{
  urlButton: {
   displayText: 'REPORT',
-  url: 'https://wa.me/436993888888443?text=hello+bro+i+found+a+bug+in+your+bot'
+  url: 'https://wa.me/642727777777?text=hello+bro+i+found+a+bug+in+your+bot'
  }
   }, {
  quickReplyButton: {
@@ -6386,7 +6386,7 @@ let buttons = [{
   id: 'start'
  }
   }]
-   Wizard.sendButtonText(m.chat, buttons, `\`\`\`Hi ${await Wizard.getName(m.sender)} Welcome To Anonymous Chat\n\nClick The Button Below To Find A Partner\`\`\``, Wizard.user.name, m)
+   SanDy.sendButtonText(m.chat, buttons, `\`\`\`Hi ${await SanDy.getName(m.sender)} Welcome To Anonymous Chat\n\nClick The Button Below To Find A Partner\`\`\``, SanDy.user.name, m)
  }
 break
 case 'sendkontak': case 'sendcontact': {
@@ -6397,13 +6397,13 @@ case 'sendkontak': case 'sendcontact': {
   let buttons = [
 { buttonId: 'start', buttonText: { displayText: 'START' }, type: 1 }
   ]
-  await Wizard.sendButtonText(m.chat, buttons, `_You Are Not In Anonymous Session, Press The Button To Find A Partner_`)
+  await SanDy.sendButtonText(m.chat, buttons, `_You Are Not In Anonymous Session, Press The Button To Find A Partner_`)
   throw false
    }
-   let profile = await Wizard.profilePictureUrl(room.b)
-   let status = await Wizard.fetchStatus(room.b)
-   let msg = await Wizard.sendImage(room.a, profile, `Name : ${await Wizard.getName(room.b)}\nBio : ${status.status}\nUser : @${room.b.split("@")[0]}`, m, { mentions: [room.b] })
-   Wizard.sendContact(room.a, [room.b.split("@")[0]], msg)
+   let profile = await SanDy.profilePictureUrl(room.b)
+   let status = await SanDy.fetchStatus(room.b)
+   let msg = await SanDy.sendImage(room.a, profile, `Name : ${await SanDy.getName(room.b)}\nBio : ${status.status}\nUser : @${room.b.split("@")[0]}`, m, { mentions: [room.b] })
+   SanDy.sendContact(room.a, [room.b.split("@")[0]], msg)
  }
  break
  case 'keluar': case 'leave': {
@@ -6414,12 +6414,12 @@ case 'sendkontak': case 'sendcontact': {
   let buttons = [
 { buttonId: 'start', buttonText: { displayText: 'START' }, type: 1 }
   ]
-  await Wizard.sendButtonText(m.chat, buttons, `_You Are Not In Anonymous Session, Press The Button To Find A Partner_`)
+  await SanDy.sendButtonText(m.chat, buttons, `_You Are Not In Anonymous Session, Press The Button To Find A Partner_`)
   throw false
    }
    reply('Ok')
    let other = room.other(m.sender)
-   if (other) await Wizard.sendText(other, `_Partner Has Left Anonymous Session_`, m)
+   if (other) await SanDy.sendText(other, `_Partner Has Left Anonymous Session_`, m)
    delete this.anonymous[room.id]
    if (command === 'leave') break
  }
@@ -6430,7 +6430,7 @@ case 'sendkontak': case 'sendcontact': {
   let buttons = [
 { buttonId: 'stop', buttonText: { displayText: 'STOP' }, type: 1 }
   ]
-  await Wizard.sendButtonText(m.chat, buttons, `_You Are Still In Anonymous Session, ${global.watermark} To Terminate Your Anonymous Session_`, Wizard.user.name, m)
+  await SanDy.sendButtonText(m.chat, buttons, `_You Are Still In Anonymous Session, ${global.watermark} To Terminate Your Anonymous Session_`, SanDy.user.name, m)
   throw false
    }
    let room = Object.values(this.anonymous).find(room => room.state === 'WAITING' && !room.check(m.sender))
@@ -6439,10 +6439,10 @@ case 'sendkontak': case 'sendcontact': {
 { buttonId: 'next', buttonText: { displayText: 'SKIP' }, type: 1 },
 { buttonId: 'stop', buttonText: { displayText: 'STOP' }, type: 1 }
   ]
-  await Wizard.sendButtonText(room.a, buttons, `_Successfully Found Partner, Now You Can Send Messages_`, Wizard.user.name, m)
+  await SanDy.sendButtonText(room.a, buttons, `_Successfully Found Partner, Now You Can Send Messages_`, SanDy.user.name, m)
   room.b = m.sender
   room.state = 'CHATTING'
-  await Wizard.sendButtonText(room.b, buttons, `_Successfully Found Partner, Now You Can Send Messages_`, Wizard.user.name, m)
+  await SanDy.sendButtonText(room.b, buttons, `_Successfully Found Partner, Now You Can Send Messages_`, SanDy.user.name, m)
    } else {
   let id = + new Date
   this.anonymous[id] = {
@@ -6460,7 +6460,7 @@ other: function (who = '') {
   let buttons = [
 { buttonId: 'keluar', buttonText: { displayText: 'STOP' }, type: 1 }
   ]
-  await Wizard.sendButtonText(m.chat, buttons, `_Please Wait, Looking For A Partner_`, Wizard.user.name, m)
+  await SanDy.sendButtonText(m.chat, buttons, `_Please Wait, Looking For A Partner_`, SanDy.user.name, m)
    }
    break
  }
@@ -6472,11 +6472,11 @@ other: function (who = '') {
   let buttons = [
 { buttonId: 'start', buttonText: { displayText: 'START' }, type: 1 }
   ]
-  await Wizard.sendButtonText(m.chat, buttons, `\`\`\`You Are Not In Anonymous Session, Press The Button To Find A Partner\`\`\``)
+  await SanDy.sendButtonText(m.chat, buttons, `\`\`\`You Are Not In Anonymous Session, Press The Button To Find A Partner\`\`\``)
   throw false
    }
    let other = romeo.other(m.sender)
-   if (other) await Wizard.sendText(other, `\`\`\`Partner Has Left Anonymous Session\`\`\``, m)
+   if (other) await SanDy.sendText(other, `\`\`\`Partner Has Left Anonymous Session\`\`\``, m)
    delete this.anonymous[romeo.id]
    let room = Object.values(this.anonymous).find(room => room.state === 'WAITING' && !room.check(m.sender))
    if (room) {
@@ -6484,10 +6484,10 @@ other: function (who = '') {
 { buttonId: 'next', buttonText: { displayText: 'SKIP' }, type: 1 },
 { buttonId: 'keluar', buttonText: { displayText: 'STOP' }, type: 1 }
   ]
-  await Wizard.sendButtonText(room.a, buttons, `\`\`\`Successfully Found Partner, now you can send message\`\`\``, Wizard.user.name, m)
+  await SanDy.sendButtonText(room.a, buttons, `\`\`\`Successfully Found Partner, now you can send message\`\`\``, SanDy.user.name, m)
   room.b = m.sender
   room.state = 'CHATTING'
-  await Wizard.sendButtonText(room.b, buttons, `\`\`\`Successfully Found Partner, now you can send message\`\`\``, Wizard.user.name, m)
+  await SanDy.sendButtonText(room.b, buttons, `\`\`\`Successfully Found Partner, now you can send message\`\`\``, SanDy.user.name, m)
    } else {
   let id = + new Date
   this.anonymous[id] = {
@@ -6505,20 +6505,20 @@ other: function (who = '') {
   let buttons = [
 { buttonId: 'keluar', buttonText: { displayText: 'STOP' }, type: 1 }
   ]
-  await Wizard.sendButtonText(m.chat, buttons, `\`\`\`Please wait, looking for a partner\`\`\``, Wizard.user.name, m)
+  await SanDy.sendButtonText(m.chat, buttons, `\`\`\`Please wait, looking for a partner\`\`\``, SanDy.user.name, m)
    }
    break
  }
  case 'public': {
    if (!isCreator) throw global.owner
-   Wizard.public = true
+   SanDy.public = true
    reply(mess.public)
  }// https://hardianto.xyz/api/rip?image=https://i.imgur.com/rANDwCP.jpeg&apikey=hardianto
  break
  case 'attp': {
   reply(mess.wait)
   if (!text) throw `*Example : ${prefix + command}  hello world*`
-  await Wizard.sendMedia(m.chat, `https://hardianto.xyz/api/maker/attp?text=${text}&apikey=hardianto`,'ZIM', 'BOT M D', m, {asSticker: true}).catch((err) => m.reply('*error while sending sticker*'))
+  await SanDy.sendMedia(m.chat, `https://hardianto.xyz/api/maker/attp?text=${text}&apikey=hardianto`,'ZIM', 'BOT M D', m, {asSticker: true}).catch((err) => m.reply('*error while sending sticker*'))
             }
             break
 /*case 'ripmaker':
@@ -6526,13 +6526,13 @@ other: function (who = '') {
   try{
   ripdri = await axios(`https://hardianto.xyz/api/rip?image=https://i.imgur.com/rANDwCP.jpeg&apikey=hardianto`)
   stalloni = await getBuffer(ripdri)
-  Wizard.sendMessage(from, {image:stalloni},{quoted:m})
+  SanDy.sendMessage(from, {image:stalloni},{quoted:m})
   } catch (e) {error("Error")}
     reply(mess.wait)*/
             
  case 'self': {
    if (!isCreator) throw global.owner
-   Wizard.public = false
+   SanDy.public = false
    reply(mess.selfNEW)
  }
  break
@@ -6572,7 +6572,7 @@ return cpu
  }
  break
  case 'owner': case 'creator': {
- Wizard.sendContact(m.chat, global.pemilik, m)
+ SanDy.sendContact(m.chat, global.pemilik, m)
  }
  
  break
@@ -6598,7 +6598,7 @@ timestampe = speed();
 latensie = speed() - timestampe
   alivemess = process.env.ALIVE_MESSAGE
 huso = await getBuffer(logo)
-let message = await prepareWAMessageMedia({ image: huso, jpegThumbnail:huso }, { upload: Wizard.waUploadToServer })
+let message = await prepareWAMessageMedia({ image: huso, jpegThumbnail:huso }, { upload: SanDy.waUploadToServer })
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 templateMessage: {
 hydratedTemplate: {
@@ -6612,8 +6612,8 @@ url: youtube
 }
 }, {
 urlButton: {
-displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+displayText: 'WHATSAPP',
+url: '+642727777777'
 }
 }, {
 quickReplyButton: {
@@ -6629,12 +6629,12 @@ id: 'listmenu'
 }
 }
 }), { userJid: m.chat, quoted: m })
-Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
 }
 break
   case 'bug': case 'report': {
   if(!text) throw `Enter The Bug Example\n\n${command} Menu Error `
-  Wizard.sendMessage(`918590508376@s.whatsapp.net`, {text: `*Bug Report From:* wa.me/${m.sender.split("@")[0]}
+  SanDy.sendMessage(`642727777777@s.whatsapp.net`, {text: `*Bug Report From:* wa.me/${m.sender.split("@")[0]}
 Report Message: ${text}` })
 reply(`*Successfully reported to the owner\n\nPlease make sure the bug is valid, if you play with this, use this feature again and again for no reason, you will be banned for using the bot*`)
   }
@@ -6659,7 +6659,7 @@ case 'listmenu':
   }
   sections.push(list)   
   }
-  const sendm =  Wizard.sendMessage(
+  const sendm =  SanDy.sendMessage(
   m.chat, 
   {
   text: `
@@ -6842,7 +6842,7 @@ case 'setmenu': {
          listType: 1
           }
         }), {})
-        Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+        SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
         }
       }
   break
@@ -7307,8 +7307,8 @@ anu = `
         }
     }, {
         urlButton: {
-            displayText: 'GITHUB',
-            url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+            displayText: 'WHATSAPP',
+            url: '+642727777777'
         }
     }, {
         quickReplyButton: {
@@ -7328,7 +7328,7 @@ anu = `
     }]
     let setbot = global.db.settings[botNumber]
     if (setbot.templateImage) {
-    let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Wizard.waUploadToServer })
+    let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: SanDy.waUploadToServer })
     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
     templateMessage: {
     hydratedTemplate: {
@@ -7342,8 +7342,8 @@ anu = `
     }
     }, {
     urlButton: {
-    displayText: 'GITHUB',
-    url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+    displayText: 'WHATSAPP',
+    url: '+642727777777'
     }
     }, {
     quickReplyButton: {
@@ -7364,9 +7364,9 @@ anu = `
     }
     }
     }), { userJid: m.chat, quoted: m })
-    Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+    SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
     } else if (setbot.templateGif) {
-    let message = await prepareWAMessageMedia({ video: global.visoka, gifPlayback:true, jpegThumbnail:`` }, { upload: Wizard.waUploadToServer })
+    let message = await prepareWAMessageMedia({ video: global.visoka, gifPlayback:true, jpegThumbnail:`` }, { upload: SanDy.waUploadToServer })
     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
     templateMessage: {
     hydratedTemplate: {
@@ -7380,8 +7380,8 @@ anu = `
     }
     }, {
     urlButton: {
-    displayText: 'GITHUB',
-    url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+    displayText: 'WHATSAPP',
+    url: '+642727777777'
     }
     }, {
     quickReplyButton: {
@@ -7402,7 +7402,7 @@ anu = `
     }
     }
     }), { userJid: m.chat, quoted: m })
-    Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+    SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
     } else if (setbot.templateLocation) {
     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
     templateMessage: {
@@ -7418,8 +7418,8 @@ anu = `
     }
     }, {
     urlButton: {
-    displayText: 'GITHUB',
-    url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+    displayText: 'WHATSAPP',
+    url: '+642727777777'
     }
     }, {
     quickReplyButton: {
@@ -7440,10 +7440,10 @@ anu = `
     }
     }
     }), { userJid: m.chat, quoted: m })
-    Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+    SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
           } else if (setbot.templateCatalog) {
        	tod = await (await fetch(logo)).buffer() 
-						var messa = await prepareWAMessageMedia({ image: tod}, { upload: Wizard.waUploadToServer })
+						var messa = await prepareWAMessageMedia({ image: tod}, { upload: SanDy.waUploadToServer })
 						var catalog = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 						"productMessage": {
 						"product": {
@@ -7463,16 +7463,16 @@ anu = `
 						"businessOwnerJid": "0@s.whatsapp.net",
 						}
 						}), { userJid: m.chat, quoted: drip })
-						Wizard.relayMessage(m.chat, catalog.message, { messageId: catalog.key.id })
+						SanDy.relayMessage(m.chat, catalog.message, { messageId: catalog.key.id })
    } else if (setbot.templateZimbot) {
         try {
-            ppuser = await Wizard.profilePictureUrl(m.sender, 'image')
+            ppuser = await SanDy.profilePictureUrl(m.sender, 'image')
         } catch {
             ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
         }
         
     var buffer = await getBuffer(ppuser)
-    const buttonsDefault = [{ urlButton: { displayText: `SUBSCRIBE`, url : `https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA` } }, { urlButton: { displayText: `GITHUB`, url : `https://github.com/Ajmal-Achu/Wizard-MD` } },
+    const buttonsDefault = [{ urlButton: { displayText: `SUBSCRIBE`, url : `https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A` } }, { urlButton: { displayText: `WHATSAPP`, url : `+642727777777` } },
     {					
       quickReplyButton: {
       displayText: 'SPEED',
@@ -7490,7 +7490,7 @@ anu = `
       displayText: 'LIST',
       id: 'listmenu'
       }},]
-      Wizard.sendMessage(m.chat,{
+      SanDy.sendMessage(m.chat,{
         caption: anu,
     document: fs.readFileSync('./Launcher/lib/tes.xlsx'),
     mimetype: dripsee,
@@ -7510,7 +7510,7 @@ anu = `
     sourceUrl: tutorial
     }}}, {quoted:m})
     } else if  (setbot.templateMsg) {
-      Wizard.send5ButMsg(m.chat, anu, global.botname, btn)
+      SanDy.send5ButMsg(m.chat, anu, global.botname, btn)
     } else if (setbot.templateList) {             
     let sections = []   
     let listmenu = [`allmenu`,`animemenu`,`groupmenu`,`toolmenu`,`downloadmenu`,`searchmenu`,`photofiltermenu`,`textpromenu`,`photooxymenu`,`ownermenu`,`ephotomenu`,`convertmenu`,`databasemenu`,`donasi`]
@@ -7531,7 +7531,7 @@ anu = `
     }
     sections.push(list)   
     }
-    const sendm =  Wizard.sendMessage(
+    const sendm =  SanDy.sendMessage(
     m.chat, 
     {
     text: `
@@ -7557,7 +7557,7 @@ anu = `
     }, { quoted : m })
     } else if (setbot.templateDoc) {
       try {
-        ppuser = await Wizard.profilePictureUrl(m.sender, 'image')
+        ppuser = await SanDy.profilePictureUrl(m.sender, 'image')
     } catch {
         ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
     }
@@ -7587,17 +7587,17 @@ anu = `
         sourceUrl: tutorial,
         }}
         }
-        Wizard.sendMessage(m.chat, buttonMessage)
+        SanDy.sendMessage(m.chat, buttonMessage)
       }
     }
 break
 case 'runtime': case 'uptime': {
-Wizard.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
+SanDy.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
 reply(`*ᴜᴘᴛɪᴍᴇ :* ${runtime(process.uptime())}`)
 }
 break
 case 'ownermenu': {
-Wizard.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
+SanDy.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
 buffer = await getBuffer(picak+'OWNER MENU')
 ram3 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
 anu = `
@@ -7640,7 +7640,7 @@ anu = `
  grouponly
 「 ${global.caption}」
 `
-let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Wizard.waUploadToServer })
+let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: SanDy.waUploadToServer })
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 templateMessage: {
 hydratedTemplate: {
@@ -7650,23 +7650,23 @@ hydratedFooterText: `${global.botname}`,
 hydratedButtons: [{        
 "urlButton": {
 "displayText": "SUBSCRIBE",
-"url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+"url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
 }
 }, {
 urlButton: {
-displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+displayText: 'WHATSAPP',
+url: '+642727777777'
 }
 }
 ]
 }
 }
 }), { userJid: m.chat })
-Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
 }
 break
 case 'databasemenu': {
-Wizard.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
+SanDy.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
 buffer = await getBuffer(picak+'DATABASE MENU')
 ram4 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
 anu = `
@@ -7691,7 +7691,7 @@ anu = `
  delcmd -msg-
  listcmd -msg-
 `
-let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Wizard.waUploadToServer })
+let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: SanDy.waUploadToServer })
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 templateMessage: {
 hydratedTemplate: {
@@ -7701,23 +7701,23 @@ hydratedFooterText: `${global.botname}`,
 hydratedButtons: [{        
 "urlButton": {
 "displayText": "SUBSCRIBE",
-"url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+"url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
 }
 }, {
 urlButton: {
-displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+displayText: 'WHATSAPP',
+url: '+642727777777'
 }
 }
 ]
 }
 }
 }), { userJid: m.chat })
-Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
 }
 break
 case 'photooxymenu': {
-  Wizard.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
+  SanDy.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
   buffer = await getBuffer(picak+'PHOTOOXY MENU')
   ram5 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
   anu = `
@@ -7760,7 +7760,7 @@ case 'photooxymenu': {
  wolfmetal -text-
  underwaterocean -text-
   `
-  let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Wizard.waUploadToServer })
+  let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: SanDy.waUploadToServer })
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
   templateMessage: {
   hydratedTemplate: {
@@ -7770,23 +7770,23 @@ case 'photooxymenu': {
   hydratedButtons: [{        
   "urlButton": {
   "displayText": "SUBSCRIBE",
-  "url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+  "url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
   }
   }, {
   urlButton: {
-  displayText: 'GITHUB',
-  url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+  displayText: 'WHATSAPP',
+  url: '+642727777777'
   }
   }
   ]
   }
   }
   }), { userJid: m.chat })
-  Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+  SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
   }
 break
 case 'groupmenu': {
-Wizard.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
+SanDy.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
 buffer = await getBuffer(picak+'GROUP MENU')
 ram0 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
 anu = `
@@ -7847,7 +7847,7 @@ anu = `
  editinfo -admin-
 └───「 ${global.caption}」
 `
-let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Wizard.waUploadToServer })
+let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: SanDy.waUploadToServer })
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 templateMessage: {
 hydratedTemplate: {
@@ -7857,23 +7857,23 @@ hydratedFooterText: `${global.botname}`,
 hydratedButtons: [{        
 "urlButton": {
 "displayText": "SUBSCRIBE",
-"url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+"url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
 }
 }, {
 urlButton: {
-displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+displayText: 'WHATSAPP',
+url: '+642727777777'
 }
 }
 ]
 }
 }
 }), { userJid: m.chat })
-Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
 }
 break
 case 'textpromenu': {
-Wizard.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
+SanDy.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
 buffer = await getBuffer(picak+'TEXTPRO MENU')
 ram11 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
 anu = `
@@ -7948,7 +7948,7 @@ anu = `
  leaves -text-
 └───「 ${global.caption}」
 `
-let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Wizard.waUploadToServer })
+let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: SanDy.waUploadToServer })
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 templateMessage: {
 hydratedTemplate: {
@@ -7958,23 +7958,23 @@ hydratedFooterText: `${global.botname}`,
 hydratedButtons: [{        
 "urlButton": {
 "displayText": "SUBSCRIBE",
-"url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+"url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
 }
 }, {
 urlButton: {
-displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+displayText: 'WHATSAPP',
+url: '+642727777777'
 }
 }
 ]
 }
 }
 }), { userJid: m.chat })
-Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
 }
 break
 case 'downloadmenu': {
-Wizard.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
+SanDy.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
 buffer = await getBuffer(picak+'DOWNLOAD MENU')
 ram22 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
 anu =`
@@ -8017,7 +8017,7 @@ anu =`
  youtube -link-
 └───〔 *_${global.caption}_* 〕
 `
-let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Wizard.waUploadToServer })
+let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: SanDy.waUploadToServer })
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 templateMessage: {
 hydratedTemplate: {
@@ -8027,23 +8027,23 @@ hydratedFooterText: `${global.botname}`,
 hydratedButtons: [{        
 "urlButton": {
 "displayText": "SUBSCRIBE",
-"url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+"url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
 }
 }, {
 urlButton: {
-displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+displayText: 'WHATSAPP',
+url: '+642727777777'
 }
 }
 ]
 }
 }
 }), { userJid: m.chat })
-Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
 }
 break
 case 'photofiltermenu':{
-Wizard.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
+SanDy.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
 buffer = await getBuffer(picak+'PHOTOFILTER MENU')
 ram30 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
 anu =`
@@ -8101,7 +8101,7 @@ anu =`
  warmsunset -photo-
 └───「 ${global.caption}」
 `
-let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Wizard.waUploadToServer })
+let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: SanDy.waUploadToServer })
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 templateMessage: {
 hydratedTemplate: {
@@ -8111,23 +8111,23 @@ hydratedFooterText: `${global.botname}`,
 hydratedButtons: [{        
 "urlButton": {
 "displayText": "SUBSCRIBE",
-"url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+"url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
 }
 }, {
 urlButton: {
-displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+displayText: 'WHATSAPP',
+url: '+642727777777'
 }
 }
 ]
 }
 }
 }), { userJid: m.chat })
-Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
 }
 break
 case 'animemenu':{
-  Wizard.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
+  SanDy.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
   ram40 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
   buffer = await getBuffer(picak+'ANIME MENU')
   anu =`
@@ -8188,7 +8188,7 @@ case 'animemenu':{
  searchanime -query-
 └───「 ${global.caption}」
   `
-  let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Wizard.waUploadToServer })
+  let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: SanDy.waUploadToServer })
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
   templateMessage: {
   hydratedTemplate: {
@@ -8198,23 +8198,23 @@ case 'animemenu':{
   hydratedButtons: [{        
   "urlButton": {
   "displayText": "SUBSCRIBE",
-  "url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+  "url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
   }
   }, {
   urlButton: {
-  displayText: 'GITHUB',
-  url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+  displayText: 'WHATSAPP',
+  url: '+642727777777'
   }
   }
   ]
   }
   }
   }), { userJid: m.chat })
-  Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+  SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
   }
 break
 case 'convertmenu': {
-  Wizard.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
+  SanDy.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
   ram70 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
   buffer = await getBuffer(picak+'CONVERT MENU')
   anu =`
@@ -8253,7 +8253,7 @@ case 'convertmenu': {
  swm -sticker-
 └───「 ${global.caption}」
   `
-  let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Wizard.waUploadToServer })
+  let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: SanDy.waUploadToServer })
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
   templateMessage: {
   hydratedTemplate: {
@@ -8263,23 +8263,23 @@ case 'convertmenu': {
   hydratedButtons: [{        
   "urlButton": {
   "displayText": "SUBSCRIBE",
-  "url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+  "url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
   }
   }, {
   urlButton: {
-  displayText: 'GITHUB',
-  url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+  displayText: 'WHATSAPP',
+  url: '+642727777777'
   }
   }
   ]
   }
   }
   }), { userJid: m.chat })
-  Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+  SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
   }
 break
 case 'toolmenu': {
-  Wizard.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
+  SanDy.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
   buffer = await getBuffer(picak+'TOOL MENU')
   ram90 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
   anu =`
@@ -8313,7 +8313,7 @@ case 'toolmenu': {
  brainly -query-
 └───「 ${global.caption}」
   `
-  let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Wizard.waUploadToServer })
+  let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: SanDy.waUploadToServer })
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
   templateMessage: {
   hydratedTemplate: {
@@ -8323,23 +8323,23 @@ case 'toolmenu': {
   hydratedButtons: [{        
   "urlButton": {
   "displayText": "SUBSCRIBE",
-  "url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+  "url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
   }
   }, {
   urlButton: {
-  displayText: 'GITHUB',
-  url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+  displayText: 'WHATSAPP',
+  url: '+642727777777'
   }
   }
   ]
   }
   }
   }), { userJid: m.chat })
-  Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+  SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
   }
 break
 case 'searchmenu':{
-  Wizard.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
+  SanDy.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
   buffer = await getBuffer(picak+'SEARCH MENU')
   ram200 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
   anu =`
@@ -8374,7 +8374,7 @@ case 'searchmenu':{
  amino -query-
  googleimage -query-
  apkdone -query-
- githubsearch -query->
+ WHATSAPPsearch -query->
  igsearch -username-
  googlenews -query-
  gnews -query-
@@ -8385,7 +8385,7 @@ case 'searchmenu':{
 └───「 ${global.caption}」
 
   `
-  let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Wizard.waUploadToServer })
+  let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: SanDy.waUploadToServer })
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
   templateMessage: {
   hydratedTemplate: {
@@ -8395,23 +8395,23 @@ case 'searchmenu':{
   hydratedButtons: [{        
   "urlButton": {
   "displayText": "SUBSCRIBE",
-  "url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+  "url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
   }
   }, {
   urlButton: {
-  displayText: 'GITHUB',
-  url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+  displayText: 'WHATSAPP',
+  url: '+642727777777'
   }
   }
   ]
   }
   }
   }), { userJid: m.chat })
-  Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+  SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
   }
 break
 case 'ephotomenu': {
-Wizard.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
+SanDy.sendMessage(m.chat, { react: { text: `${global.reactmoji}`, key: m.key }})
 buffer = await getBuffer(picak+'EPHOTO MENU')
 ram250 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
 anu =`
@@ -8429,7 +8429,7 @@ anu =`
  𝚜𝚝𝚊𝚝𝚞𝚜-𝚖𝚘𝚘𝚍𝟸
  𝚜𝚞𝚖𝚖𝚎𝚛𝚢𝚜𝚊𝚗𝚍
 `
-let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Wizard.waUploadToServer })
+let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: SanDy.waUploadToServer })
 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 templateMessage: {
 hydratedTemplate: {
@@ -8439,19 +8439,19 @@ hydratedFooterText: `${global.botname}`,
 hydratedButtons: [{        
 "urlButton": {
 "displayText": "SUBSCRIBE",
-"url": "https://youtube.com/channel/UCLegt7MKqNBxJjIkE_QNPdA"
+"url": "https://youtube.com/channel/UCZnoFxt8LQ9pNeOD3TMcV4A"
 }
 }, {
 urlButton: {
-displayText: 'GITHUB',
-url: 'https://github.com/Ajmal-Achu/Wizard-MD'
+displayText: 'WHATSAPP',
+url: '+642727777777'
 }
 }
 ]
 }
 }
 }), { userJid: m.chat })
-Wizard.relayMessage(m.chat, template.message, { messageId: template.key.id })
+SanDy.relayMessage(m.chat, template.message, { messageId: template.key.id })
 }
 break
 
@@ -8520,15 +8520,15 @@ m.copyNForward(other, true, m.quoted && m.quoted.fromMe ? {
    if (m.key.fromMe) return reply(wizv1)
    if (isCreator) return reply(wizv1)
    kice = m.sender
-   await Wizard.groupParticipantsUpdate(m.chat, [kice], 'remove')
-   Wizard.sendMessage(from, {text:`*ANTIBAD WORDS*\n\n@${kice.split("@")[0]} *was kicked because of being rude to others in this group*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})}
+   await SanDy.groupParticipantsUpdate(m.chat, [kice], 'remove')
+   SanDy.sendMessage(from, {text:`*ANTIBAD WORDS*\n\n@${kice.split("@")[0]} *was kicked because of being rude to others in this group*`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})}
    }
 if (isCmd && budy.toLowerCase() != undefined) {
     if (m.chat.endsWith('broadcast')) return
     if (m.isBaileys) return
     let msgs = global.db.database
     if (!(budy.toLowerCase() in msgs)) return
-    Wizard.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
+    SanDy.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 }
 }
 
