@@ -234,7 +234,7 @@ let picak = picaks[Math.floor(Math.random() * picaks.length)]
   if (!('antilink' in chats)) chats.antilink = false
   if (!('antilinkyt' in chats)) chats.antilinkyt = false
   if (!('autoblock' in chats)) chats.autoblock = false
-  if (!('isWelcome' in chats)) chats.isWelcome = true
+  if (!('isWelcome' in chats)) chats.isWelcome = process.env.WELCOME
   if (!('antilinkall' in chats)) chats.antilinkall = false
   if (!('antiytchannel' in chats)) chats.antiytchannel = false
   if (!('antitiktok' in chats)) chats.antitiktok = false
@@ -255,7 +255,7 @@ let picak = picaks[Math.floor(Math.random() * picaks.length)]
    wame: false,
    antilink: false,
    antilinkyt: false,
-   isWelcome: true,
+   isWelcome: process.env.WELCOME,
    antilinkall: false,
    antiytchannel: false,
    antitiktok: false,

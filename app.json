@@ -42,6 +42,11 @@
 			"required": false,
 			"value": "Power Is Power!"
 		},
+		"WELCOME": {
+			"description": "Type true if you want to enable welcome by default",
+			"required": false,
+			"value": "false"
+		},
 		"BOT_NAME": {
 			"description": "Change the bot name here",
 			"required": true,
