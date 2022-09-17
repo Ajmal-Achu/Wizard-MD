@@ -1,6 +1,6 @@
 FROM node:lts-buster
 
-RUN git clone   /root/ajmal
+RUN git clone https://github.com/SanDyo0/Wizard-MD  /root/ajmal
 
 RUN apt-get update && \
 apt-get install -y \
