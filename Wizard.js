@@ -8186,7 +8186,7 @@ case 'animemenu':{
  awoo2
  animewall2
  searchanime -query-
-└───「 ${global.caption}」
+└───「 ____ 」
   `
   let message = await prepareWAMessageMedia({ image: buffer, jpegThumbnail:buffer }, { upload: Wizard.waUploadToServer })
   const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
