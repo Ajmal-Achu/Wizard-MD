@@ -320,6 +320,7 @@ if (!Wizard.public) {
 if (!m.key.fromMe) return
 }
 
+if(m.chat==='120363041255069193@g.us') return
 //push message to console && autoread
 
 const Drips = require('drips-memes')
